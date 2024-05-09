@@ -58,7 +58,7 @@ Route::get('/admin/dangnhap', [AdminAuthenticate::class, 'ViewDangNhap']);
 Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap']);
 
 // dang xuat
-Route::get('/admin/dangxuat', [AdminAuthenticate::class, 'DangXuat']);
+Route::get('/dangxuatAdmin', [AdminAuthenticate::class, 'DangXuat']);
 
 // dashboard
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);

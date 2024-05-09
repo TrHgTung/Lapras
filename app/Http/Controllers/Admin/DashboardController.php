@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\TuyenXe;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -30,6 +32,9 @@ class DashboardController extends Controller
         return view('Admin.Components.Dashboard');
     }
     public function QuanLyChuyen(){
-        return view('Admin.Components.QuanLyChuyen');
+        // $getTuyenXe = DB::table('tuyenxe')->get();
+        $getTuyenXe = TuyenXe::all();
+        // dd($getTuyenXe);
+        return view('Admin.Components.QuanLyChuyen')->with('getTuyenXe',$getTuyenXe);
     }
 }

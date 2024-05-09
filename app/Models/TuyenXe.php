@@ -12,7 +12,11 @@ class TuyenXe extends Model
     protected $fillable = [
         'DiemDau',
         'DiemDen',
-        'KhuHoi',
+        'NgayKhoiHanh',
+        'ThangKhoiHanh',
+        'GioKhoiHanh',
+        'GioToiNoi',
+        'SoKhachDat',
         'GiaVe'
     ];
     protected $table = 'tuyenxe';
