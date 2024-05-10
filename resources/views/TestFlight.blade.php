@@ -127,7 +127,7 @@ header nav:hover > a:not(:hover) {
     <section class="about">
         <h1>Thông tin về tuyến sắp chạy</h1><br>
         @foreach($mangDuLieu as $mdl)
-        <h3>Ngày {{ $mdl['id'] }} tháng 4 năm 2024</h3>
+        <h3>Ngày {{ $mdl['NgayKhoiHanh'] }} tháng {{ $mdl['ThangKhoiHanh'] }} năm 2024</h3>
         @endforeach
         <br>
         @foreach($mangDuLieu as $mdl)
@@ -136,7 +136,7 @@ header nav:hover > a:not(:hover) {
         <strong>Điểm đến: </strong><p>{{ $mdl['DiemDen'] }}</p>
         <br>
         <strong>Giá vé: </strong><p>{{ $mdl['GiaVe'] }}</p><br>
-        <strong>Ngày khởi hành: </strong><p>{{ $mdl['id'] }}/4/2024</p><br>
+        <strong>Ngày khởi hành: </strong><p>{{ $mdl['NgayKhoiHanh'] }}/{{ $mdl['ThangKhoiHanh'] }}/2024</p><br>
         @endforeach
         <p><strong>Liên hệ đặt vé: </strong> 0909 123 456</p>
     </section>

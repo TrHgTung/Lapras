@@ -194,6 +194,7 @@
                     <span class="d-block">Điểm đến: {{$dta->DiemDen}}</span>
                 </div>
                 <div>
+                    <input type="hidden" name="idChuyenXe" value="{{$dta->id}}">
                     <input type="submit" class="btn btn-sm btn-outline-primary" value="Xem chi tiết">
                 </div>
                 </div>
@@ -214,6 +215,7 @@
                     <span class="d-block">Điểm đến: {{$all->DiemDen}}</span>
                 </div>
                 <div>
+                    <input type="hidden" name="idChuyenXe" value="{{$all->id}}">
                     <input type="submit" class="btn btn-sm btn-outline-primary" value="Xem chi tiết">
                 </div>
                 </div>

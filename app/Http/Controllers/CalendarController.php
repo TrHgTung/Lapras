@@ -26,10 +26,10 @@ class CalendarController extends Controller
 
     public function GetData(Request $req){ // form POST
         $this->KiemTraXacThuc();
-        $ngaydat = (string)$req->ngaydat;  // 1
+        $idChuyenXe = (string)$req->idChuyenXe;  // 1
         // $mangDuLieu = array();
         // $mangDuLieu = TuyenXe::find($ngaydat);
-        $mangDuLieu =  TuyenXe::where('id', $ngaydat)->get();
+        $mangDuLieu =  TuyenXe::where('id', $idChuyenXe)->get();
 
         // if($query){
         //     // $DDQuery = $query->DiemDau;
@@ -44,6 +44,7 @@ class CalendarController extends Controller
         //         ];
         // }
         // return Redirect::to('/lichdatxe')->with('mangDuLieu', $mangDuLieu);
+        // return dd($mangDuLieu);
         return view('TestFlight')->with('mangDuLieu', $mangDuLieu);
     }
 
