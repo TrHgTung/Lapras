@@ -48,6 +48,7 @@ Route::post('/phanhoiPost', [FeedbackController::class, 'PhanHoi']);
 // lich dat xe
 Route::get('/lichdatxe', [CalendarController::class, 'LichDatXe']);
 Route::post('/lichdatxePost', [CalendarController::class, 'GetData']); 
+Route::post('/chonthang', [CalendarController::class, 'ChonThang']); 
 // Route::get('/lichdatxeTest', [CalendarController::class, 'GetData']); 
 
 // ADMIN

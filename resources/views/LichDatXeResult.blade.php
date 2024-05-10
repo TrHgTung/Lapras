@@ -156,49 +156,11 @@
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
-        <div class="calendar mt-4 mb-4">
-          <div class="month"><h4>Lịch Tìm kiếm</h4></div>
+        <div class="mt-4 mb-4">
           <form action="{{URL::to('/chonthang')}}" method="post">
             {{ csrf_field() }}
-              <div class="mb-2">
-                <strong>Chọn ngày: </strong>
-              </div>
-              <div class="days">
-                <p class="day">1 <input class="form-check-input" type="radio" name="ngay" id="ngay" value="1"></p>
-                <p class="day">2 <input class="form-check-input" type="radio" name="ngay" id="ngay" value="2"></p>
-                <p class="day">3<input class="form-check-input" type="radio" name="ngay" id="ngay"  value="3"></p>
-                <p class="day">4<input class="form-check-input" type="radio" name="ngay" id="ngay"  value="4"></p>
-                <p class="day">5<input class="form-check-input" type="radio" name="ngay" id="ngay"  value="5"></p>
-                <p class="day">6<input class="form-check-input" type="radio" name="ngay" id="ngay"  value="6"></p>
-                <p class="day">7<input class="form-check-input" type="radio" name="ngay" id="ngay"  value="7"></p>
-                <p class="day">8<input class="form-check-input" type="radio" name="ngay" id="ngay"  value="8"></p>
-                <p class="day">9<input class="form-check-input" type="radio" name="ngay" id="ngay"  value="9"></p>
-                <p class="day">10<input class="form-check-input" type="radio" name="ngay" id="ngay" value="10"></p>
-                <p class="day">11<input class="form-check-input" type="radio" name="ngay" id="ngay" value="11"></p>
-                <p class="day">12<input class="form-check-input" type="radio" name="ngay" id="ngay" value="12"></p>
-                <p class="day">13<input class="form-check-input" type="radio" name="ngay" id="ngay" value="13"></p>
-                <p class="day">14<input class="form-check-input" type="radio" name="ngay" id="ngay" value="14"></p>
-                <p class="day">15<input class="form-check-input" type="radio" name="ngay" id="ngay" value="15"></p>
-                <p class="day">16<input class="form-check-input" type="radio" name="ngay" id="ngay" value="16"></p>
-                <p class="day">17<input class="form-check-input" type="radio" name="ngay" id="ngay" value="17"></p>
-                <p class="day">18<input class="form-check-input" type="radio" name="ngay" id="ngay" value="18"></p>
-                <p class="day">19<input class="form-check-input" type="radio" name="ngay" id="ngay" value="19"></p>
-                <p class="day">20<input class="form-check-input" type="radio" name="ngay" id="ngay" value="20"></p>
-                <p class="day">21<input class="form-check-input" type="radio" name="ngay" id="ngay" value="21"></p>
-                <p class="day">22<input class="form-check-input" type="radio" name="ngay" id="ngay" value="22"></p>
-                <p class="day">23<input class="form-check-input" type="radio" name="ngay" id="ngay" value="23"></p>
-                <p class="day">24<input class="form-check-input" type="radio" name="ngay" id="ngay" value="24"></p>
-                <p class="day">25<input class="form-check-input" type="radio" name="ngay" id="ngay" value="25"></p>
-                <p class="day">26<input class="form-check-input" type="radio" name="ngay" id="ngay" value="26"></p>
-                <p class="day">27<input class="form-check-input" type="radio" name="ngay" id="ngay" value="27"></p>
-                <p class="day">28<input class="form-check-input" type="radio" name="ngay" id="ngay" value="28"></p>
-                <p class="day">29<input class="form-check-input" type="radio" name="ngay" id="ngay" value="29"></p>
-                <p class="day">30<input class="form-check-input" type="radio" name="ngay" id="ngay" value="30"></p>
-                <p class="day">31<input class="form-check-input" type="radio" name="ngay" id="ngay" value="31"></p>
-            </div>
             <label for="month">Chọn tháng: </label>
             <select name="month" id="month">
-              <option value="">?</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -212,15 +174,62 @@
               <option value="11">11</option>
               <option value="12">12</option>
             </select> / 2024 >>>
-            <input type="submit" value="Tìm kiếm" class="btn btn-sm btn-outline-secondary">
+            <input type="submit" value="Xem" class="btn btn-sm btn-outline-secondary">
           </form>
         </div>
 
-        <div class="calendar" class="mt-4 mb-4">
+        <div class="" class="mt-4 mb-4">
+        <h6 class="border-bottom pb-2 mb-0">Kết quả tìm kiếm cho tháng {{ $month }}/2024</h6>
+@if(!$duLieuNgayKH->isEmpty())
+            @foreach($duLieuNgayKH as $dta)
+            <form action="{{URL::to('/lichdatxePost')}}" method="post">
+                {{ csrf_field() }}
+                <div class="d-flex text-body-secondary pt-3">
+                <svg class="bd-placeholder-img flex-shrink-0 me-2 mr-3 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                    <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">Điểm đón: {{$dta->DiemDau}}</strong>
+                    <a>Thời gian: {{$dta->NgayKhoiHanh}}/{{$month}}/2024 ({{$dta->GioKhoiHanh}} - {{$dta->GioToiNoi}})</a>
+                    </div>
+                    <span class="d-block">Điểm đến: {{$dta->DiemDen}}</span>
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-sm btn-outline-primary" value="Xem chi tiết">
+                </div>
+                </div>
+            </form>
+            @endforeach
+@else 
+<p>Không có kết quả phù hợp. Nhưng dưới đây là toàn bộ các chuyến khả dụng:</p>
+    @foreach($allData as $all)
+            <form action="{{URL::to('/lichdatxePost')}}" method="post">
+                {{ csrf_field() }}
+                <div class="d-flex text-body-secondary pt-3">
+                <svg class="bd-placeholder-img flex-shrink-0 me-2 mr-3 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                    <div class="d-flex justify-content-between">
+                    <strong class="text-gray-dark">Điểm đón: {{$all->DiemDau}}</strong>
+                    <a>Thời gian: {{$all->NgayKhoiHanh}}/{{$month}}/2024 ({{$all->GioKhoiHanh}} - {{$all->GioToiNoi}})</a>
+                    </div>
+                    <span class="d-block">Điểm đến: {{$all->DiemDen}}</span>
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-sm btn-outline-primary" value="Xem chi tiết">
+                </div>
+                </div>
+            </form>
+            @endforeach
+
+@endif
+            
             <div class="text-center mt-3 mb-2">
-                <small>Các kết quả sẽ xuất hiện tại đây</small>
+                <small>Bấm vào từng kết quả để xem các tuyến khả dụng</small>
             </div>
         </div>
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+    
+   
+  </div>
 
         <!-- /END THE FEATURETTES -->
 
@@ -260,7 +269,17 @@
           </div>
         </div>
       </footer>
- 
+  <script>
+    function testBox1(){
+        alertify.alert("<h4>Còn khả dụng</h4><br><strong>TP.HCM - Đà Lạt</strong>: 340,000 VND/khách/ghế<br><strong>Lào Cai - Hà Nội</strong>: 360,000 VND/khách/ghế<br><strong>Cần Thơ - Đà Lạt</strong>: 440,000 VND/khách/ghế");
+    }
+    function testBox2(){
+        alertify.alert("<h4>Còn khả dụng</h4><br><strong>Lai Châu - Huế</strong>: 840,000 VND/khách/ghế<br><strong>Lào Cai - Châu Thành</strong>: 960,000 VND/khách/ghế<br><strong>Cần Thơ - Hà Nội</strong>: 840,000 VND/khách/ghế");
+    }
+    function testBox3(){
+        alertify.alert("<h4>Còn khả dụng</h4><br><strong>TP.HCM - Hà Nội</strong>: 740,000 VND/khách/ghế<br><strong>Lào Cai - TP.HCM</strong>: 1,460,000 VND/khách/ghế<br><strong>Cần Thơ - Đồng Văn</strong>: 1,440,000 VND/khách/ghế");
+    }
+  </script>
     </main>
 
     <!-- Bootstrap core JavaScript

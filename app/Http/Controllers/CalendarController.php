@@ -46,4 +46,21 @@ class CalendarController extends Controller
         // return Redirect::to('/lichdatxe')->with('mangDuLieu', $mangDuLieu);
         return view('TestFlight')->with('mangDuLieu', $mangDuLieu);
     }
+
+    public function ChonThang(Request $req){
+        $month = $req->month;
+        $day = $req->ngay;
+        $allData = TuyenXe::all(); // trong truong hop ko co ket qua tim kiem -> xuat toan bo
+
+        if($day == ""){
+            $duLieuNgayKH = TuyenXe::where('ThangKhoiHanh', $month)->get();
+        }
+        else if($month == "" || ($day == "" && $month == "")){
+            $duLieuNgayKH = TuyenXe::all();
+        }else {
+            $duLieuNgayKH = TuyenXe::where('ThangKhoiHanh', $month)->where('NgayKhoiHanh', $day)->get();
+        }
+        // dd($duLieuNgayKH);
+        return view('LichDatXeResult')->with('duLieuNgayKH', $duLieuNgayKH)->with('month',$month)->with('allData', $allData);
+    }
 }
