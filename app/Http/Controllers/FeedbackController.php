@@ -29,8 +29,8 @@ class FeedbackController extends Controller
 
         $umail = Session::get('email');
         $content = $req->content;
-        $host_mail = 'noname23564444@gmail.com';
-        $host_password = 'ofsxzoxhprsrnewo';
+        $host_mail = '********@gmail.com'; // mail cua ban
+        $host_password = '********'; // google app passwords
 
         $data = array();
         $data['addressFrom'] =  $umail;
