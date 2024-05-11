@@ -27,7 +27,7 @@
         <h1 class="h3 mb-3 font-weight-normal">Đăng ký</h1>
         <p>Vui lòng đăng ký để trải nghiệm các dịch vụ!</p>
       </div>
-
+  <input type="hidden" name="is_active" value="1">
       <div class="form-label-group">
         <input type="text" id="inputName" class="form-control" placeholder="Nguyễn Văn A" name="name" required autofocus>
         <label for="inputName">Họ và tên</label>

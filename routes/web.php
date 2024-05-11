@@ -26,6 +26,8 @@ use App\Http\Controllers\Admin\UserManagementController as UMController;
 
 // Trang chu
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/khoiphuctk', [HomeController::class, 'KhoiPhucMail']);
+Route::post('/khoiphucPost', [HomeController::class, 'KhoiPhucTK']);
 
 // Dang ky tai khoan
 Route::get('/dangky', [AuthenticateController::class, 'ViewDangKy']);
@@ -41,7 +43,9 @@ Route::get('/dangxuat', [AuthenticateController::class, 'DangXuat']);
 // tai khoan
 Route::get('/taikhoan', [UserController::class, 'XemTaiKhoan']);
 Route::get('/suataikhoan', [UserController::class, 'ViewSuaTaiKhoan']);
+Route::get('/vohieuhoataikhoan', [UserController::class, 'VoHieuHoaTaiKhoan']);
 Route::post('/suataikhoanPost', [UserController::class, 'SuaTaiKhoan']);
+Route::post('/e11fd8c8d000e92drsa', [UserController::class, 'VoHieuHoaTaiKhoan_Action']);
 
 // lien he phan hoi
 Route::get('/phanhoi', [FeedbackController::class, 'ViewPhanHoi']);

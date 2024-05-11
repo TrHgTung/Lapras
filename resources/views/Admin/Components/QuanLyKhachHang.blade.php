@@ -10,6 +10,7 @@
               <th scope="col">E-mail (username đăng nhập)</th>
               <th scope="col">Mật khẩu</th>
               <th scope="col">Trạng thái</th>
+              <th scope="col">Hành động</th>
               
             </tr>
           </thead>
@@ -25,7 +26,7 @@
             @else
                 <td>Đã bị khóa</td>
             @endif
-              
+              <td><input type="button" class="btn btn-sm btn-secondary" value="Khôi phục"></td>
             </tr>
             @endforeach
            <!-- endforeach -->

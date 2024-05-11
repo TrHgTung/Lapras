@@ -29,6 +29,8 @@ class FeedbackController extends Controller
 
         $umail = Session::get('email');
         $content = $req->content;
+        $host_mail = 'noname23564444@gmail.com';
+        $host_password = 'ofsxzoxhprsrnewo';
 
         $data = array();
         $data['addressFrom'] =  $umail;
@@ -44,13 +46,13 @@ class FeedbackController extends Controller
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'noname23564444@gmail.com';                     //SMTP username
-            $mail->Password   = 'ofsxzoxhprsrnewo';                               //SMTP password
+            $mail->Username   = $host_mail;                     //SMTP username
+            $mail->Password   = $host_password;                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
             //Recipients
-            $mail->setFrom('noname23564444@gmail.com', 'Admin');
+            $mail->setFrom($host_mail, 'Admin');
             $mail->addAddress($umail);     //Add a recipient
             // $mail->addAddress('ellen@example.com');               //Name is optional
             // $mail->addReplyTo('info@example.com', 'Information');

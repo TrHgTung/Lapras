@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -40,5 +41,24 @@ class UserController extends Controller
         }
         
         return Redirect('/taikhoan');
+    }
+
+    public function VoHieuHoaTaiKhoan(){
+        $this->KiemTraXacThuc();
+        return view('VoHieuHoaTaiKhoan');
+    }
+
+    public function VoHieuHoaTaiKhoan_Action(Request $req){
+        $this->KiemTraXacThuc();
+
+        $getUserId = (int)$req->uid;
+        $user = User::find($getUserId);
+
+        if($user) {
+            $user->is_active = '0';
+            $user->save();
+            return Redirect::to('/dangxuat');
+        }
+        return Redirect::to('/');
     }
 }

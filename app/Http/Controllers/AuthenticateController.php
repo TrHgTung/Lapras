@@ -17,6 +17,7 @@ class AuthenticateController extends Controller
     public function DangKy(Request $req){
         $data = array();
 
+        $data['is_active'] = $req->is_active;
         $data['name'] = $req->name;
         $data['email'] = $req->email;
         $data['password'] = md5($req->password);
@@ -47,7 +48,7 @@ class AuthenticateController extends Controller
             return Redirect::to('/'); // tro ve trang chu, nhung da co Session roi
         }
         else if($check_ban_account){
-            $msg = "Tài khoản này đã bị khóa";
+            $msg = "Tài khoản này đã bị khóa hoặc không hợp lệ";
             Session::put('msg', $msg);
             return Redirect::to('/dangnhap');
         }
