@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TuyenXe;
 use DB;
+use Session;
+use Redirect;
 
 class DashboardController extends Controller
 {
@@ -27,12 +29,19 @@ class DashboardController extends Controller
             throw ValidationException::withMessages(['Error']);
         }
     }
+    public function KiemTraXacThucAdmin(){
+            $admin_check = Session::get('admin_email');
+            if($admin_check == NULL || $admin_check == ''){
+                return Redirect::to('/admin/dangnhap')->send();
+            }
+    }
 
     public function index(){
+        $this->KiemTraXacThucAdmin();
         return view('Admin.Components.Dashboard');
     }
     public function QuanLyChuyen(){
-        // $getTuyenXe = DB::table('tuyenxe')->get();
+        $this->KiemTraXacThucAdmin();
         $getTuyenXe = TuyenXe::all();
         // dd($getTuyenXe);
         return view('Admin.Components.QuanLyChuyen')->with('getTuyenXe',$getTuyenXe);

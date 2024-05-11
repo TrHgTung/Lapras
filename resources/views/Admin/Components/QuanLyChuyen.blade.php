@@ -31,4 +31,7 @@
           </tbody>
         </table>
       </div>
+      <div>
+        <small><i>*: Giờ khởi hành có thể bị thay đổi bởi các thông báo thiên tai, sự cố, ...</i></small>
+      </div>
 @endsection

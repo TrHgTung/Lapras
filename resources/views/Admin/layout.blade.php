@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>Dashboard | Trang Quản trị hệ thống</title>
+    <title>Trang Quản trị hệ thống</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
 
@@ -20,11 +20,9 @@
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
 <link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-<link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico">
+<link rel="icon" href="{{asset('images/logo_original.jpg')}}">
 <meta name="theme-color" content="#712cf9">
 
 
@@ -272,7 +270,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
+              <a class="nav-link d-flex align-items-center gap-2" href="{{URL::to('/admin/quanlykhachhang')}}">
                 <!-- <svg class="bi"><use xlink:href="#graph-up"/></svg> -->
                 Quản lý khách hàng
               </a>
@@ -281,7 +279,7 @@
           <hr class="my-3">
           <ul class="nav flex-column mb-auto">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
+              <a class="nav-link d-flex align-items-center gap-2" href="{{URL::to('/admin/quanlyadmin')}}">
                 <!-- <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg> -->
                 Quản lý t.khoản q.trị
               </a>

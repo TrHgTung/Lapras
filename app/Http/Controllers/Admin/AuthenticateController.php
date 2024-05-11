@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Admin;
 
 class AuthenticateController extends Controller
 {
@@ -56,5 +57,35 @@ class AuthenticateController extends Controller
         Session::flush();
 
         return Redirect::to('/admin/dangnhap');
+    }
+
+    public function KiemTraXacThucAdmin(){
+        $admin_check = Session::get('admin_email');
+        if($admin_check == NULL || $admin_check == ''){
+            return Redirect::to('/admin/dangnhap')->send();
+        }
+    }
+
+    public function ViewThemAdmin(){
+        $this->KiemTraXacThucAdmin();
+        $getAdmin = Admin::all();
+        return view('Admin.Components.QuanLiAdmin')->with('getAdmin', $getAdmin);
+    }
+
+    public function ThemAdmin(Request $req){
+        $this->KiemTraXacThucAdmin();
+        $data = array();
+
+        $data['is_active'] = $req->is_active;
+        $data['name'] = $req->name;
+        $data['email'] = $req->email;
+        $data['password'] = ($req->password);
+
+        $success_admin_added = "Tài khoản đã được thêm mới thành công";
+        Session::put('success_admin_added', $success_admin_added);
+
+        $user = DB::table('admin')->insertGetId($data);
+
+        return Redirect::to('/admin/quanlyadmin');
     }
 }

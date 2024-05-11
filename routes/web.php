@@ -10,6 +10,8 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\Admin\AuthenticateController as AdminAuthenticate;
 use App\Http\Controllers\Admin\BaseController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserManagementController as UMController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -65,3 +67,8 @@ Route::get('/dangxuatAdmin', [AdminAuthenticate::class, 'DangXuat']);
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 // quan ly chuyen
 Route::get('/admin/quanlychuyen', [DashboardController::class, 'QuanLyChuyen']);
+// them admin
+Route::get('/admin/quanlyadmin', [AdminAuthenticate::class, 'ViewThemAdmin']);
+Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin']);
+// quan ly User
+Route::get('/admin/quanlykhachhang', [UMController::class, 'index']);
