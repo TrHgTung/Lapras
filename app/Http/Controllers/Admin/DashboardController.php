@@ -42,8 +42,14 @@ class DashboardController extends Controller
     }
     public function QuanLyChuyen(){
         $this->KiemTraXacThucAdmin();
+        
+        // dd($getTuyenXe);
+        return view('Admin.Components.QuanLyChuyen');
+    }
+    public function QuanLyTuyen(){
+        $this->KiemTraXacThucAdmin();
         $getTuyenXe = TuyenXe::all();
         // dd($getTuyenXe);
-        return view('Admin.Components.QuanLyChuyen')->with('getTuyenXe',$getTuyenXe);
+        return view('Admin.Components.QuanLyTuyen')->with('getTuyenXe',$getTuyenXe);
     }
 }
