@@ -83,4 +83,72 @@ class DashboardController extends Controller
         // dd($getTuyenXe);
         return view('Admin.Components.QuanLyTuyen')->with('getTuyenXe',$getTuyenXe);
     }
+
+    public function ThemTuyen(Request $req){
+        $this->KiemTraXacThucAdmin();
+        $data = array();
+
+        $data['MaTuyenXe'] = $req->MaTuyenXe;
+        $data['DiemDau'] = $req->DiemDau;
+        $data['DiemDen'] = $req->DiemDen;
+        $data['NgayKhoiHanh'] = $req->NgayKhoiHanh;
+        $data['ThangKhoiHanh'] = $req->ThangKhoiHanh;
+        $data['GioKhoiHanh'] = ($req->GioKhoiHanh);
+        $data['GioToiNoi'] = ($req->GioToiNoi);
+        $data['GiaVe'] = ($req->GiaVe);
+        $data['status'] = ($req->status);
+
+        $msg = "Đã thêm thành công";
+        Session::put('success_route_added', $msg);
+        $user = DB::table('tuyenxe')->insertGetId($data);
+
+        return Redirect::to('/admin/quanlytuyen');
+    }
+
+    // quan ly phuong tien
+    public function QuanLyPhuongTien(){
+        $this->KiemTraXacThucAdmin();
+        $getPhuongTien = PhuongTien::all();
+        // dd($getTuyenXe);
+        return view('Admin.Components.QuanLyPhuongTien')->with('getPhuongTien',$getPhuongTien);
+    }
+
+    public function ThemPhuongTien(Request $req){
+        $this->KiemTraXacThucAdmin();
+        $data = array();
+
+        $data['MaSoXe'] = $req->MaSoXe;
+        
+        $data['HangXe'] = $req->HangXe;
+        $data['SoGhe'] = ($req->SoGhe);
+        $data['HanDangKiem'] = ($req->HanDangKiem);
+       
+        $msg = "Đã thêm thành công";
+        Session::put('success_vehicle_added', $msg);
+        $user = DB::table('phuongtien')->insertGetId($data);
+
+        return Redirect::to('/admin/quanlyphuongtien');
+    }
+
+    // quan ly tai xe
+    public function QuanLyTaiXe(){
+        $this->KiemTraXacThucAdmin();
+        $getTaiXe = TaiXe::all();
+        // dd($getTuyenXe);
+        return view('Admin.Components.QuanLyTaiXe')->with('getTaiXe',$getTaiXe);
+    }
+
+    public function ThemTaiXe(Request $req){
+        $this->KiemTraXacThucAdmin();
+        $data = array();
+
+        $data['MaTaiXe'] = $req->MaTaiXe;
+        $data['HoTenTaiXe'] = $req->HoTenTaiXe;
+
+        $msg = "Đã thêm thành công";
+        Session::put('success_driver_added', $msg);
+        $user = DB::table('taixe')->insertGetId($data);
+
+        return Redirect::to('/admin/quanlytaixe');
+    }
 }
