@@ -71,6 +71,7 @@ Route::get('/dangxuatAdmin', [AdminAuthenticate::class, 'DangXuat']);
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 // quan ly chuyen
 Route::get('/admin/quanlychuyen', [DashboardController::class, 'QuanLyChuyen']);
+Route::post('/admin/luuchuyen', [DashboardController::class, 'LuuChuyen']);
 // them admin
 Route::get('/admin/quanlyadmin', [AdminAuthenticate::class, 'ViewThemAdmin']);
 Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin']);

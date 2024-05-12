@@ -21,6 +21,7 @@ return new class extends Migration
         });
         Schema::create('TuyenXe', function(Blueprint $table){
             $table->id();
+            $table->string('MaTuyenXe');
             $table->string('DiemDau');
             $table->string('DiemDen');
             $table->string('NgayKhoiHanh');
@@ -56,9 +57,10 @@ return new class extends Migration
             $table->string('NgayKhoiHanh');
             $table->string('ThangKhoiHanh');
             $table->string('GioKhoiHanh');
+            $table->string('GioToiNoi');
             $table->string('MaSoXe');
             $table->string('MaTaiXe');
-           
+            $table->string('status');
         });
         Schema::create('DuLieuSoKhachDat', function(Blueprint $table){
             $table->id();

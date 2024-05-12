@@ -10,6 +10,7 @@ class TuyenXe extends Model
     use HasFactory;
 
     protected $fillable = [
+        'MaTuyenXe',
         'DiemDau',
         'DiemDen',
         'NgayKhoiHanh',

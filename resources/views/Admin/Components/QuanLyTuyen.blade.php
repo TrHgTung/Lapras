@@ -11,7 +11,7 @@
               <th scope="col">Ngày tháng k.hành</th>
               <th scope="col">Giờ khởi hành*</th>
               <th scope="col">Giờ tới nơi (dự kiến)</th>
-              <th scope="col">Số khách đã đặt</th>
+              
               <th scope="col">Giá vé niêm yết (VND)</th>
             </tr>
           </thead>
@@ -24,7 +24,7 @@
               <td>{{ $gettx->NgayKhoiHanh }}-{{ $gettx->ThangKhoiHanh }}-2024</td>
               <td>{{ $gettx->GioKhoiHanh }}</td>
               <td>{{ $gettx->GioToiNoi }}</td>
-              <td>{{ $gettx->SoKhachDat }}</td>
+              
               <td>{{ $gettx->GiaVe }}</td>
             </tr>
             @endforeach

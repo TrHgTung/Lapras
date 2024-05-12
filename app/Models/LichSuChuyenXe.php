@@ -11,12 +11,13 @@ class LichSuChuyenXe extends Model
     // day la table luu lai thong tin cac chuyen da chay
     protected $fillable = [
         'MaTuyenXe', // id cua table TuyenXe
-        'NgayKhoiHanh', // NgayKhoiHanh cua table TuyenXe
-        'ThangKhoiHanh',// ThangKhoiHanh cua table TuyenXe
-        'GioKhoiHanh',// GioKhoiHanh cua table TuyenXe
-        'MaSoXe', // id cua table PhuongTien
-        'MaTaiXe',// id cua table TaiXe
-        
+        'NgayKhoiHanh', // NgayKhoiHanh thuc te
+        'ThangKhoiHanh',// ThangKhoiHanh thuc te
+        'GioKhoiHanh',// GioKhoiHanh thuc te
+        'GioToiNoi',// GioToiNoi thuc te
+        'MaSoXe', // Xe thuc te
+        'MaTaiXe',// Tai xe thuc te
+        'status',// Trang thai chuyen xe
     ];
     protected $table = 'LichSuChuyenXe';
 }
