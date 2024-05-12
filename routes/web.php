@@ -76,3 +76,5 @@ Route::get('/admin/quanlyadmin', [AdminAuthenticate::class, 'ViewThemAdmin']);
 Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin']);
 // quan ly User
 Route::get('/admin/quanlykhachhang', [UMController::class, 'index']);
+//quan ly tuyen
+Route::get('/admin/quanlytuyen', [DashboardController::class, 'QuanLyTuyen']);

@@ -16,7 +16,7 @@ class TuyenXe extends Model
         'ThangKhoiHanh',
         'GioKhoiHanh',
         'GioToiNoi',
-        'SoKhachDat',
+        //'SoKhachDat',
         'GiaVe'
     ];
     protected $table = 'tuyenxe';
