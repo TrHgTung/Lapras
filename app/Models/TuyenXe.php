@@ -17,8 +17,9 @@ class TuyenXe extends Model
         'ThangKhoiHanh',
         'GioKhoiHanh',
         'GioToiNoi',
-        //'SoKhachDat',
-        'GiaVe'
+        'GiaVe',
+        'status',
     ];
     protected $table = 'tuyenxe';
+    public $timestamps = false;
 }

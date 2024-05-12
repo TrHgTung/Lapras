@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('GioToiNoi');
             // $table->string('SoKhachDat');
             $table->string('GiaVe');
+            $table->string('status');
         });
         Schema::create('Feedback', function(Blueprint $table){
             $table->id();

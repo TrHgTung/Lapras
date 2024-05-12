@@ -45,12 +45,12 @@ class DashboardController extends Controller
     }
     public function QuanLyChuyen(){
         $this->KiemTraXacThucAdmin();
-        $getChuyenXe = LichSuChuyenXe::all();
+        // $getChuyenXe = LichSuChuyenXe::all();
         $getTaiXe = TaiXe::all();
         $getPhuongTien = PhuongTien::all();
         $getTuyenXe = TuyenXe::all(); // Lấy dữ liệu Tuyến để hiển thị view, xong form post để truyền lưu dữ liệu vào Lịch sử chuyến
         // dd($getTuyenXe);
-        return view('Admin.Components.QuanLyChuyen')->with('getTuyenXe',$getTuyenXe)->with('getPhuongTien', $getPhuongTien)->with('getTaiXe', $getTaiXe)->with('getChuyenXe', $getChuyenXe);
+        return view('Admin.Components.QuanLyChuyen')->with('getTuyenXe',$getTuyenXe)->with('getPhuongTien', $getPhuongTien)->with('getTaiXe', $getTaiXe);
     }
     //POST
     public function LuuChuyen(Request $req){
@@ -65,6 +65,11 @@ class DashboardController extends Controller
         $data['MaSoXe'] = ($req->MaSoXe);
         $data['MaTaiXe'] = ($req->MaTaiXe);
         $data['status'] = ($req->status);
+
+        $getMaTX = $req->MaTuyenXe;
+        $add_to_tuyenxe = ($req->status);
+        TuyenXe::where('MaTuyenXe', $getMaTX)->update(array('status' => $add_to_tuyenxe));
+        
        
         $user = DB::table('lichsuchuyenxe')->insertGetId($data);
 

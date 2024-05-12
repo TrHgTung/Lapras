@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('ThangKhoiHanh');
             $table->string('GioKhoiHanh');
             $table->string('GioToiNoi');
-            // $table->string('SoKhachDat');
             $table->string('GiaVe');
+            $table->string('status');
         });
         Schema::create('Feedback', function(Blueprint $table){
             $table->id();

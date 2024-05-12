@@ -18,7 +18,7 @@
           <tbody>
             @foreach($getTuyenXe as $gettx)
             <tr>
-              <td class="fw-bold">{{ $gettx->id }}</td>
+              <td class="fw-bold">{{ $gettx->MaTuyenXe }}</td>
               <td>{{ $gettx->DiemDau }}</td>
               <td>{{ $gettx->DiemDen }}</td>
               <td>{{ $gettx->NgayKhoiHanh }}-{{ $gettx->ThangKhoiHanh }}-2024</td>
