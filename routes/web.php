@@ -77,6 +77,7 @@ Route::get('/admin/quanlyadmin', [AdminAuthenticate::class, 'ViewThemAdmin']);
 Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin']);
 // quan ly User
 Route::get('/admin/quanlykhachhang', [UMController::class, 'index']);
+Route::post('/admin/khoiphuckhachhang', [UMController::class, 'HieuLucUser']);
 //quan ly tuyen
 Route::get('/admin/quanlytuyen', [DashboardController::class, 'QuanLyTuyen']);
 Route::get('/admin/xemtoanbotuyen', [DashboardController::class, 'XemToanTuyen']);
@@ -86,6 +87,10 @@ Route::post('/admin/xoatuyen', [DashboardController::class, 'XoaTuyen']);
 //quan ly Phuong tien
 Route::get('/admin/quanlyphuongtien', [DashboardController::class, 'QuanLyPhuongTien']);
 Route::post('/admin/themphuongtien', [DashboardController::class, 'ThemPhuongTien']);
+Route::post('/admin/xoaphuongtien', [DashboardController::class, 'XoaPhuongTien']);
+Route::post('/admin/hieulucphuongtien', [DashboardController::class, 'HieuLucPhuongTien']);
 //quan ly Tai xe
 Route::get('/admin/quanlytaixe', [DashboardController::class, 'QuanLyTaiXe']);
 Route::post('/admin/themtaixe', [DashboardController::class, 'ThemTaiXe']);
+Route::post('/admin/xoataixe', [DashboardController::class, 'XoaTaiXe']);
+Route::post('/admin/hieuluctaixe', [DashboardController::class, 'HieuLucTaiXe']);

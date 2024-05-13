@@ -13,7 +13,9 @@ class PhuongTien extends Model
         'HangXe', // hãng hiệu của xe
         'SoGhe', // số ghế ngồi
         'HanDangKiem', // thời hạn đăng kiểm xe
+        'status', // trang thai
         
     ];
     protected $table = 'PhuongTien';
+    public $timestamps = false;
 }

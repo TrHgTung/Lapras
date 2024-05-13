@@ -23,4 +23,11 @@ class UserManagementController extends Controller
 
         return view('Admin.Components.QuanLyKhachHang')->with('getUser', $getUser);
     }
+
+    public function HieuLucUser(Request $req){
+        $getUID = $req->userId;
+        $getUser = User::where('id', $getUID)->update(array('is_active' => '1'));
+
+        return Redirect::to('/admin/quanlykhachhang');
+    }
 }

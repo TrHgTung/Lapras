@@ -1,6 +1,6 @@
 @extends('Admin.layout')
 @section('content')
-      <h5>Quản lý Tuyến xe</h5>
+      <h5>Quản lý Tài xế</h5>
       <div class="table-responsive small">
         <table class="table table-striped table-sm">
           <thead>
@@ -8,6 +8,7 @@
               <th scope="col">Mã Tài xế</th>
               <th scope="col">Họ tên Tài xế</th>
               <th scope="col">Hành động</th>
+              <th scope="col">Trạng thái</th>
               <th scope="col">Hành động</th>
             </tr>
           </thead>
@@ -17,8 +18,27 @@
               <td class="fw-bold">{{ $gettx->MaTaiXe }}</td>
               <td>{{ $gettx->HoTenTaiXe }}</td>
               <td><a href="#"><button class="btn btn-secondary btn-sm">Sửa thông tin</button></a></td>
-              <td><a href="#"><button class="btn btn-danger btn-sm">Xóa Tài xế</button></a></td>
-              
+              @if($gettx->status == '1')
+                <td>Khả dụng</td>
+                <td>
+                
+                <form action="{{URL::to('/admin/xoataixe')}}" method="post">
+                  {{ csrf_field() }}
+                  <input type="hidden" name="MaTaiXe" value="{{ $gettx->MaTaiXe }}">
+                  <input type="submit" value="Vô hiệu hồ sơ" class="btn btn-danger btn-sm">
+                </form>
+              </td>
+              @else
+                <td>Vô hiệu</td>
+                <td>
+                
+                <form action="{{URL::to('/admin/hieuluctaixe')}}" method="post">
+                  {{ csrf_field() }}
+                  <input type="hidden" name="MaTaiXe" value="{{ $gettx->MaTaiXe }}">
+                  <input type="submit" value="Hiệu lực lại" class="btn btn-success btn-sm">
+                </form>
+              </td>
+              @endif
             </tr>
             @endforeach
           </tbody>

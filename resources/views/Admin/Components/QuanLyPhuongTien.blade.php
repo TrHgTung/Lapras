@@ -1,6 +1,6 @@
 @extends('Admin.layout')
 @section('content')
-      <h5>Quản lý Tuyến xe</h5>
+      <h5>Quản lý Phương tiện</h5>
       <div class="table-responsive small">
         <table class="table table-striped table-sm">
           <thead>
@@ -9,6 +9,7 @@
               <th scope="col">Hãng xe</th>
               <th scope="col">Số lượng ghế ngồi</th>
               <th scope="col">Hạn đăng kiểm</th>
+              <th scope="col">Trạng thái</th>
               <th scope="col">Hành động</th>
               <th scope="col">Hành động</th>
             </tr>
@@ -20,8 +21,30 @@
               <td>{{ $gettx->HangXe }}</td>
               <td>{{ $gettx->SoGhe }}</td>
               <td>{{ $gettx->HanDangKiem }}</td>
+              @if($gettx->status == '1')
+                <td>Khả dụng</td>
+                <td>
+                
+                <form action="{{URL::to('/admin/xoaphuongtien')}}" method="post">
+                  {{ csrf_field() }}
+                  <input type="hidden" name="MaSoXe" value="{{ $gettx->MaSoXe }}">
+                  <input type="submit" value="Vô hiệu p.tiện" class="btn btn-danger btn-sm">
+                </form>
+              </td>
+              @else
+                <td>Vô hiệu</td>
+                <td>
+                
+                <form action="{{URL::to('/admin/hieulucphuongtien')}}" method="post">
+                  {{ csrf_field() }}
+                  <input type="hidden" name="MaSoXe" value="{{ $gettx->MaSoXe }}">
+                  <input type="submit" value="Hiệu lực p.tiện" class="btn btn-success btn-sm">
+                </form>
+              </td>
+              @endif
               <td><a href="#"><button class="btn btn-secondary btn-sm">Sửa thông tin</button></a></td>
-              <td><a href="#"><button class="btn btn-danger btn-sm">Xóa phương tiện</button></a></td>
+              
+              
               
             </tr>
             @endforeach

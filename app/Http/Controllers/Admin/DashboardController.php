@@ -47,8 +47,10 @@ class DashboardController extends Controller
     public function QuanLyChuyen(){
         $this->KiemTraXacThucAdmin();
         // $getChuyenXe = LichSuChuyenXe::all();
-        $getTaiXe = TaiXe::all();
-        $getPhuongTien = PhuongTien::all();
+        // $getTaiXe = TaiXe::all();
+        $getTaiXe = TaiXe::where('status', '1')->get();
+        // $getPhuongTien = PhuongTien::all();
+        $getPhuongTien = PhuongTien::where('status', '1')->get();
         $getTuyenXe = TuyenXe::all(); // Lấy dữ liệu Tuyến để hiển thị view, xong form post để truyền lưu dữ liệu vào Lịch sử chuyến
         // dd($getTuyenXe);
         return view('Admin.Components.QuanLyChuyen')->with('getTuyenXe',$getTuyenXe)->with('getPhuongTien', $getPhuongTien)->with('getTaiXe', $getTaiXe);
@@ -146,6 +148,24 @@ class DashboardController extends Controller
         return Redirect::to('/admin/quanlyphuongtien');
     }
 
+    public function XoaPhuongTien(Request $req){
+        $getMaSoXe = $req->MaSoXe;
+        // $inactive_vehicle_day = ((int)Carbon::now()->day) - 1;
+        // $inactive_vehicle_month = Carbon::now()->month;
+        // $inactive_vehicle_year = Carbon::now()->year;
+        // $inactive_vehicle_time_updt = $inactive_vehicle_day.'/'.$inactive_vehicle_month.'/'.$inactive_vehicle_year;
+        $getPhuongTien = PhuongTien::where('MaSoXe', $getMaSoXe)->update(array('status' => '0'));
+
+        //$getTuyenXe->delete(); // không nên dùng phương thức delete, vì sẽ không khôi phục được du lieu
+        return Redirect::to('/admin/quanlyphuongtien');
+    }
+    public function HieuLucPhuongTien(Request $req){
+        $getMaSoXe = $req->MaSoXe;
+        $getPhuongTien = PhuongTien::where('MaSoXe', $getMaSoXe)->update(array('status' => '1'));
+
+        return Redirect::to('/admin/quanlyphuongtien');
+    }
+
     // quan ly tai xe
     public function QuanLyTaiXe(){
         $this->KiemTraXacThucAdmin();
@@ -164,6 +184,24 @@ class DashboardController extends Controller
         $msg = "Đã thêm thành công";
         Session::put('success_driver_added', $msg);
         $user = DB::table('taixe')->insertGetId($data);
+
+        return Redirect::to('/admin/quanlytaixe');
+    }
+
+    public function XoaTaiXe(Request $req){
+        $getMaTaiXe = $req->MaTaiXe;
+        // $inactive_vehicle_day = ((int)Carbon::now()->day) - 1;
+        // $inactive_vehicle_month = Carbon::now()->month;
+        // $inactive_vehicle_year = Carbon::now()->year;
+        // $inactive_vehicle_time_updt = $inactive_vehicle_day.'/'.$inactive_vehicle_month.'/'.$inactive_vehicle_year;
+        $getTaiXe = TaiXe::where('MaTaiXe', $getMaTaiXe)->update(array('status' => '0'));
+
+        //$getTuyenXe->delete(); // không nên dùng phương thức delete, vì sẽ không khôi phục được du lieu
+        return Redirect::to('/admin/quanlytaixe');
+    }
+    public function HieuLucTaiXe(Request $req){
+        $getMaTaiXe = $req->MaTaiXe;
+        $getTaiXe = TaiXe::where('MaTaiXe', $getMaTaiXe)->update(array('status' => '1'));
 
         return Redirect::to('/admin/quanlytaixe');
     }

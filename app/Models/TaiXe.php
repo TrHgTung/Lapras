@@ -11,6 +11,8 @@ class TaiXe extends Model
     protected $fillable = [
         'MaTaiXe',
         'HoTenTaiXe',  
+        'status',
     ];
     protected $table = 'taixe';
+    public $timestamps = false;
 }

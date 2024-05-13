@@ -89,6 +89,9 @@
           <small class="d-block text-end mt-3">
             <a href="{{URL::to('/suataikhoan')}}">Sửa thông tin của bạn</a>
           </small>
+          <small class="d-block text-end mt-3">
+            <a href="{{URL::to('/vohieuhoataikhoan')}}" class="text-danger">Vô hiệu t.khoản của bạn</a>
+          </small>
         </div>
       </div>
     </div>

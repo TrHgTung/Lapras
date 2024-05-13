@@ -23,10 +23,18 @@
               <td>*************</td>
             @if($dta->is_active == 1)
                 <td>Còn hoạt động</td>
+                <td>Admin không được phép</td>
             @else
                 <td>Đã bị khóa</td>
+                <td>
+                  <form action="{{URL::to('/admin/khoiphuckhachhang')}}" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="userId" value="{{ $dta->id }}">
+                    <input type="submit" value="Khôi phục" class="btn btn-sm btn-success">
+                  </form>
+                </td>
             @endif
-              <td><input type="button" class="btn btn-sm btn-secondary" value="Khôi phục"></td>
+              
             </tr>
             @endforeach
            <!-- endforeach -->
