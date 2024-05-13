@@ -27,6 +27,9 @@
 
 
     <style>
+      .link-no-under{
+        text-decoration: none;
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;

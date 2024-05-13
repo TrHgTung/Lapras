@@ -79,7 +79,10 @@ Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin']);
 Route::get('/admin/quanlykhachhang', [UMController::class, 'index']);
 //quan ly tuyen
 Route::get('/admin/quanlytuyen', [DashboardController::class, 'QuanLyTuyen']);
+Route::get('/admin/xemtoanbotuyen', [DashboardController::class, 'XemToanTuyen']);
 Route::post('/admin/themtuyen', [DashboardController::class, 'ThemTuyen']);
+Route::post('/admin/xoatuyen', [DashboardController::class, 'XoaTuyen']);
+
 //quan ly Phuong tien
 Route::get('/admin/quanlyphuongtien', [DashboardController::class, 'QuanLyPhuongTien']);
 Route::post('/admin/themphuongtien', [DashboardController::class, 'ThemPhuongTien']);

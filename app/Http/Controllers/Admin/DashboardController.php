@@ -11,6 +11,7 @@ use App\Models\LichSuChuyenXe;
 use DB;
 use Session;
 use Redirect;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -80,8 +81,17 @@ class DashboardController extends Controller
     public function QuanLyTuyen(){
         $this->KiemTraXacThucAdmin();
         $getTuyenXe = TuyenXe::all();
+        $getCurrentMonthServer = Carbon::now()->month;
+        $getCurrentYearServer = Carbon::now()->year;
         // dd($getTuyenXe);
-        return view('Admin.Components.QuanLyTuyen')->with('getTuyenXe',$getTuyenXe);
+        return view('Admin.Components.QuanLyTuyen')->with('getTuyenXe',$getTuyenXe)->with('getCurrentMonthServer',$getCurrentMonthServer)->with('getCurrentYearServer',$getCurrentYearServer);
+    }
+
+    public function XemToanTuyen(){
+        $this->KiemTraXacThucAdmin();
+        $getTuyenXe = TuyenXe::all();
+
+        return view('Admin.Components.XemToanTuyen')->with('getTuyenXe',$getTuyenXe);
     }
 
     public function ThemTuyen(Request $req){
@@ -103,6 +113,12 @@ class DashboardController extends Controller
         $user = DB::table('tuyenxe')->insertGetId($data);
 
         return Redirect::to('/admin/quanlytuyen');
+    }
+    public function XoaTuyen(Request $req){
+        $getMaTuyenXe = $req->MaTuyenXe;
+        $getTuyenXe = TuyenXe::where('MaTuyenXe', $getMaTuyenXe)->update(array('status' => 'cancel'));
+        //$getTuyenXe->delete(); // không nên dùng phương thức delete, vì sẽ không khôi phục được du lieu
+        return Redirect::to('/admin/xemtoanbotuyen');
     }
 
     // quan ly phuong tien
