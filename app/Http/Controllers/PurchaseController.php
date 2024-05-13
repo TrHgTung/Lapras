@@ -56,11 +56,20 @@ class PurchaseController extends Controller
       
         $findData = DuLieuSoKhachDat::where('email', $getEmail)->where('MaTuyenXe', $getMaTuyenXe)->first();
         $findData->delete();
-        
+
         return Redirect::to('/giohang');
     }
 
     public function DiDenThanhToan(Request $req){ // chọn 1 item để đi tới Thanh toán
-        //
+        $this->KiemTraXacThuc();
+
+        $data = array();
+        $data['email'] = Session::get('email');
+        $data['MaTuyenXe'] = $req->MaTuyenXe;
+        $data['GiaVe'] = $req->GiaVe;
+      
+        $dta_test = implode($data); // convert array to string
+        // return dd($data);
+        return view('ThanhToan')->with('dataThanhToan', $dta_test); // pass data to view Thanh toan
     }
 }

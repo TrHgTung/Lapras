@@ -199,7 +199,7 @@
                     <tr>                   
                         <td><p>{{ $dtagh->MaTuyenXe }}</p></td>
                         <td><p>{{ $dtagh->GiaVe }}</p></td>
-                        <td><form action="" method="post">
+                        <td><form action="{{URL::to('/hshe8r9jjff0098443/forcethanhtoan')}}" method="post">
                             {{ csrf_field() }}
                             <input type="hidden" name="MaTuyenXe" value="{{ $dtagh->MaTuyenXe }}">
                             <input type="hidden" name="GiaVe" value="{{ $dtagh->GiaVe }}">
