@@ -165,7 +165,7 @@
 
     
 <div class="mt-3">
-    <a href="{{URL::to('/chonthang')}}" class="link-no-under">< Quay lại</a>
+    <a href="{{URL::to('/lichdatxe')}}" class="link-no-under">< Quay lại</a>
 </div>
 
 <main class="container">

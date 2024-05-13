@@ -1,1 +1,1 @@
-{{ $dataThanhToan }}
+Đây chỉ là một cái string (để quay lại array, xóa hàm implode trong controller) {{ $dataThanhToan }}
