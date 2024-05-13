@@ -11,6 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('is_active');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+        
         Schema::create('Admin', function(Blueprint $table){
             $table->id();
             $table->string('name');
@@ -28,6 +39,7 @@ return new class extends Migration
             $table->string('ThangKhoiHanh');
             $table->string('GioKhoiHanh');
             $table->string('GioToiNoi');
+            // $table->string('SoKhachDat');
             $table->string('GiaVe');
             $table->string('status');
         });
@@ -43,12 +55,14 @@ return new class extends Migration
             $table->string('HangXe');
             $table->Integer('SoGhe');
             $table->string('HanDangKiem');
+            $table->string('status');      
              
         });
         Schema::create('TaiXe', function(Blueprint $table){
             $table->id();
             $table->string('MaTaiXe');
             $table->string('HoTenTaiXe');
+            $table->string('status');      
           
         });
         Schema::create('LichSuChuyenXe', function(Blueprint $table){
@@ -60,7 +74,9 @@ return new class extends Migration
             $table->string('GioToiNoi');
             $table->string('MaSoXe');
             $table->string('MaTaiXe');
-            $table->string('status');
+            $table->string('status');      
+            $table->string('NguoiCapNhat');
+            $table->string('ThoiDiemCapNhat');      
         });
         Schema::create('DuLieuSoKhachDat', function(Blueprint $table){
             $table->id();

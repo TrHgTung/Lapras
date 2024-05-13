@@ -44,12 +44,14 @@ return new class extends Migration
             $table->string('HangXe');
             $table->Integer('SoGhe');
             $table->string('HanDangKiem');
+            $table->string('status');      
              
         });
         Schema::create('TaiXe', function(Blueprint $table){
             $table->id();
             $table->string('MaTaiXe');
             $table->string('HoTenTaiXe');
+            $table->string('status');      
           
         });
         Schema::create('LichSuChuyenXe', function(Blueprint $table){
@@ -61,7 +63,9 @@ return new class extends Migration
             $table->string('GioToiNoi');
             $table->string('MaSoXe');
             $table->string('MaTaiXe');
-            $table->string('status');           
+            $table->string('status');      
+            $table->string('NguoiCapNhat');
+            $table->string('ThoiDiemCapNhat');      
         });
         Schema::create('DuLieuSoKhachDat', function(Blueprint $table){
             $table->id();

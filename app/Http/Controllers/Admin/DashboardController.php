@@ -51,14 +51,16 @@ class DashboardController extends Controller
         $getTaiXe = TaiXe::where('status', '1')->get();
         // $getPhuongTien = PhuongTien::all();
         $getPhuongTien = PhuongTien::where('status', '1')->get();
+        $lichSuChuyenXe = LichSuChuyenXe::all();
         $getTuyenXe = TuyenXe::all(); // Lấy dữ liệu Tuyến để hiển thị view, xong form post để truyền lưu dữ liệu vào Lịch sử chuyến
         // dd($getTuyenXe);
-        return view('Admin.Components.QuanLyChuyen')->with('getTuyenXe',$getTuyenXe)->with('getPhuongTien', $getPhuongTien)->with('getTaiXe', $getTaiXe);
+        return view('Admin.Components.QuanLyChuyen')->with('getTuyenXe',$getTuyenXe)->with('getPhuongTien', $getPhuongTien)->with('getTaiXe', $getTaiXe)->with('lichSuChuyenXe', $lichSuChuyenXe);
     }
     //POST
     public function LuuChuyen(Request $req){
         $this->KiemTraXacThucAdmin();
         $data = array();
+        $getCurrentTimeServer = Carbon::now();
 
         $data['MaTuyenXe'] = $req->MaTuyenXe;
         $data['NgayKhoiHanh'] = $req->NgayKhoiHanh;
@@ -68,6 +70,8 @@ class DashboardController extends Controller
         $data['MaSoXe'] = ($req->MaSoXe);
         $data['MaTaiXe'] = ($req->MaTaiXe);
         $data['status'] = ($req->status);
+        $data['NguoiCapNhat'] = ($req->NguoiCapNhat);
+        $data['ThoiDiemCapNhat'] = $getCurrentTimeServer;
 
         $getMaTX = $req->MaTuyenXe;
         $add_to_tuyenxe = ($req->status);

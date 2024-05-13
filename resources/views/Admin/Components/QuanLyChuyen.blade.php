@@ -53,6 +53,8 @@
                     <option value="delay">Bị hoãn</option>
                     <option value="cancel">Bị hủy bỏ</option>
                   </select></td>
+                  <input type="hidden" name="NguoiCapNhat" value="<?php echo Session::get('admin_email'); ?>">
+                  
                   <td><input type="submit" value="Cập nhật" class="btn btn-sm btn-danger"></td>
                   
                 </tr>
@@ -66,5 +68,44 @@
       <div class="mt-4">
         <p><b>Hướng dẫn cho admin: </b>Trên giao diện <i>Quản lý các Chuyến xe hiện hành</i>, mỗi dòng là dữ liệu thông tin của MỘT chuyến xe. Bạn phải kiểm tra kĩ các thông tin, cập nhật đúng các thông tin như: <i>Mã biển số xe</i>; <i>Tài xế - ID T.Xế</i> và <i>B.cáo t.trạng sau cùng</i> sau khi nắm được thông tin với tài xế phụ trách chuyến.<br>
         Một khi <i>B.cáo t.trạng sau cùng</i> của một chuyến xe được xác nhận là <b>Hoàn thành</b> hoặc <b>Hủy bỏ</b>, thì bạn sẽ không thể cập nhật tương tác với dữ liệu chuyến này được nữa. Hãy cẩn thận!</p>
+      </div>
+      <div>
+        <h4>Bảng ghi các thao tác cập nhật</h4>
+        
+        <div class="table-responsive small">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Mã số chuyến</th>
+              
+              <th scope="col">Ngày tháng k.hành</th>
+              <th scope="col">Giờ khởi hành (thực tế)</th>
+              <th scope="col">Giờ tới nơi (thực tế)</th>
+              
+              <th scope="col">Mã biển số xe</th>
+              <th scope="col">Tài xế - ID T.Xế</th>
+              <th scope="col">T.trạng sau cùng</th>
+              <th scope="col">Thời điểm cập nhật</th>
+              <th scope="col">Người c.nhật</th>
+
+            </tr>
+          </thead>
+          <tbody>
+          @foreach($lichSuChuyenXe as $lscx)
+            <tr>
+              <td>{{ $lscx->MaTuyenXe }}</td>
+              <td>{{ $lscx->NgayKhoiHanh }}-{{ $lscx->ThangKhoiHanh }}-2024</td>
+              <td>{{ $lscx->GioKhoiHanh }}</td>
+              <td>{{ $lscx->GioToiNoi }}</td>
+              <td>{{ $lscx->MaSoXe }}</td>
+              <td>{{ $lscx->MaTaiXe }}</td>
+              <td>{{ $lscx->status }}</td>
+              <td>{{ $lscx->ThoiDiemCapNhat }}</td>
+              <td>{{ $lscx->NguoiCapNhat }}</td>
+            </tr>
+          @endforeach
+          </tbody>
+        </table>
+      </div>
       </div>
 @endsection

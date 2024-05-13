@@ -18,6 +18,8 @@ class LichSuChuyenXe extends Model
         'MaSoXe', // Xe thuc te
         'MaTaiXe',// Tai xe thuc te
         'status',// Trang thai chuyen xe
+        'NguoiCapNhat',// Trang thai chuyen xe
+        'ThoiDiemCapNhat',// Trang thai chuyen xe
     ];
     protected $table = 'LichSuChuyenXe';
 }
