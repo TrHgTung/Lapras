@@ -80,7 +80,7 @@ Route::get('/admin/quanlykhachhang', [UMController::class, 'index']);
 Route::post('/admin/khoiphuckhachhang', [UMController::class, 'HieuLucUser']);
 //quan ly tuyen
 Route::get('/admin/quanlytuyen', [DashboardController::class, 'QuanLyTuyen']);
-Route::get('/admin/xemtoanbotuyen', [DashboardController::class, 'XemToanTuyen']);
+Route::get('/admin/xemtoanbotuyen', [DashboardController::class, 'XemToanTuyen']); //Xem toàn bộ tuyến
 Route::post('/admin/themtuyen', [DashboardController::class, 'ThemTuyen']);
 Route::post('/admin/xoatuyen', [DashboardController::class, 'XoaTuyen']);
 
@@ -89,8 +89,12 @@ Route::get('/admin/quanlyphuongtien', [DashboardController::class, 'QuanLyPhuong
 Route::post('/admin/themphuongtien', [DashboardController::class, 'ThemPhuongTien']);
 Route::post('/admin/xoaphuongtien', [DashboardController::class, 'XoaPhuongTien']);
 Route::post('/admin/hieulucphuongtien', [DashboardController::class, 'HieuLucPhuongTien']);
+Route::get('/admin/suaphuongtien/{id}', [DashboardController::class, 'SuaPhuongTien']);
+Route::post('/admin/updatephuongtien', [DashboardController::class, 'UpdatePhuongTien']);
 //quan ly Tai xe
 Route::get('/admin/quanlytaixe', [DashboardController::class, 'QuanLyTaiXe']);
 Route::post('/admin/themtaixe', [DashboardController::class, 'ThemTaiXe']);
 Route::post('/admin/xoataixe', [DashboardController::class, 'XoaTaiXe']);
 Route::post('/admin/hieuluctaixe', [DashboardController::class, 'HieuLucTaiXe']);
+Route::get('/admin/suataixe/{id}', [DashboardController::class, 'SuaTaiXe']);
+Route::post('/admin/updatetaixe', [DashboardController::class, 'UpdateTaiXe']);

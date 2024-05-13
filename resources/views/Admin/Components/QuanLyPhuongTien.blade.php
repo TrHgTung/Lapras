@@ -42,7 +42,7 @@
                 </form>
               </td>
               @endif
-              <td><a href="#"><button class="btn btn-secondary btn-sm">Sửa thông tin</button></a></td>
+              <td><a href="{{URL::to('/admin/suaphuongtien/'.$gettx->id)}}"><button class="btn btn-secondary btn-sm">Sửa thông tin</button></a></td>
               
               
               

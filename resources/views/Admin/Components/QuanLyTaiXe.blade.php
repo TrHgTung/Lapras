@@ -7,8 +7,8 @@
             <tr>
               <th scope="col">Mã Tài xế</th>
               <th scope="col">Họ tên Tài xế</th>
-              <th scope="col">Hành động</th>
               <th scope="col">Trạng thái</th>
+              <th scope="col">Hành động</th>
               <th scope="col">Hành động</th>
             </tr>
           </thead>
@@ -17,7 +17,6 @@
             <tr>
               <td class="fw-bold">{{ $gettx->MaTaiXe }}</td>
               <td>{{ $gettx->HoTenTaiXe }}</td>
-              <td><a href="#"><button class="btn btn-secondary btn-sm">Sửa thông tin</button></a></td>
               @if($gettx->status == '1')
                 <td>Khả dụng</td>
                 <td>
@@ -39,6 +38,8 @@
                 </form>
               </td>
               @endif
+              <td><a href="{{URL::to('/admin/suataixe/'.$gettx->id)}}"><button class="btn btn-secondary btn-sm">Sửa thông tin</button></a></td>
+
             </tr>
             @endforeach
           </tbody>

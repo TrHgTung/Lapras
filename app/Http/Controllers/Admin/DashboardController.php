@@ -121,6 +121,7 @@ class DashboardController extends Controller
         return Redirect::to('/admin/quanlytuyen');
     }
     public function XoaTuyen(Request $req){
+        $this->KiemTraXacThucAdmin();
         $getMaTuyenXe = $req->MaTuyenXe;
         $getTuyenXe = TuyenXe::where('MaTuyenXe', $getMaTuyenXe)->update(array('status' => 'cancel'));
         //$getTuyenXe->delete(); // không nên dùng phương thức delete, vì sẽ không khôi phục được du lieu
@@ -153,6 +154,7 @@ class DashboardController extends Controller
     }
 
     public function XoaPhuongTien(Request $req){
+        $this->KiemTraXacThucAdmin();
         $getMaSoXe = $req->MaSoXe;
         // $inactive_vehicle_day = ((int)Carbon::now()->day) - 1;
         // $inactive_vehicle_month = Carbon::now()->month;
@@ -164,8 +166,34 @@ class DashboardController extends Controller
         return Redirect::to('/admin/quanlyphuongtien');
     }
     public function HieuLucPhuongTien(Request $req){
+        $this->KiemTraXacThucAdmin();
         $getMaSoXe = $req->MaSoXe;
         $getPhuongTien = PhuongTien::where('MaSoXe', $getMaSoXe)->update(array('status' => '1'));
+
+        return Redirect::to('/admin/quanlyphuongtien');
+    }
+
+    public function SuaPhuongTien($id){
+        $this->KiemTraXacThucAdmin();
+        $getPhuongTien = PhuongTien::find($id);
+        // return dd($getPhuongTien);
+        return view('Admin.Components.SuaPhuongTien')->with('getPhuongTien', $getPhuongTien);
+    }
+
+    public function UpdatePhuongTien(Request $req){
+        $this->KiemTraXacThucAdmin();
+        $data = array();
+        $ptid = $req->ptid;
+
+        $data['MaSoXe'] = $req->MaSoXe;
+        
+        $data['HangXe'] = $req->HangXe;
+        $data['SoGhe'] = ($req->SoGhe);
+        $data['HanDangKiem'] = ($req->HanDangKiem);
+       
+        // $msg = "Đã lưu thành công";
+        // Session::put('success_vehicle_updt', $msg);
+        $user = PhuongTien::where('id', $ptid)->update($data);
 
         return Redirect::to('/admin/quanlyphuongtien');
     }
@@ -206,6 +234,28 @@ class DashboardController extends Controller
     public function HieuLucTaiXe(Request $req){
         $getMaTaiXe = $req->MaTaiXe;
         $getTaiXe = TaiXe::where('MaTaiXe', $getMaTaiXe)->update(array('status' => '1'));
+
+        return Redirect::to('/admin/quanlytaixe');
+    }
+
+    public function SuaTaiXe($id){
+        $this->KiemTraXacThucAdmin();
+        $getTaiXe = TaiXe::find($id);
+        // return dd($getPhuongTien);
+        return view('Admin.Components.SuaTaiXe')->with('getTaiXe', $getTaiXe);
+    }
+
+    public function UpdateTaiXe(Request $req){
+        $this->KiemTraXacThucAdmin();
+        $data = array();
+        $id = $req->id;
+
+        $data['MaTaiXe'] = $req->MaTaiXe;
+        $data['HoTenTaiXe'] = $req->HoTenTaiXe;
+       
+        // $msg = "Đã lưu thành công";
+        // Session::put('success_vehicle_updt', $msg);
+        $user = TaiXe::where('id', $id)->update($data);
 
         return Redirect::to('/admin/quanlytaixe');
     }
