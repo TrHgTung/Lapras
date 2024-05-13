@@ -12,4 +12,5 @@ class Feedback extends Model
         'addressFrom',
         'feedbackContent'
     ];
+    protected $table = 'feedback';
 }

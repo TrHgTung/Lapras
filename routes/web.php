@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\PurchaseController;
 // ADMIN
 use App\Http\Controllers\Admin\AuthenticateController as AdminAuthenticate;
 use App\Http\Controllers\Admin\BaseController;
@@ -54,8 +55,13 @@ Route::post('/phanhoiPost', [FeedbackController::class, 'PhanHoi']);
 // lich dat xe
 Route::get('/lichdatxe', [CalendarController::class, 'LichDatXe']);
 Route::post('/lichdatxePost', [CalendarController::class, 'GetData']); 
-Route::post('/chonthang', [CalendarController::class, 'ChonThang']); 
-// Route::get('/lichdatxeTest', [CalendarController::class, 'GetData']); 
+Route::post('/chonthang', [CalendarController::class, 'ChonThang']);
+
+// them gio hang
+Route::post('/addgiohang', [PurchaseController::class, 'PostGioHang']);
+Route::get('/giohang', [PurchaseController::class, 'index']);
+Route::post('/hshe8r9jjff0098443/forcethanhtoan', [PurchaseController::class, 'DiDenThanhToan']);
+Route::post('/hd7374748hfj899494/forcexoagiohang', [PurchaseController::class, 'XoaMotItemKhoiGioHang']);
 
 // ADMIN
 Route::get('/admin', [BaseController::class, 'main']);

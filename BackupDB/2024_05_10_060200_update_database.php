@@ -11,17 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('is_active');
-            $table->rememberToken();
-            $table->timestamps();
-        });
-        
         Schema::create('Admin', function(Blueprint $table){
             $table->id();
             $table->string('name');
@@ -80,9 +69,11 @@ return new class extends Migration
         });
         Schema::create('DuLieuSoKhachDat', function(Blueprint $table){
             $table->id();
-            $table->string('MaChuyenXe');
-            $table->Integer('SoKhachDat');
-           
+            $table->string('email');
+            $table->string('MaTuyenXe');
+            $table->Integer('GiaVe'); // tổng sum GiaVe sẽ ra tổng doanh thu
+            $table->string('Month'); // theo tháng
+            $table->string('Year'); // theo năm
         });
     }
 

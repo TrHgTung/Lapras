@@ -139,6 +139,13 @@ header nav:hover > a:not(:hover) {
         <strong>Ngày khởi hành: </strong><p>{{ $mdl['NgayKhoiHanh'] }}/{{ $mdl['ThangKhoiHanh'] }}/2024</p><br>
         @endforeach
         <p><strong>Liên hệ đặt vé: </strong> 0909 123 456</p>
+        <form action="{{URL::to('/addgiohang')}}" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="email" value="<?php echo Session::get('email'); ?>">
+            <input type="hidden" name="MaTuyenXe" value="{{ $mdl['MaTuyenXe'] }}">
+            <input type="hidden" name="GiaVe" value="{{ $mdl['GiaVe'] }}">
+            hoặc <input type="submit" class="btn btn-sm btn-secondary" value="Mua vé trực tuyến">
+        </form>
     </section>
     <footer class="container py-5">
       <div class="row">
