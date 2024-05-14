@@ -30,10 +30,17 @@ class PurchaseController extends Controller
 
         $data['email'] = $req->email;
         $data['MaTuyenXe'] = $req->MaTuyenXe;
+        $getMaTuyenXe = $req->MaTuyenXe;
         $data['GiaVe'] = $req->GiaVe;
         $data['Month'] = '0';
         $data['Year'] = '0';
 
+        $is_exist = DuLieuSoKhachDat::where('MaTuyenXe', $getMaTuyenXe)->exists(); // kiem tra trung lap
+
+        if ($is_exist) { // neu khach đặt trùng tuyến xe
+            return Redirect::to('/giohang');
+            // return redirect()->back()->withErrors(['MaTuyenXe_exist' => 'Bạn đã đặt tuyến này rồi']);
+        }
         $insertDta = DB::table('dulieusokhachdat')->insertGetId($data);
 
         return Redirect::to('/giohang');
@@ -68,8 +75,7 @@ class PurchaseController extends Controller
         $data['MaTuyenXe'] = $req->MaTuyenXe;
         $data['GiaVe'] = $req->GiaVe;
       
-        $dta_test = implode($data); // convert array to string
         // return dd($data);
-        return view('ThanhToan')->with('dataThanhToan', $dta_test); // pass data to view Thanh toan
+        return view('ThanhToan')->with('dataThanhToan', $data); // pass data to view Thanh toan
     }
 }
