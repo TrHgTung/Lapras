@@ -72,8 +72,18 @@ return new class extends Migration
             $table->string('email');
             $table->string('MaTuyenXe');
             $table->Integer('GiaVe'); // tổng sum GiaVe sẽ ra tổng doanh thu
-            $table->string('Month'); // theo tháng
-            $table->string('Year'); // theo năm
+            $table->string('TimeUpdt'); // thgian luu vao gio hang
+        });
+        Schema::create('DuLieuThanhToan', function(Blueprint $table){
+            $table->id();
+            $table->string('matuyenxe');
+            $table->string('giave');
+            $table->string('ghichu');
+            $table->string('name');
+            $table->string('email');
+            $table->string('diemdau');
+            $table->string('diemden');
+            $table->string('paymentMethod');      
         });
     }
 

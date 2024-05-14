@@ -9,6 +9,7 @@ use App\Models\TaiXe;
 use App\Models\PhuongTien;
 use App\Models\LichSuChuyenXe;
 use App\Models\DuLieuSoKhachDat;
+use App\Models\User;
 use DB;
 use Session;
 use Redirect;
@@ -32,8 +33,7 @@ class PurchaseController extends Controller
         $data['MaTuyenXe'] = $req->MaTuyenXe;
         $getMaTuyenXe = $req->MaTuyenXe;
         $data['GiaVe'] = $req->GiaVe;
-        $data['Month'] = '0';
-        $data['Year'] = '0';
+        $data['TimeUpdt'] = $getCurrentTimeServer;
 
         $is_exist = DuLieuSoKhachDat::where('MaTuyenXe', $getMaTuyenXe)->exists(); // kiem tra trung lap
 
@@ -74,8 +74,48 @@ class PurchaseController extends Controller
         $data['email'] = Session::get('email');
         $data['MaTuyenXe'] = $req->MaTuyenXe;
         $data['GiaVe'] = $req->GiaVe;
+
+        // get user data from Model
+        $getUserfromSession = Session::get('email');
+        $getMaTuyenXee =  $req->MaTuyenXe;
+        $getLocation = TuyenXe::where('MaTuyenXe', $getMaTuyenXee)->first();
+        // $getUserfromSession = 'beo@mail.com'; // for checking query
+        $getUser = User::where('email', $getUserfromSession)->first();
       
+        // return dd($getUser);
         // return dd($data);
-        return view('ThanhToan')->with('dataThanhToan', $data); // pass data to view Thanh toan
+       return view('ThanhToan')->with('dataThanhToan', $data)->with('getUser', $getUser)->with('getLocation', $getLocation); // pass data to view Thanh toan
+    }
+    public function PostThongTinThanhToan(Request $req){
+        $this->KiemTraXacThuc();
+
+        $data = array();
+        $data['matuyenxe'] = $req->matuyenxe;
+        $data['giave'] = $req->giave;
+        $getGhiChuForm = $req->ghichu;
+        if($getGhiChuForm == NULL || $getGhiChuForm == ''){
+            $finalGhiChu = 'null';
+        }else{
+            $finalGhiChu = $getGhiChuForm;
+        }
+
+        $data['ghichu'] = $finalGhiChu;
+        $data['name'] = $req->name;
+        $data['email'] = $req->email;
+        $data['diemdau'] = $req->diemdau;
+        $data['diemden'] = $req->diemden;
+        $data['paymentMethod'] = $req->paymentMethod;
+
+        $insertDta = DB::table('dulieuthanhtoan')->insertGetId($data);
+        $checkPaymentMethod = $req->paymentMethod;
+
+        if($checkPaymentMethod == '1'){
+            // MoMo
+            return Redirect::to('/lichdatxe');
+        }
+        else{
+            // Pay tien mat truc tiep
+            return view('ThankYou');
+        }
     }
 }

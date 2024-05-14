@@ -63,6 +63,8 @@ Route::get('/giohang', [PurchaseController::class, 'index']);
 Route::post('/hshe8r9jjff0098443/forcethanhtoan', [PurchaseController::class, 'DiDenThanhToan']);
 Route::post('/hd7374748hfj899494/forcexoagiohang', [PurchaseController::class, 'XoaMotItemKhoiGioHang']);
 
+// Thanh toan
+Route::post('/hshe8r9jjff0098443/forcethanhtoan/postpaymentcontent', [PurchaseController::class, 'PostThongTinThanhToan']);
 // ADMIN
 Route::get('/admin', [BaseController::class, 'main']);
 

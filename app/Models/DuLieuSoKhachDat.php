@@ -12,8 +12,7 @@ class DuLieuSoKhachDat extends Model
         'email', // email cua table users
         'MaTuyenXe', // MaTuyenXe cua table TuyenXe
         'GiaVe', // GiaVe cua table TuyenXe
-        'Month', // luu tu form
-        'Year', // luu tu form
+        'TimeUpdt', // luu tu form - thoigian luu gio hang
     ];
     protected $table = 'DuLieuSoKhachDat';
 }
