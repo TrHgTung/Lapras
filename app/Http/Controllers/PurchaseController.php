@@ -10,6 +10,7 @@ use App\Models\PhuongTien;
 use App\Models\LichSuChuyenXe;
 use App\Models\DuLieuSoKhachDat;
 use App\Models\User;
+use App\Models\DuLieuThanhToan;
 use DB;
 use Session;
 use Redirect;
@@ -110,7 +111,15 @@ class PurchaseController extends Controller
         $checkPaymentMethod = $req->paymentMethod;
 
         if($checkPaymentMethod == '1'){
-            // MoMo
+            // MoMo handle code ...
+
+            $getMaTuyenXeee = $req->matuyenxe;
+            $getEmailUser = $req->email;
+            $UpdtData = DuLieuThanhToan::where('matuyenxe', $getMaTuyenXeee)->where('email', $getEmailUser)->first();
+            // Create Model DoanhThu: -> luu $UpdtData vào Model DoanhThu -> Admin Xử lí ...
+
+            $UpdtData->delete();
+
             return Redirect::to('/lichdatxe');
         }
         else{
