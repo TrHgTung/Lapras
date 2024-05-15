@@ -83,7 +83,20 @@ return new class extends Migration
             $table->string('email');
             $table->string('diemdau');
             $table->string('diemden');
+            $table->string('paymentMethod');  
+            $table->string('timeUpdt');      
+        });
+        Schema::create('DoanhThu', function(Blueprint $table){
+            $table->id();
+            $table->string('matuyenxe');
+            $table->string('giave');
+            $table->string('ghichu');
+            $table->string('name');
+            $table->string('email');
+            $table->string('diemdau');
+            $table->string('diemden');
             $table->string('paymentMethod');      
+            $table->string('timeUpdt');      
         });
     }
 

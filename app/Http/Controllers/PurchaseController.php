@@ -11,6 +11,7 @@ use App\Models\LichSuChuyenXe;
 use App\Models\DuLieuSoKhachDat;
 use App\Models\User;
 use App\Models\DuLieuThanhToan;
+use App\Models\DoanhThu;
 use DB;
 use Session;
 use Redirect;
@@ -106,6 +107,7 @@ class PurchaseController extends Controller
         $data['diemdau'] = $req->diemdau;
         $data['diemden'] = $req->diemden;
         $data['paymentMethod'] = $req->paymentMethod;
+        $data['timeUpdt'] = Carbon::now();
 
         $insertDta = DB::table('dulieuthanhtoan')->insertGetId($data);
         $checkPaymentMethod = $req->paymentMethod;
@@ -118,9 +120,22 @@ class PurchaseController extends Controller
             $UpdtData = DuLieuThanhToan::where('matuyenxe', $getMaTuyenXeee)->where('email', $getEmailUser)->first();
             // Create Model DoanhThu: -> luu $UpdtData vào Model DoanhThu -> Admin Xử lí ...
 
+            $UpdtDoanhThu = array();
+            $UpdtDoanhThu['matuyenxe'] = $UpdtData->matuyenxe;
+            $UpdtDoanhThu['giave'] = $UpdtData->giave;
+            $UpdtDoanhThu['ghichu'] = $UpdtData->ghichu;
+            $UpdtDoanhThu['name'] = $UpdtData->name;
+            $UpdtDoanhThu['email'] = $UpdtData->email;
+            $UpdtDoanhThu['diemdau'] = $UpdtData->diemdau;
+            $UpdtDoanhThu['diemden'] = $UpdtData->diemden;
+            $UpdtDoanhThu['paymentMethod'] = $UpdtData->paymentMethod;
+            $UpdtDoanhThu['timeUpdt'] = Carbon::now();
+            DB::table('doanhthu')->insertGetId($UpdtDoanhThu);
+
             $UpdtData->delete();
 
             return Redirect::to('/lichdatxe');
+            //return dd($UpdtData);
         }
         else{
             // Pay tien mat truc tiep

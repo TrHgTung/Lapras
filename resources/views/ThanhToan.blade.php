@@ -261,7 +261,7 @@
             </div>
             <div class="form-check">
               <input id="debit" name="paymentMethod" type="radio" class="form-check-input" value="0" required>
-              <label class="form-check-label" for="debit">Trả khi ngồi trên xe</label>
+              <label class="form-check-label" for="debit">T.toán trực tiếp (trả khi ngồi trên xe)</label>
             </div>
            
             </div>
