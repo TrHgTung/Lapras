@@ -191,7 +191,12 @@ class PurchaseController extends Controller
             
             // PLAN:  delete by id DuLieuSoKhachDat
             $findData = DuLieuSoKhachDat::where('timeUpdt', $getTimeUpdt)->first();
-            $findData->delete();
+            // $findData->delete(); // lỗi giỏ hàng
+
+            // ==> SOLUTION: tạo cột MaGioHang 
+            // -> truyền MaGioHang dưới dạng input:hidden qua các view để xử lý dưới controller 
+            // -> Có MaGioHang -> dùng phương thức delete();
+            // .............
 
             // update paymentMethod
             $getpaymentMethod = $req->paymentMethod;
