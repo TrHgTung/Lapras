@@ -257,7 +257,7 @@
           <div class="my-3">
             <div class="form-check">
               <input id="credit" name="paymentMethod" type="radio" class="form-check-input" value="1" checked required>
-              <label class="form-check-label" for="credit">MoMo / STK</label>
+              <label class="form-check-label" for="credit">Tài khoản ngân hàng</label>
             </div>
             <div class="form-check">
               <input id="debit" name="paymentMethod" type="radio" class="form-check-input" value="0" required>

@@ -109,11 +109,19 @@ class PurchaseController extends Controller
         $data['paymentMethod'] = $req->paymentMethod;
         $data['timeUpdt'] = Carbon::now();
 
+        // xử lý Mã Thanh toán
+        $randNumber = rand(0,9999);
+        $xuLyEmail = str_replace(['@', '.'], '', $req->email);
+        $xuLyNgayThangNam = $randNumber.Carbon::now()->toDateString().$xuLyEmail;
+
+        $data['MaThanhToan'] = str_replace('-', '', $xuLyNgayThangNam);
         $insertDta = DB::table('dulieuthanhtoan')->insertGetId($data);
+        // $data chinh la du lieu thanh toan
         $checkPaymentMethod = $req->paymentMethod;
 
         if($checkPaymentMethod == '1'){
-            // MoMo handle code ...
+            // Payment transaction handle code ... 
+
 
             $getMaTuyenXeee = $req->matuyenxe;
             $getEmailUser = $req->email;
@@ -130,16 +138,72 @@ class PurchaseController extends Controller
             $UpdtDoanhThu['diemden'] = $UpdtData->diemden;
             $UpdtDoanhThu['paymentMethod'] = $UpdtData->paymentMethod;
             $UpdtDoanhThu['timeUpdt'] = Carbon::now();
+
+            $randNumber = rand(0,9999);
+            $xuLyEmail = str_replace(['@', '.'], '', $req->email);
+            $xuLyNgayThangNam = Carbon::now()->toDateString();
+            $ngayThangNamDaXuLy = str_replace('-', '', $xuLyNgayThangNam);
+            $xuLyMaDoanhThu = $randNumber.$ngayThangNamDaXuLy.$xuLyEmail;
+            $UpdtDoanhThu['MaDoanhThu'] = $xuLyMaDoanhThu;
+
             DB::table('doanhthu')->insertGetId($UpdtDoanhThu);
 
-            $UpdtData->delete();
+            // $UpdtData->delete(); // mang qua function khác
 
-            return Redirect::to('/lichdatxe');
+            // return Redirect::to('/lichdatxe');
+            return view('Payment.ProcessingPayment')->with('data', $data);
             //return dd($UpdtData);
         }
         else{
+            
             // Pay tien mat truc tiep
             return view('ThankYou');
         }
+    }
+
+    // Post từ form btn Nhấn để thanh toán... ( clear gio hang)
+    public function ClearDuLieuThanhToanCaNhan(Request $req){
+        $this->KiemTraXacThuc();
+        // request data ...
+
+        $getEmail = $req->email;
+        $getMaTuyenXe = $req->matuyenxe;
+        
+        // PLAN:  delete by id DuLieuSoKhachDat
+        $findData = DuLieuSoKhachDat::where('email', $getEmail)->where('MaTuyenXe', $getMaTuyenXe)->first();
+        $findData->delete();
+
+        // update paymentMethod
+        $getpaymentMethod = $req->paymentMethod;
+        // ... dựa trên email va MaTuyenXe để update paymentMethod..
+        $findDataUpdatePM = DoanhThu::where('email', $getEmail)->where('MaTuyenXe', $getMaTuyenXe)->update(array('paymentMethod' => $getpaymentMethod));
+        return Redirect::to('/thanks');
+
+    }
+
+     // Post từ form btn Hủy bỏ giao dịch
+    public function HuyGiaoDich(Request $req){
+        $this->KiemTraXacThuc();
+        // request data ...
+
+        $getEmail = $req->email;
+        $getMaTuyenXe = $req->matuyenxe;
+
+        //  PLAN:  delete by id DuLieuThanhToan &&  update paymentMethod = 0 -> DoanhThu 
+        // delete by id DuLieuThanhToan
+        $findData = DuLieuThanhToan::where('email', $getEmail)->where('MaTuyenXe', $getMaTuyenXe)->first();
+        $findData->delete();
+
+        // Update paymentMethod = '0': DoanhThu
+        $findDataUpdatePM = DoanhThu::where('email', $getEmail)->where('MaTuyenXe', $getMaTuyenXe)->update(array('paymentMethod' => 'null'));
+        $PMCancelledMsg = "Giao dịch của bạn đã bị hủy";
+        Session::put('payment_cancelled', $PMCancelledMsg);
+
+        return Redirect::to('/giohang');
+    }
+
+    public function SayThanks(){
+        $this->KiemTraXacThuc();
+        return view('ThankYou');
     }
 }

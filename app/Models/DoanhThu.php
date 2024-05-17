@@ -11,6 +11,7 @@ class DoanhThu extends Model
 
     // table nay xu li luu du lieu cho Admin doanh thu
     protected $fillable = [
+        'MaDoanhThu',
         'matuyenxe', 
         'giave', 
         'ghichu', 
@@ -22,4 +23,5 @@ class DoanhThu extends Model
         'timeUpdt',
     ];
     protected $table = 'DoanhThu';
+    public $timestamps = false;
 }

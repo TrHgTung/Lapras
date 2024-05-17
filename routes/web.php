@@ -65,6 +65,13 @@ Route::post('/hd7374748hfj899494/forcexoagiohang', [PurchaseController::class, '
 
 // Thanh toan
 Route::post('/hshe8r9jjff0098443/forcethanhtoan/postpaymentcontent', [PurchaseController::class, 'PostThongTinThanhToan']);
+Route::post('/transaction/payment/controller/hshe8r9jjff0098443', [PurchaseController::class, 'ClearDuLieuThanhToanCaNhan']);
+Route::post('/transaction/payment/cancel', [PurchaseController::class, 'HuyGiaoDich']);
+
+// Thank you
+Route::get('/thanks', [PurchaseController::class, 'SayThanks']);
+
+
 // ADMIN
 Route::get('/admin', [BaseController::class, 'main']);
 

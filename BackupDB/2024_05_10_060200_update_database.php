@@ -76,6 +76,7 @@ return new class extends Migration
         });
         Schema::create('DuLieuThanhToan', function(Blueprint $table){
             $table->id();
+            $table->string('MaThanhToan');
             $table->string('matuyenxe');
             $table->string('giave');
             $table->string('ghichu');
@@ -88,6 +89,7 @@ return new class extends Migration
         });
         Schema::create('DoanhThu', function(Blueprint $table){
             $table->id();
+            $table->string('MaDoanhThu');
             $table->string('matuyenxe');
             $table->string('giave');
             $table->string('ghichu');

@@ -178,7 +178,9 @@
     </div>
   </div>
 
-  
+  <div class="text-center text-warning">
+    <?php echo Session::get('payment_cancelled'); ?>
+  </div>
 
   <div class="my-3 p-3 bg-body rounded shadow-sm">
     <h6 class="border-bottom pb-2 mb-0">Toàn bộ sản phẩm</h6>
