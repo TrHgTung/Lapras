@@ -205,7 +205,7 @@
                             {{ csrf_field() }}
                             <input type="hidden" name="MaTuyenXe" value="{{ $dtagh->MaTuyenXe }}">
                             <input type="hidden" name="GiaVe" value="{{ $dtagh->GiaVe }}">
-                            <input type="submit" class="btn btn-primary btn-sm" value="Thanh toán trực tuyến">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Đi đến Thanh toán">
                         </form></td>
                         <td><td><form action="{{URL::to('/hd7374748hfj899494/forcexoagiohang')}}" method="post">
                             {{ csrf_field() }}

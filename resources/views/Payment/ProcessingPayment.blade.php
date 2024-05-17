@@ -102,10 +102,7 @@
             <label for="expiry-date-input">Ngày hết hạn thẻ: </label><input type="text" id="expiry-date-input" placeholder="Ngày hết hạn (MM/YY)" required>
             <label for="atm-passcode">Mã thẻ: </label><input type="password" id="atm-passcode" placeholder="Mã bảo mật" required maxlength="6">
             <label for="giave">Giá vé: </label><input type="text" id="giave" disabled value="{{ $data['giave'] }}">
-            <!-- <input type="hidden" name="giave" value="{{ $data['giave'] }}">
             <input type="hidden" name="timeUpdt" value="{{ $data['timeUpdt'] }}">
-            <input type="hidden" name="diemdau" value="{{ $data['diemdau'] }}">
-            <input type="hidden" name="diemden" value="{{ $data['diemden'] }}"> -->
             <input type="hidden" name="matuyenxe" value="{{ $data['matuyenxe'] }}">
             <input type="submit" value="Nhấn để thanh toán..." class="btn-custom">
         </form>

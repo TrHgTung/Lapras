@@ -112,7 +112,7 @@ class PurchaseController extends Controller
         // xử lý Mã Thanh toán
         $randNumber = rand(0,9999);
         $xuLyEmail = str_replace(['@', '.'], '', $req->email);
-        $xuLyNgayThangNam = $randNumber.Carbon::now()->toDateString().$xuLyEmail;
+        $xuLyNgayThangNam = $randNumber.Carbon::now()->toDateTimeString().$xuLyEmail;
 
         $data['MaThanhToan'] = str_replace('-', '', $xuLyNgayThangNam);
         $insertDta = DB::table('dulieuthanhtoan')->insertGetId($data);
@@ -141,7 +141,7 @@ class PurchaseController extends Controller
 
             $randNumber = rand(0,9999);
             $xuLyEmail = str_replace(['@', '.'], '', $req->email);
-            $xuLyNgayThangNam = Carbon::now()->toDateString();
+            $xuLyNgayThangNam = Carbon::now()->toDateTimeString();
             $ngayThangNamDaXuLy = str_replace('-', '', $xuLyNgayThangNam);
             $xuLyMaDoanhThu = $randNumber.$ngayThangNamDaXuLy.$xuLyEmail;
             $UpdtDoanhThu['MaDoanhThu'] = $xuLyMaDoanhThu;
@@ -155,9 +155,51 @@ class PurchaseController extends Controller
             //return dd($UpdtData);
         }
         else{
+            // ...........
+             // Pay tien mat truc tiep
+            $getMaTuyenXeee = $req->matuyenxe;
+            $getEmailUser = $req->email;
+            $UpdtData = DuLieuThanhToan::where('matuyenxe', $getMaTuyenXeee)->where('email', $getEmailUser)->first();
+            // Create Model DoanhThu: -> luu $UpdtData vào Model DoanhThu -> Admin Xử lí ...
+
+            $UpdtDoanhThu = array();
+            $UpdtDoanhThu['matuyenxe'] = $UpdtData->matuyenxe;
+            $UpdtDoanhThu['giave'] = $UpdtData->giave;
+            $UpdtDoanhThu['ghichu'] = $UpdtData->ghichu;
+            $UpdtDoanhThu['name'] = $UpdtData->name;
+            $UpdtDoanhThu['email'] = $UpdtData->email;
+            $UpdtDoanhThu['diemdau'] = $UpdtData->diemdau;
+            $UpdtDoanhThu['diemden'] = $UpdtData->diemden;
+            $UpdtDoanhThu['paymentMethod'] = $UpdtData->paymentMethod;
+            $UpdtDoanhThu['timeUpdt'] = Carbon::now();
+
+            $randNumber = rand(0,9999);
+            $xuLyEmail = str_replace(['@', '.'], '', $req->email);
+            $xuLyNgayThangNam = Carbon::now()->toDateTimeString();
+            $ngayThangNamDaXuLy = str_replace('-', '', $xuLyNgayThangNam);
+            $xuLyMaDoanhThu = $randNumber.$ngayThangNamDaXuLy.$xuLyEmail;
+            $UpdtDoanhThu['MaDoanhThu'] = $xuLyMaDoanhThu;
+
+            DB::table('doanhthu')->insertGetId($UpdtDoanhThu);
+
+           
+            // xoa gio hang tu dong
+            $getEmail = $req->email;
+            $getMaTuyenXe = $req->matuyenxe;
+            // $getTimeUpdt = $req->timeUpdt;
+            $getTimeUpdt = $xuLyNgayThangNam;
             
-            // Pay tien mat truc tiep
+            // PLAN:  delete by id DuLieuSoKhachDat
+            $findData = DuLieuSoKhachDat::where('timeUpdt', $getTimeUpdt)->first();
+            $findData->delete();
+
+            // update paymentMethod
+            $getpaymentMethod = $req->paymentMethod;
+            // ... dựa trên email va MaTuyenXe để update paymentMethod..
+            $findDataUpdatePM = DoanhThu::where('timeUpdt', $getTimeUpdt)->update(array('paymentMethod' => $getpaymentMethod));
+            
             return view('ThankYou');
+            // return dd($getTimeUpdt);
         }
     }
 
@@ -168,15 +210,16 @@ class PurchaseController extends Controller
 
         $getEmail = $req->email;
         $getMaTuyenXe = $req->matuyenxe;
+        $getTimeUpdt = $req->timeUpdt;
         
         // PLAN:  delete by id DuLieuSoKhachDat
-        $findData = DuLieuSoKhachDat::where('email', $getEmail)->where('MaTuyenXe', $getMaTuyenXe)->first();
+        $findData = DuLieuSoKhachDat::where('timeUpdt', $getTimeUpdt)->first();
         $findData->delete();
 
         // update paymentMethod
         $getpaymentMethod = $req->paymentMethod;
         // ... dựa trên email va MaTuyenXe để update paymentMethod..
-        $findDataUpdatePM = DoanhThu::where('email', $getEmail)->where('MaTuyenXe', $getMaTuyenXe)->update(array('paymentMethod' => $getpaymentMethod));
+        $findDataUpdatePM = DoanhThu::where('timeUpdt', $getTimeUpdt)->update(array('paymentMethod' => $getpaymentMethod));
         return Redirect::to('/thanks');
 
     }
