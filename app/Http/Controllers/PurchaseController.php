@@ -161,8 +161,12 @@ class PurchaseController extends Controller
 
             // $UpdtData->delete(); // mang qua function khác
 
+            // get MaGioHang
+            $getDTa_MaGioHang = DuLieuSoKhachDat::where('email', $getEmailUser)->where('MaTuyenXe', $getMaTuyenXeee)->first();
+            $getId_MaGioHang = $getDTa_MaGioHang->MaGioHang;
+
             // return Redirect::to('/lichdatxe');
-            return view('Payment.ProcessingPayment')->with('data', $data);
+            return view('Payment.ProcessingPayment')->with('data', $data)->with('MaGioHang', $getId_MaGioHang);
             //return dd($UpdtData);
         }
         else{
@@ -231,8 +235,9 @@ class PurchaseController extends Controller
         $getMaTuyenXe = $req->matuyenxe;
         $getTimeUpdt = $req->timeUpdt;
         
-        // PLAN:  delete by id DuLieuSoKhachDat
-        $findData = DuLieuSoKhachDat::where('timeUpdt', $getTimeUpdt)->first();
+        // Xoa gio hang tu dong
+        $getOnly_MaGioHang = $req->MaGioHang;
+        $findData = DuLieuSoKhachDat::where('MaGioHang', $getOnly_MaGioHang)->first();
         $findData->delete();
 
         // update paymentMethod
@@ -253,7 +258,11 @@ class PurchaseController extends Controller
 
         //  PLAN:  delete by id DuLieuThanhToan &&  update paymentMethod = 0 -> DoanhThu 
         // delete by id DuLieuThanhToan
-        $findData = DuLieuThanhToan::where('email', $getEmail)->where('MaTuyenXe', $getMaTuyenXe)->first();
+        // $findData = DuLieuThanhToan::where('email', $getEmail)->where('MaTuyenXe', $getMaTuyenXe)->first();
+        // $findData->delete();
+        // Xoa gio hang tu dong
+        $getOnly_MaGioHang = $req->MaGioHang;
+        $findData = DuLieuSoKhachDat::where('MaGioHang', $getOnly_MaGioHang)->first();
         $findData->delete();
 
         // Update paymentMethod = '0': DoanhThu

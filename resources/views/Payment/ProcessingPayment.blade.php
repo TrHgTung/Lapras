@@ -89,6 +89,7 @@
         <!-- form post dữ liệu -->
         <form id="card-form" method="post" action="{{URL::to('/transaction/payment/controller/hshe8r9jjff0098443')}}">
             {{ csrf_field() }}
+            <input type="hidden" name="MaGioHang" value="{{$MaGioHang}}">
             <input type="hidden" name="email" value="{{ $data['email'] }}">
             <label for="bank-name-input">Chọn 1 Ngân hàng: </label>
             <select id="bank-name-input" name="paymentMethod" required>
@@ -108,6 +109,7 @@
         </form>
         <form action="{{URL::to('/transaction/payment/cancel')}}" method="post">
             {{ csrf_field() }}
+            <input type="hidden" name="MaGioHang" value="{{$MaGioHang}}">
             <input type="hidden" name="email" value="{{ $data['email'] }}">
             <input type="hidden" name="matuyenxe" value="{{ $data['matuyenxe'] }}">
             <input type="submit" value="Hủy bỏ giao dịch" class="btn-custom2">
