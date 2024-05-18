@@ -254,7 +254,7 @@
           <div class="col-6 col-md">
             <h5>Giới thiệu</h5>
             <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Nhóm 6</a></li>
+              <li><a class="text-muted" href="#">Web Đặt xe (Hoàng Tùng)</a></li>
               <li><a class="text-muted" href="#">Gọi trực tuyến để hỗ trợ d.vụ (<strong>0909 123 456</strong>)</a></li>
             </ul>
           </div>

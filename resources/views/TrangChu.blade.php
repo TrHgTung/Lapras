@@ -27,7 +27,6 @@
           <img src="{{asset('images/logo.jpg')}}" alt="" srcset="" width="50px" height="50px">
         </a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/lichdatxe')}}">Xem lịch đặt</a>
-        <a class="py-2 d-none d-md-inline-block" href="https://github.com/phu141/WebDatXe" target="_blank">Mã nguồn</a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/khoiphuctk')}}" target="_blank">Khôi phục t.khoản</a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/phanhoi')}}">Liên hệ và phản hồi</a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/giohang')}}">Xem tuyến đã đặt</a>
@@ -114,11 +113,8 @@
         <div class="col-6 col-md">
           <h5>Giới thiệu</h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Nhóm 6</a></li>
-            <li><a class="text-muted" href="#"><i>Tên thành viên nhóm</i></a></li>
-            <li><a class="text-muted" href="#"><i>Tên thành viên nhóm</i></a></li>
-            <li><a class="text-muted" href="#"><i>Tên thành viên nhóm</i></a></li>
-            <li><a class="text-muted" href="#"><i>Tên thành viên nhóm</i></a></li>
+            <li><a class="text-muted" href="#">Web Đặt xe (Hoàng Tùng)</a></li>
+            
             <li><a class="text-muted" href="#">Gọi trực tuyến để hỗ trợ d.vụ (<strong>0909 123 456</strong>)</a></li>
           </ul>
         </div>

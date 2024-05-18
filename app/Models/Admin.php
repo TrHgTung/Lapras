@@ -14,6 +14,9 @@ class Admin extends Model
         'password',
         'is_active',
     ];
+    protected $hidden = [
+        'password',
+    ];
 
     protected $table = 'admin';
 }
