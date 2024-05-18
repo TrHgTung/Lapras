@@ -30,8 +30,8 @@
         <a class="py-2 d-none d-md-inline-block" href="https://github.com/phu141/WebDatXe" target="_blank">Mã nguồn</a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/khoiphuctk')}}" target="_blank">Khôi phục t.khoản</a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/phanhoi')}}">Liên hệ và phản hồi</a>
+        <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/giohang')}}">Xem tuyến đã đặt</a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/taikhoan')}}"><?php  $checkSession = Session::get('id'); if($checkSession){echo 'Xem tài khoản';} else{ echo 'Đăng nhập'; } ?></a>
-        
       </div>
     </nav>
 

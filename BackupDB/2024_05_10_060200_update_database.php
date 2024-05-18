@@ -69,6 +69,7 @@ return new class extends Migration
         });
         Schema::create('DuLieuSoKhachDat', function(Blueprint $table){
             $table->id();
+            $table->string('MaGioHang');
             $table->string('email');
             $table->string('MaTuyenXe');
             $table->Integer('GiaVe'); // tổng sum GiaVe sẽ ra tổng doanh thu

@@ -43,6 +43,16 @@ class PurchaseController extends Controller
             return Redirect::to('/giohang');
             // return redirect()->back()->withErrors(['MaTuyenXe_exist' => 'Bạn đã đặt tuyến này rồi']);
         }
+        // xac dinh MaGioHang
+        $rand = rand(1,9999);
+        $dtaEmailUser = Session::get('email');
+        $xuLyEmail = str_replace(['@', '.'], '', $dtaEmailUser);
+        $xuLyNgayThangNam = Carbon::now()->toDateTimeString();
+        $ngayThangNamDaXuLy = str_replace(['-', ':'], '', $xuLyNgayThangNam);
+        $init_MaGioHang = $rand.$ngayThangNamDaXuLy.$xuLyEmail;
+
+        $data['MaGioHang'] = $init_MaGioHang;
+
         $insertDta = DB::table('dulieusokhachdat')->insertGetId($data);
 
         return Redirect::to('/giohang');
@@ -84,9 +94,10 @@ class PurchaseController extends Controller
         // $getUserfromSession = 'beo@mail.com'; // for checking query
         $getUser = User::where('email', $getUserfromSession)->first();
       
-        // return dd($getUser);
-        // return dd($data);
-       return view('ThanhToan')->with('dataThanhToan', $data)->with('getUser', $getUser)->with('getLocation', $getLocation); // pass data to view Thanh toan
+       $getMaGioHang  = DuLieuSoKhachDat::where('email', $getUserfromSession)->where('MaTuyenXe', $getMaTuyenXee)->first();
+       $getONLY_MaGioHang = $getMaGioHang->MaGioHang;
+// return dd($getONLY_MaGioHang);
+       return view('ThanhToan')->with('dataThanhToan', $data)->with('getUser', $getUser)->with('getLocation', $getLocation)->with('MaGioHang', $getONLY_MaGioHang); // pass data to view Thanh toan
     }
     public function PostThongTinThanhToan(Request $req){
         $this->KiemTraXacThuc();
@@ -114,7 +125,7 @@ class PurchaseController extends Controller
         $xuLyEmail = str_replace(['@', '.'], '', $req->email);
         $xuLyNgayThangNam = $randNumber.Carbon::now()->toDateTimeString().$xuLyEmail;
 
-        $data['MaThanhToan'] = str_replace('-', '', $xuLyNgayThangNam);
+        $data['MaThanhToan'] = str_replace(['-', ':'], '', $xuLyNgayThangNam);
         $insertDta = DB::table('dulieuthanhtoan')->insertGetId($data);
         // $data chinh la du lieu thanh toan
         $checkPaymentMethod = $req->paymentMethod;
@@ -142,7 +153,7 @@ class PurchaseController extends Controller
             $randNumber = rand(0,9999);
             $xuLyEmail = str_replace(['@', '.'], '', $req->email);
             $xuLyNgayThangNam = Carbon::now()->toDateTimeString();
-            $ngayThangNamDaXuLy = str_replace('-', '', $xuLyNgayThangNam);
+            $ngayThangNamDaXuLy = str_replace(['-', ':'], '', $xuLyNgayThangNam);
             $xuLyMaDoanhThu = $randNumber.$ngayThangNamDaXuLy.$xuLyEmail;
             $UpdtDoanhThu['MaDoanhThu'] = $xuLyMaDoanhThu;
 
@@ -176,7 +187,7 @@ class PurchaseController extends Controller
             $randNumber = rand(0,9999);
             $xuLyEmail = str_replace(['@', '.'], '', $req->email);
             $xuLyNgayThangNam = Carbon::now()->toDateTimeString();
-            $ngayThangNamDaXuLy = str_replace('-', '', $xuLyNgayThangNam);
+            $ngayThangNamDaXuLy = str_replace(['-', ':'], '', $xuLyNgayThangNam);
             $xuLyMaDoanhThu = $randNumber.$ngayThangNamDaXuLy.$xuLyEmail;
             $UpdtDoanhThu['MaDoanhThu'] = $xuLyMaDoanhThu;
 
@@ -190,13 +201,16 @@ class PurchaseController extends Controller
             $getTimeUpdt = $xuLyNgayThangNam;
             
             // PLAN:  delete by id DuLieuSoKhachDat
-            $findData = DuLieuSoKhachDat::where('timeUpdt', $getTimeUpdt)->first();
             // $findData->delete(); // lỗi giỏ hàng
 
             // ==> SOLUTION: tạo cột MaGioHang 
             // -> truyền MaGioHang dưới dạng input:hidden qua các view để xử lý dưới controller 
             // -> Có MaGioHang -> dùng phương thức delete();
             // .............
+            $getOnly_MaGioHang = $req->MaGioHang;
+            $findData = DuLieuSoKhachDat::where('MaGioHang', $getOnly_MaGioHang)->first();
+
+            $findData->delete();
 
             // update paymentMethod
             $getpaymentMethod = $req->paymentMethod;

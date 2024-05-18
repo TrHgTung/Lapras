@@ -169,6 +169,7 @@
   <main>
     <form action="{{URL::to('/hshe8r9jjff0098443/forcethanhtoan/postpaymentcontent')}}" method="post">
     {{ csrf_field() }}
+    <input type="hidden" name="MaGioHang" value="{{$MaGioHang}}">
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="{{asset('images/logo_original.jpg')}}" alt="" width="70" height="70">
       <h2>Kiểm tra thông tin thanh toán</h2>

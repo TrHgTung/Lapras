@@ -9,6 +9,7 @@ class DuLieuSoKhachDat extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'MaGioHang',
         'email', // email cua table users
         'MaTuyenXe', // MaTuyenXe cua table TuyenXe
         'GiaVe', // GiaVe cua table TuyenXe
