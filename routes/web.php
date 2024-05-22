@@ -32,7 +32,7 @@ Route::post('/khoiphucPost', [HomeController::class, 'KhoiPhucTK']);
 
 // Dang ky tai khoan
 Route::get('/dangky', [AuthenticateController::class, 'ViewDangKy']);
-Route::post('/dangkyPost', [AuthenticateController::class, 'DangKy'])->middleware('throttle:2,1');
+Route::post('/dangkyPost', [AuthenticateController::class, 'DangKy'])->middleware('throttle:customRateLim');
 
 // Dang nhap tai khoan
 Route::get('/dangnhap', [AuthenticateController::class, 'ViewDangNhap']);
@@ -82,7 +82,7 @@ Route::get('/admin', [BaseController::class, 'main']);
 
 // Dang nhap tai khoan
 Route::get('/admin/dangnhap', [AdminAuthenticate::class, 'ViewDangNhap']);
-Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap'])->middleware('throttle:2,1');
+Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap'])->middleware('throttle:customRateLim');
 
 // dang xuat
 Route::get('/dangxuatAdmin', [AdminAuthenticate::class, 'DangXuat']);
@@ -94,7 +94,7 @@ Route::get('/admin/quanlychuyen', [DashboardController::class, 'QuanLyChuyen']);
 Route::post('/admin/luuchuyen', [DashboardController::class, 'LuuChuyen']);
 // them admin
 Route::get('/admin/quanlyadmin', [AdminAuthenticate::class, 'ViewThemAdmin']);
-Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin']);
+Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin'])->middleware('throttle:customRateLim');
 // quan ly User
 Route::get('/admin/quanlykhachhang', [UMController::class, 'index']);
 Route::post('/admin/khoiphuckhachhang', [UMController::class, 'HieuLucUser']);
