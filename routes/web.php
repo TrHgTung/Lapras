@@ -32,11 +32,16 @@ Route::post('/khoiphucPost', [HomeController::class, 'KhoiPhucTK']);
 
 // Dang ky tai khoan
 Route::get('/dangky', [AuthenticateController::class, 'ViewDangKy']);
-Route::post('/dangkyPost', [AuthenticateController::class, 'DangKy']);
+Route::post('/dangkyPost', [AuthenticateController::class, 'DangKy'])->middleware('throttle:2,1');
 
 // Dang nhap tai khoan
 Route::get('/dangnhap', [AuthenticateController::class, 'ViewDangNhap']);
-Route::post('/dangnhapPost', [AuthenticateController::class, 'DangNhap']);
+Route::post('/dangnhapPost', [AuthenticateController::class, 'DangNhap'])->middleware('throttle:5,1');
+
+// custom error (429 limit)
+Route::get('/youdontwannacomehere', function(){
+    return view('errors.429');
+});
 
 // dang xuat
 Route::get('/dangxuat', [AuthenticateController::class, 'DangXuat']);
@@ -77,7 +82,7 @@ Route::get('/admin', [BaseController::class, 'main']);
 
 // Dang nhap tai khoan
 Route::get('/admin/dangnhap', [AdminAuthenticate::class, 'ViewDangNhap']);
-Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap']);
+Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap'])->middleware('throttle:2,1');
 
 // dang xuat
 Route::get('/dangxuatAdmin', [AdminAuthenticate::class, 'DangXuat']);
