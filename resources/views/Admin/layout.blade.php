@@ -294,7 +294,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="{{URL::to('/dangxuatAdmin')}}">
+              <a class="nav-link d-flex align-items-center gap-2 text-danger" href="{{URL::to('/dangxuatAdmin')}}">
                 <!-- <svg class="bi"><use xlink:href="#door-closed"/></svg> -->
                 Đăng xuất
               </a>

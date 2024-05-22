@@ -36,6 +36,7 @@ class AuthenticateController extends Controller
             // Session::put('admin_id', $result->id);
             Session::put('admin_name', $result->name);
             Session::put('admin_email', $result->email);
+            Session::put('admin_is_master', $result->is_master);
 
             return Redirect::to('/admin/dashboard'); // login admin thanh cong
         }
@@ -80,11 +81,28 @@ class AuthenticateController extends Controller
         $data['name'] = $req->name;
         $data['email'] = $req->email;
         $data['password'] = ($req->password);
+        $data['is_master'] = '0';
 
         $success_admin_added = "Tài khoản đã được thêm mới thành công";
         Session::put('success_admin_added', $success_admin_added);
 
         $user = DB::table('admin')->insertGetId($data);
+
+        return Redirect::to('/admin/quanlyadmin');
+    }
+
+    public function DisableAdminAccount(Request $req){
+        $this->KiemTraXacThucAdmin();
+        $getAID = $req->admin_id;
+        $queryUpdate = Admin::where('id', $getAID)->update(array('is_active' => '0'));
+
+        return Redirect::to('/admin/quanlyadmin');
+    }
+
+    public function ReActivateAdminAccount(Request $req){
+        $this->KiemTraXacThucAdmin();
+        $getAID = $req->admin_id;
+        $queryUpdate = Admin::where('id', $getAID)->update(array('is_active' => '1'));
 
         return Redirect::to('/admin/quanlyadmin');
     }

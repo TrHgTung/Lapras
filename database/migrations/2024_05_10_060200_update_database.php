@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('is_active');
-           
+            $table->string('is_master');           
         });
         Schema::create('TuyenXe', function(Blueprint $table){
             $table->id();

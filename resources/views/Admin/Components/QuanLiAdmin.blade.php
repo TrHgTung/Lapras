@@ -10,25 +10,57 @@
               <th scope="col">E-mail (username đăng nhập)</th>
               <th scope="col">Mật khẩu</th>
               <th scope="col">Trạng thái</th>
-              
+              <th scope="col">Hành động</th>
             </tr>
           </thead>
           <tbody>
-            <!-- foreach -->
-            @foreach($getAdmin as $dta)
-            <tr>
-              <td>{{ $dta->name }}</td>
-              <td>{{ $dta->email }}</td>
-              <td>*************</td>
-            @if($dta->is_active == 1)
-                <td>Còn hoạt động</td>
+            <!-- Nếu is_master == '1' -->
+            @if(Session::get('admin_is_master') == '1')
+              <!-- foreach -->
+              @foreach($getAdmin as $dta)
+              <tr>
+                <td>{{ $dta->name }}</td>
+                <td>{{ $dta->email }}</td>
+                <td>*************</td>
+              @if($dta->is_active == 1)
+                  <td>Còn hoạt động</td>
+              @else
+                  <td>Đã bị khóa</td>
+              @endif
+              @if($dta->is_active == '1')
+                <td><form action="{{URL::to('/admin/disableadminaccount')}}" method="post">
+                  {{ csrf_field() }}
+                  <input type="hidden" name="admin_id" value="{{ $dta->id }}">
+                  <input type="submit" value="Khóa tài khoản" class="btn btn-sm btn-danger">
+                </form></td>
+              @else
+              <td><form action="{{URL::to('/admin/reactivateadminaccount')}}" method="post">
+                  {{ csrf_field() }}
+                  <input type="hidden" name="admin_id" value="{{ $dta->id }}">
+                  <input type="submit" value="Hiệu lực tài khoản" class="btn btn-sm btn-success">
+                </form></td>
+              @endif
+              </tr>
+              @endforeach
+            <!-- endforeach -->
+            <!-- Nếu is_master == '0' -->
             @else
-                <td>Đã bị khóa</td>
+                <!-- foreach -->
+                @foreach($getAdmin as $dta)
+                  <tr>
+                    <td>{{ $dta->name }}</td>
+                    <td>{{ $dta->email }}</td>
+                    <td>*************</td>
+                  @if($dta->is_active == 1)
+                      <td>Còn hoạt động</td>
+                  @else
+                      <td>Đã bị khóa</td>
+                  @endif
+                  <td>Ko có đủ quyền</td>
+                  </tr>
+                  @endforeach
+                <!-- endforeach -->
             @endif
-              
-            </tr>
-            @endforeach
-           <!-- endforeach -->
             <p></p>
           </tbody>
         </table>

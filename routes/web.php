@@ -95,6 +95,8 @@ Route::post('/admin/luuchuyen', [DashboardController::class, 'LuuChuyen']);
 // them admin
 Route::get('/admin/quanlyadmin', [AdminAuthenticate::class, 'ViewThemAdmin']);
 Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin'])->middleware('throttle:customRateLim');
+Route::post('/admin/disableadminaccount', [AdminAuthenticate::class, 'DisableAdminAccount']); //disable admin account
+Route::post('/admin/reactivateadminaccount', [AdminAuthenticate::class, 'ReActivateAdminAccount']); //reactivate admin account
 // quan ly User
 Route::get('/admin/quanlykhachhang', [UMController::class, 'index']);
 Route::post('/admin/khoiphuckhachhang', [UMController::class, 'HieuLucUser']);

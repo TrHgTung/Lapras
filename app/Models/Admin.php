@@ -13,10 +13,11 @@ class Admin extends Model
         'email',
         'password',
         'is_active',
+        'is_master',
     ];
     protected $hidden = [
         'password',
     ];
-
+    public $timestamps = false;
     protected $table = 'admin';
 }
