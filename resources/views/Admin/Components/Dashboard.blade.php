@@ -11,7 +11,7 @@
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar', // loại biểu đồ, có thể là 'bar', 'line', 'pie', etc.
-            data: @json($data), // chuyển đổi dữ liệu từ PHP sang JavaScript
+            data: @json($dataBieuDo), // chuyển đổi dữ liệu từ PHP sang JavaScript
             options: {
                 responsive: true,
                 scales: {

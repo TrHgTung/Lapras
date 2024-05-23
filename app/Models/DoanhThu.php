@@ -20,7 +20,9 @@ class DoanhThu extends Model
         'diemdau',
         'diemden',
         'paymentMethod',
-        'timeUpdt',
+        'dayUpdt',
+        'monthUpdt',
+        'yearUpdt',
     ];
     protected $table = 'DoanhThu';
     public $timestamps = false;

@@ -99,7 +99,9 @@ return new class extends Migration
             $table->string('diemdau');
             $table->string('diemden');
             $table->string('paymentMethod');      
-            $table->string('timeUpdt');      
+            $table->string('dayUpdt');      
+            $table->string('monthUpdt');      
+            $table->string('yearUpdt');     
         });
     }
 

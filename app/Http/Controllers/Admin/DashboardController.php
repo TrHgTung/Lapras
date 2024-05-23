@@ -41,30 +41,109 @@ class DashboardController extends Controller
             }
     }
 
+    // public function index(){
+    //     $this->KiemTraXacThucAdmin();
+
+    //     // LẤY DU lIEU NGÀY
+    //     $dates = DoanhThu::pluck('timeUpdt');
+ 
+    //         // $dates = [
+    //         //     "2024-05-18 05:24:02",
+    //         //     "2024-05-19 05:24:59"
+    //         // ];
+
+    //     $getDay = [];
+
+    //     foreach ($dates as $date) {
+    //         // Tách ngày từ chuỗi datetime bằng hàm explode
+    //         $tmp = explode(' ', $date);
+    //         $dateMonthYearDta = $tmp[0]; // Lấy phần ngày tháng năm
+
+            
+    //         $dateOnly = explode('-', $dateMonthYearDta); // Tách ngày thành các thành phần
+    //         $dayOnly = $dateOnly[2]; // Lấy ngày
+
+    //         $getDay[] = $dayOnly; // Lưu ngày vào mảng dữ liệu mới
+    //     }
+
+    //     // LẤY DỮ LIỆU THANH TOÁN
+    //     $getGiaVe = DoanhThu::pluck('giave');
+    //     $getGiaVe_count = $getGiaVe->count();
+    //     $GiaVe_IntConvert = [];
+
+    //     $getGiaVe2 = $getGiaVe->toArray(); // Chuyển collection về mảng
+
+    //     $GiaVe_IntConvert = array_map('intval', $getGiaVe2); // convert String sang Int
+        
+    //     // DỮ LIỆU THÁNG DOANH THU
+    //     $months = DoanhThu::pluck('timeUpdt');
+
+    //     $getMonth = [];
+
+    //     foreach ($months as $m) {
+    //         // Tách ngày từ chuỗi datetime bằng hàm explode
+    //         $tmp = explode(' ', $m);
+    //         $full_dateMonthYearDta = $tmp[0]; // Lấy phần ngày thangn năm
+
+            
+    //         $mOnly = explode('-', $full_dateMonthYearDta); // Tách thành các thành phần
+    //         $monthOnly = $mOnly[1]; // Lấy thng
+
+    //         $getMonth[] = $monthOnly; // Lưu thang vào mảng dữ liệu mới
+    //     }
+    //     $getOneMonth = $getMonth[0];
+
+
+    //     // DỮ LIỆU NĂM DOANH THU
+    //     $years = DoanhThu::pluck('timeUpdt');
+
+    //     $getYear = [];
+
+    //     foreach ($years as $y) {
+    //         // Tách nam từ chuỗi datetime bằng hàm explode
+    //         $tmp = explode(' ', $y);
+    //         $full_dateMonthYearDta = $tmp[0]; // Lấy phần ngày thangn năm
+
+            
+    //         $yOnly = explode('-', $full_dateMonthYearDta); // Tách thành các thành phần
+    //         $yearOnly = $yOnly[0]; // Lấy namw
+
+    //         $getYear[] = $yearOnly; // Lưu nam vào mảng dữ liệu mới
+    //     }
+    //     $getOneYear = $getYear[0];
+
+
+    //     // DỮ LIỆU ĐỂ RENDER BIỂU ĐỒ
+    //     $data = [
+    //         // 'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    //         'labels' => $getDay,
+    //         'datasets' => [
+    //             [
+    //                 'label' => 'Tổng Doanh thu (VND)',
+    //                 'backgroundColor' => 'rgba(255,99,132,0.2)',
+    //                 'borderColor' => 'rgba(255,99,132,1)',
+    //                 'borderWidth' => 1,
+    //                 // 'data' => [65, 59, 80, 81, 56, 55, 40],
+    //                 'data' => $GiaVe_IntConvert,
+    //             ]
+    //         ],
+           
+    //     ];
+    //     // $a = [];
+    //     // $a[0] = Carbon::now()->day;
+    //     // $a[1] = Carbon::now()->month;
+    //     // $a[2] = Carbon::now()->year;
+    //     return view('Admin.Components.Dashboard', compact('data', 'getOneMonth', 'getOneYear'));
+    //     // return dd($a);
+    // }
+
+
     public function index(){
         $this->KiemTraXacThucAdmin();
 
         // LẤY DU lIEU NGÀY
-        $dates = DoanhThu::pluck('timeUpdt');
+        $getDay = DoanhThu::pluck('dayUpdt'); // [18 ; 19]  ==> (array)
  
-            // $dates = [
-            //     "2024-05-18 05:24:02",
-            //     "2024-05-19 05:24:59"
-            // ];
-
-        $getDay = [];
-
-        foreach ($dates as $date) {
-            // Tách ngày từ chuỗi datetime bằng hàm explode
-            $tmp = explode(' ', $date);
-            $dateMonthYearDta = $tmp[0]; // Lấy phần ngày tháng năm
-
-            
-            $dateOnly = explode('-', $dateMonthYearDta); // Tách ngày thành các thành phần
-            $dayOnly = $dateOnly[2]; // Lấy ngày
-
-            $getDay[] = $dayOnly; // Lưu ngày vào mảng dữ liệu mới
-        }
 
         // LẤY DỮ LIỆU THANH TOÁN
         $getGiaVe = DoanhThu::pluck('giave');
@@ -76,45 +155,17 @@ class DashboardController extends Controller
         $GiaVe_IntConvert = array_map('intval', $getGiaVe2); // convert String sang Int
         
         // DỮ LIỆU THÁNG DOANH THU
-        $months = DoanhThu::pluck('timeUpdt');
+        $months = DoanhThu::pluck('monthUpdt'); // => array
 
-        $getMonth = [];
-
-        foreach ($months as $m) {
-            // Tách ngày từ chuỗi datetime bằng hàm explode
-            $tmp = explode(' ', $m);
-            $full_dateMonthYearDta = $tmp[0]; // Lấy phần ngày thangn năm
-
-            
-            $mOnly = explode('-', $full_dateMonthYearDta); // Tách thành các thành phần
-            $monthOnly = $mOnly[1]; // Lấy thng
-
-            $getMonth[] = $monthOnly; // Lưu thang vào mảng dữ liệu mới
-        }
-        $getOneMonth = $getMonth[0];
-
+        $getOneMonth = $months[0];
 
         // DỮ LIỆU NĂM DOANH THU
-        $years = DoanhThu::pluck('timeUpdt');
+        $years = DoanhThu::pluck('yearUpdt');  // => array
 
-        $getYear = [];
-
-        foreach ($years as $y) {
-            // Tách nam từ chuỗi datetime bằng hàm explode
-            $tmp = explode(' ', $y);
-            $full_dateMonthYearDta = $tmp[0]; // Lấy phần ngày thangn năm
-
-            
-            $yOnly = explode('-', $full_dateMonthYearDta); // Tách thành các thành phần
-            $yearOnly = $yOnly[0]; // Lấy namw
-
-            $getYear[] = $yearOnly; // Lưu nam vào mảng dữ liệu mới
-        }
-        $getOneYear = $getYear[0];
-
+        $getOneYear = $years[0];
 
         // DỮ LIỆU ĐỂ RENDER BIỂU ĐỒ
-        $data = [
+        $dataBieuDo = [
             // 'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             'labels' => $getDay,
             'datasets' => [
@@ -129,9 +180,12 @@ class DashboardController extends Controller
             ],
            
         ];
-
-        return view('Admin.Components.Dashboard', compact('data', 'getOneMonth', 'getOneYear'));
-        //return dd($getMonth);
+        // $a = [];
+        // $a[0] = Carbon::now()->day;
+        // $a[1] = Carbon::now()->month;
+        // $a[2] = Carbon::now()->year;
+        return view('Admin.Components.Dashboard', compact('dataBieuDo', 'getOneMonth', 'getOneYear'));
+        // return dd($a);
     }
 
     public function QuanLyChuyen(){
