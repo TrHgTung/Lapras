@@ -13,6 +13,11 @@ use DB;
 use Session;
 use Redirect;
 use Carbon\Carbon;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Font;
+use PhpOffice\PhpSpreadsheet\Style\Style;
+
 
 class DashboardController extends Controller
 {
@@ -203,6 +208,117 @@ class DashboardController extends Controller
         ];
 
         return view('Admin.Components.Dashboard', compact('dataBieuDo', 'getMonth', 'getYear'));
+    }
+
+    // Xuat tat ca Doanh thu ra Excel
+    public function XuatExcel(){
+        $this->KiemTraXacThucAdmin();
+
+        $dtaDoanhThu = DoanhThu::all();
+
+        $spreadsheet = new Spreadsheet();
+        $activeWorksheet = $spreadsheet->getActiveSheet();
+
+        // set font in dam (bold)
+        // $boldFontStyle = (new Font())->setBold(true);
+        // $headerStyle = (new Style())->setFont($boldFontStyle);
+        
+         $activeWorksheet->getStyle('A1:K1')->getFont()->setBold(true); 
+
+        
+        // Tieu de
+        $activeWorksheet->setCellValue('A1', 'ID');
+        $activeWorksheet->setCellValue('B1', 'Mã Doanh thu');
+        $activeWorksheet->setCellValue('C1', 'Mã Tuyến xe');
+        $activeWorksheet->setCellValue('D1', 'Giá bán vé');
+        $activeWorksheet->setCellValue('E1', 'Ghi chú của khách');
+        $activeWorksheet->setCellValue('F1', 'Email Khách');
+        $activeWorksheet->setCellValue('G1', 'Điểm đón');
+        $activeWorksheet->setCellValue('H1', 'Điểm trả');
+        $activeWorksheet->setCellValue('I1', 'Ngày');
+        $activeWorksheet->setCellValue('J1', 'Tháng');
+        $activeWorksheet->setCellValue('K1', 'Năm');
+
+        // $activeWorksheet->getStyle('A1:K1')->applyFromArray($headerStyle);
+        // Data
+        $row = 2;
+        foreach ($dtaDoanhThu as $dta) {
+            $activeWorksheet->setCellValue('A' . $row, $dta->id);
+            $activeWorksheet->setCellValue('B' . $row, $dta->MaDoanhThu);
+            $activeWorksheet->setCellValue('C' . $row, $dta->matuyenxe);
+            $activeWorksheet->setCellValue('D' . $row, $dta->giave);
+            $activeWorksheet->setCellValue('E' . $row, $dta->ghichu);
+            $activeWorksheet->setCellValue('F' . $row, $dta->email);
+            $activeWorksheet->setCellValue('G' . $row, $dta->diemdau);
+            $activeWorksheet->setCellValue('H' . $row, $dta->diemden);
+            $activeWorksheet->setCellValue('I' . $row, $dta->dayUpdt);
+            $activeWorksheet->setCellValue('J' . $row, $dta->monthUpdt);
+            $activeWorksheet->setCellValue('K' . $row, $dta->yearUpdt);
+            $row++;
+        }
+
+        // // Redirect...
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="DoanhThuToanBo.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
+    }
+
+
+    // XUAT DATA EXCEL THEO THANG REQUEST
+    public function XuatExcelTheoThang(Request $req){
+        $this->KiemTraXacThucAdmin();
+
+        $getMonth = $req->month;
+        $getYear = $req->year;
+        
+        // LLẤY DỮ LIỆU 
+        $getData = DoanhThu::where('monthUpdt', $getMonth)->where('yearUpdt', $getYear)->get();
+        
+        $spreadsheet = new Spreadsheet();
+        $activeWorksheet = $spreadsheet->getActiveSheet();
+
+         $activeWorksheet->getStyle('A1:K1')->getFont()->setBold(true); 
+
+        $activeWorksheet->setCellValue('A1', 'ID');
+        $activeWorksheet->setCellValue('B1', 'Mã Doanh thu');
+        $activeWorksheet->setCellValue('C1', 'Mã Tuyến xe');
+        $activeWorksheet->setCellValue('D1', 'Giá bán vé');
+        $activeWorksheet->setCellValue('E1', 'Ghi chú của khách');
+        $activeWorksheet->setCellValue('F1', 'Email Khách');
+        $activeWorksheet->setCellValue('G1', 'Điểm đón');
+        $activeWorksheet->setCellValue('H1', 'Điểm trả');
+        $activeWorksheet->setCellValue('I1', 'Ngày');
+        $activeWorksheet->setCellValue('J1', 'Tháng');
+        $activeWorksheet->setCellValue('K1', 'Năm');
+
+      
+        $row = 2;
+        foreach ($getData as $dta) {
+            $activeWorksheet->setCellValue('A' . $row, $dta->id);
+            $activeWorksheet->setCellValue('B' . $row, $dta->MaDoanhThu);
+            $activeWorksheet->setCellValue('C' . $row, $dta->matuyenxe);
+            $activeWorksheet->setCellValue('D' . $row, $dta->giave);
+            $activeWorksheet->setCellValue('E' . $row, $dta->ghichu);
+            $activeWorksheet->setCellValue('F' . $row, $dta->email);
+            $activeWorksheet->setCellValue('G' . $row, $dta->diemdau);
+            $activeWorksheet->setCellValue('H' . $row, $dta->diemden);
+            $activeWorksheet->setCellValue('I' . $row, $dta->dayUpdt);
+            $activeWorksheet->setCellValue('J' . $row, $dta->monthUpdt);
+            $activeWorksheet->setCellValue('K' . $row, $dta->yearUpdt);
+            $row++;
+        }
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="DoanhThuTheoThang.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
+
+        // return dd($getData);
     }
 
     public function QuanLyChuyen(){

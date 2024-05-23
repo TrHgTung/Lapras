@@ -1,8 +1,16 @@
 @extends('Admin.layout')
 @section('content')
-<div class="mb-4 link-no-under">
+<div class="mb-3 link-no-under">
     <a href="{{URL::to('/admin/dashboard')}}" class="link-no-under">< Quay lại</a>
 </div>
+<div class="btn-group me-2 mb-4">
+            <form action="{{URL::to('/admin/xuatexcelthang')}}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="month" value="{{$getMonth}}">
+                <input type="hidden" name="year" value="{{$getYear}}">
+                <input type="submit" value="Xuất thống kê d.thu trong tháng này" class="btn btn-sm btn-secondary d-flex align-items-center gap-1">
+            </form>
+          </div>
     <div>
         <h4>Doanh thu {{$getMonth}}/{{$getYear}}</h4>   
     </div>
