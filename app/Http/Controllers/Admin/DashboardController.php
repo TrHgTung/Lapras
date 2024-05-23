@@ -142,7 +142,7 @@ class DashboardController extends Controller
         $this->KiemTraXacThucAdmin();
 
         // LẤY DU lIEU NGÀY
-        $days = DoanhThu::pluck('dayUpdt'); // [18 ; 19]  ==> (array)
+        $days = DoanhThu::pluck('dayUpdt')->unique(); // [18 ; 19]  ==> (array)
  
 
         // LẤY DỮ LIỆU THANH TOÁN
@@ -155,11 +155,11 @@ class DashboardController extends Controller
         $GiaVe_IntConvert = array_map('intval', $getGiaVe2); // convert String sang Int
         
         // DỮ LIỆU THÁNG DOANH THU
-        $months = DoanhThu::pluck('monthUpdt'); // => array
+        $months = DoanhThu::pluck('monthUpdt')->unique(); // => array
 
 
         // DỮ LIỆU NĂM DOANH THU
-        $years = DoanhThu::pluck('yearUpdt');  // => array
+        $years = DoanhThu::pluck('yearUpdt')->unique();  // => array
 
 
         return view('Admin.Components.DashboardSelection', compact('days','months', 'years', 'GiaVe_IntConvert'));
@@ -187,7 +187,7 @@ class DashboardController extends Controller
 
         // DỮ LIỆU ĐỂ RENDER BIỂU ĐỒ
         $dataBieuDo = [
-            // 'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            //  'labels' => ['17', '18', '19', '20', '21', '22', '23 (Hôm nay)'],
             'labels' => $getDay,
             'datasets' => [
                 [
@@ -195,7 +195,7 @@ class DashboardController extends Controller
                     'backgroundColor' => 'rgba(255,99,132,0.2)',
                     'borderColor' => 'rgba(255,99,132,1)',
                     'borderWidth' => 1,
-                    // 'data' => [65, 59, 80, 81, 56, 55, 40],
+                    // 'data' => [65000, 59000, 80000, 81000, 56000, 55700, 40000],
                     'data' => $GiaVe_IntConvert,
                 ]
             ],

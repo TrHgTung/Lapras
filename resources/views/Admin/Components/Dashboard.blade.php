@@ -1,11 +1,18 @@
 @extends('Admin.layout')
 @section('content')
-
-<div>
-    <h4>Doanh thu {{$getMonth}}/{{$getYear}}</h4>   
+<div class="mb-4 link-no-under">
+    <a href="{{URL::to('/admin/dashboard')}}" class="link-no-under">< Quay lại</a>
 </div>
-<div style="width: 75%;">
+    <div>
+        <h4>Doanh thu {{$getMonth}}/{{$getYear}}</h4>   
+    </div>
+    <div style="width: 75%;">
         <canvas id="myChart"></canvas>
+    </div>
+    <div>
+        <p><b>Chú thích:</b></p>
+        <p><i>- Trục hoành:</i> Ngày</p>
+        <p><i>- Trục tung:</i> Tổng Doanh thu (VND)</p>
     </div>
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
