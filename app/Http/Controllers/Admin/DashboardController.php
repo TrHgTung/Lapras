@@ -142,7 +142,7 @@ class DashboardController extends Controller
         $this->KiemTraXacThucAdmin();
 
         // LẤY DU lIEU NGÀY
-        $getDay = DoanhThu::pluck('dayUpdt'); // [18 ; 19]  ==> (array)
+        $days = DoanhThu::pluck('dayUpdt'); // [18 ; 19]  ==> (array)
  
 
         // LẤY DỮ LIỆU THANH TOÁN
@@ -157,12 +157,33 @@ class DashboardController extends Controller
         // DỮ LIỆU THÁNG DOANH THU
         $months = DoanhThu::pluck('monthUpdt'); // => array
 
-        $getOneMonth = $months[0];
 
         // DỮ LIỆU NĂM DOANH THU
         $years = DoanhThu::pluck('yearUpdt');  // => array
 
-        $getOneYear = $years[0];
+
+        return view('Admin.Components.DashboardSelection', compact('days','months', 'years', 'GiaVe_IntConvert'));
+        // return dd($a);
+    }
+
+    public function ShowChart( Request $req){
+        $this->KiemTraXacThucAdmin();
+
+        // LẤY DỮ LIỆU TỪ REQUEST
+        $getMonth = $req->month;
+        $getYear = $req->year;
+
+        // LLẤY DỮ LIỆU NGÀY
+        $getDay = DoanhThu::where('monthUpdt', $getMonth)->where('yearUpdt', $getYear)->pluck('dayUpdt');
+
+        // LẤY DỮ LIỆU THANH TOÁN
+        $getGiaVe = DoanhThu::where('monthUpdt', $getMonth)->where('yearUpdt', $getYear)->pluck('giave');
+        // $getGiaVe_count = $getGiaVe->count();
+        $GiaVe_IntConvert = [];
+
+        $getGiaVe2 = $getGiaVe->toArray(); // Chuyển collection về mảng
+
+        $GiaVe_IntConvert = array_map('intval', $getGiaVe2); // convert String sang Int
 
         // DỮ LIỆU ĐỂ RENDER BIỂU ĐỒ
         $dataBieuDo = [
@@ -180,12 +201,8 @@ class DashboardController extends Controller
             ],
            
         ];
-        // $a = [];
-        // $a[0] = Carbon::now()->day;
-        // $a[1] = Carbon::now()->month;
-        // $a[2] = Carbon::now()->year;
-        return view('Admin.Components.Dashboard', compact('dataBieuDo', 'getOneMonth', 'getOneYear'));
-        // return dd($a);
+
+        return view('Admin.Components.Dashboard', compact('dataBieuDo', 'getMonth', 'getYear'));
     }
 
     public function QuanLyChuyen(){

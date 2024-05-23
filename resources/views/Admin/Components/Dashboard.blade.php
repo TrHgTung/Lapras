@@ -2,7 +2,7 @@
 @section('content')
 
 <div>
-    <h4>Doanh thu {{$getOneMonth}}/{{$getOneYear}}</h4>
+    <h4>Doanh thu {{$getMonth}}/{{$getYear}}</h4>   
 </div>
 <div style="width: 75%;">
         <canvas id="myChart"></canvas>
@@ -22,7 +22,7 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Biểu đồ doanh thu tháng {{$getOneMonth}}/{{$getOneYear}}' // Tiêu đề của biểu đồ
+                        text: 'Biểu đồ doanh thu tháng {{$getMonth}}/{{$getYear}}' // Tiêu đề của biểu đồ
                     }
                 }
             }

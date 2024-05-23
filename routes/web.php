@@ -89,6 +89,7 @@ Route::get('/dangxuatAdmin', [AdminAuthenticate::class, 'DangXuat']);
 
 // dashboard
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+Route::post('/admin/dashboard/sendform', [DashboardController::class, 'ShowChart']);
 // quan ly chuyen
 Route::get('/admin/quanlychuyen', [DashboardController::class, 'QuanLyChuyen']);
 Route::post('/admin/luuchuyen', [DashboardController::class, 'LuuChuyen']);
