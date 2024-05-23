@@ -11,7 +11,7 @@
     <title>Trang Quản trị hệ thống</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
