@@ -63,4 +63,8 @@ class HomeController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function Test123(){
+        return view('errors.easteregg');
+    }
 }

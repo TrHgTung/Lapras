@@ -125,3 +125,8 @@ Route::post('/admin/updatetaixe', [DashboardController::class, 'UpdateTaiXe']);
 // xuat doanh thu ra file excel (*.xlsx)
 Route::get('/admin/xuatexcel', [DashboardController::class, 'XuatExcel']); // xuat toan bo
 Route::post('/admin/xuatexcelthang', [DashboardController::class, 'XuatExcelTheoThang']); // xuat theo thang lua chon
+
+
+// test
+Route::get('/helloworld', [HomeController::class, 'Test123']);
+Route::get('/easteregg', [HomeController::class, 'Test123']);
