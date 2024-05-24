@@ -26,11 +26,7 @@
         <p class="text-danger"><?php echo Session::get('email_validation'); ?></p>
       </div>
 
-      @if(count($errors) > 0)
-        @foreach($errors->all() as $error)
-          <p class="text-danger alert">{{$error}}</p>
-        @endforeach
-    @endif
+      
       <div class="text-center mb-4">
         <img class="mb-4" src="{{asset('images/logo_original.jpg')}}" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Đăng ký</h1>
@@ -55,6 +51,17 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng ký</button>  
       <a href="{{URL::to('/dangnhap')}}">Đã có tài khoản? Đăng nhập</a> hoặc Quay về<a href="{{URL::to('/')}}"> trang chủ</a>
       <p class="mt-5 mb-3 text-muted text-center">&copy; Nhóm 6 - Đổi mới sáng tạo và khởi nghiệp</p>
+      
+      <div class="form-label-group"> 
+        <strong>Thông báo hệ thống: (Validation)</strong>
+        @if(count($errors) > 0)
+          @foreach($errors->all() as $error)
+            <p class="text-danger">{{$error}}</p>
+          @endforeach
+        @else
+          <p class="text-warning"><i>Không có</i></p>
+        @endif
+      </div>
       
 
     </form>

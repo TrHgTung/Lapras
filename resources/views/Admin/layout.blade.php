@@ -251,7 +251,7 @@
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{{URL::to('/admin/dashboard')}}">
                 <!-- <svg class="bi"><use xlink:href="#house-fill"/></svg> -->
-                Doanh thu
+                Doanh thu (Session_forget_success_admin_added)
               </a>
             </li>
             <li class="nav-item">

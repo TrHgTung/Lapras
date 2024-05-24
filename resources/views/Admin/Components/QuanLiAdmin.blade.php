@@ -77,7 +77,19 @@
             <div class="text-center mb-3 mt-2 text-success">
                 <?php echo Session::get('success_admin_added'); ?>      
             </div>
-
+            <div class="form-label-group"> 
+        <strong>Thông báo hệ thống: (Validation)</strong>
+        @if(count($errors) > 0)
+          @foreach($errors->all() as $error)
+            <p class="text-danger">{{$error}}</p>
+          @endforeach
+        @else
+          <p class="text-warning"><i>Không có</i></p>
+        @endif
+      </div>
+      <div class="text-center mb-4">
+        <p class="text-danger"><?php echo Session::get('email_validation'); ?></p>
+      </div>
             <input type="hidden" name="is_active" value="1">
             <div class="form-label-group mt-3">
                 <label for="inputName">Họ Tên</label>

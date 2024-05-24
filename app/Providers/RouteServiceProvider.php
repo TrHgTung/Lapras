@@ -47,7 +47,7 @@ class RouteServiceProvider extends ServiceProvider
             if(app()->isLocal()){
                 return;
             }
-            return Limit::perMinute(2)->by($request->user()?->id ?: $request->ip());
+            return Limit::perMinute(3)->by($request->user()?->id ?: $request->ip());
         });
     }
 }

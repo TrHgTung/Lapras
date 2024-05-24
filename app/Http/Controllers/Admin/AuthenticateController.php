@@ -8,6 +8,8 @@ use DB;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Admin;
+use App\Http\Requests\Admin\AdminRegistrationValidation;
+
 
 class AuthenticateController extends Controller
 {
@@ -69,26 +71,43 @@ class AuthenticateController extends Controller
 
     public function ViewThemAdmin(){
         $this->KiemTraXacThucAdmin();
+        Session::forget('admin_email_validation');
+       
         $getAdmin = Admin::all();
         return view('Admin.Components.QuanLiAdmin')->with('getAdmin', $getAdmin);
     }
 
-    public function ThemAdmin(Request $req){
+    public function ThemAdmin(AdminRegistrationValidation $req){
         $this->KiemTraXacThucAdmin();
-        $data = array();
+        $emailInput = $req->email;
+        $getAllAdminEmail = Admin::pluck('email');
 
-        $data['is_active'] = $req->is_active;
-        $data['name'] = $req->name;
-        $data['email'] = $req->email;
-        $data['password'] = ($req->password);
-        $data['is_master'] = '0';
+        $emailExists = $getAllAdminEmail->contains($emailInput); // kiem tra email input da ton tai hay chua
 
-        $success_admin_added = "Tài khoản đã được thêm mới thành công";
-        Session::put('success_admin_added', $success_admin_added);
+        if(!$emailExists){
+            $data = array();
 
-        $user = DB::table('admin')->insertGetId($data);
+            $data['is_active'] = $req->is_active;
+            $data['name'] = $req->name;
+            $data['email'] = $req->email;
+            $data['password'] = ($req->password);
+            $data['is_master'] = '0';
 
-        return Redirect::to('/admin/quanlyadmin');
+            $success_admin_added = "Tài khoản đã được thêm mới thành công";
+            Session::put('success_admin_added', $success_admin_added);
+
+            $user = DB::table('admin')->insertGetId($data);
+
+            return Redirect::to('/admin/quanlyadmin');
+        }
+        else{
+            $validationMsg = "Email đã tồn tại";
+            Session::put('admin_email_validation', $validationMsg);
+
+            return Redirect::to('/admin/quanlyadmin');
+        }
+        
+        
     }
 
     public function DisableAdminAccount(Request $req){

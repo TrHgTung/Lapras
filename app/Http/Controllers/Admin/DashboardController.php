@@ -146,6 +146,8 @@ class DashboardController extends Controller
     public function index(){
         $this->KiemTraXacThucAdmin();
 
+        Session::forget('admin_email_validation');
+        Session::forget('success_admin_added');
         // LẤY DU lIEU NGÀY
         $days = DoanhThu::pluck('dayUpdt')->unique(); // [18 ; 19]  ==> (array)
  

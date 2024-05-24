@@ -7,7 +7,7 @@ use DB;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
-// use App\Http\Requests\EmailCheckRequest;
+use App\Http\Requests\UserRegistrationValidation;
 
 class AuthenticateController extends Controller
 {
@@ -17,7 +17,7 @@ class AuthenticateController extends Controller
         return view('DangKy');
     }
 
-    public function DangKy(Request $req){
+    public function DangKy(UserRegistrationValidation $req){
         //Session::forget('email_validation');
         $emailInput = $req->email;
         $getAllUserEmail = User::pluck('email');
@@ -27,11 +27,11 @@ class AuthenticateController extends Controller
 
         if(!$emailExists){ // neu email chua ton tai -> OK
             // validation
-            $this->validate($req, [
-                'name' => 'required|max:30|min:2',
-                'email' => 'required|max:50|min:5',
-                'password' => 'required|max:50|min:6',
-            ]);
+            // $this->validate($req, [
+            //     'name' => 'required|max:30|min:2',
+            //     'email' => 'required|max:50|min:5',
+            //     'password' => 'required|max:50|min:6',
+            // ]);
 
             $data = array();
 
