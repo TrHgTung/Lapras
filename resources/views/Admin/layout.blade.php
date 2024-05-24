@@ -218,7 +218,14 @@
 </svg>
 
 <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Admin: <?php echo Session::get('admin_email') ?></a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Admin: <?php $admin_email =  Session::get('admin_email');
+    if($admin_email == 'admin@mail.com'){
+      echo '<p class="text-warning">'.$admin_email.' - <i>Bạn đã đăng nhập bằng tài khoản Master. Bạn đang sở hữu toàn quyền của hệ thống.</i></p>';
+    }
+    else{
+      echo $admin_email;
+    }
+  ?></a>
 
   <ul class="navbar-nav flex-row d-md-none">
     <li class="nav-item text-nowrap">

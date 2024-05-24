@@ -29,8 +29,8 @@ class AuthenticateController extends Controller
         $data = array();
 
         $email = $req->email;
-        // $password = md5($req->password); // md5 hash
-        $password = ($req->password);
+        $password = md5($req->password); // md5 hash
+       // $password = ($req->password);
 
         $result = DB::table('admin')->where('email', $email)->where('password', $password)->where('is_active','1')->first();
         $result_check_banned_account = DB::table('admin')->where('email', $email)->where('password', $password)->where('is_active','0')->first();
@@ -90,8 +90,18 @@ class AuthenticateController extends Controller
             $data['is_active'] = $req->is_active;
             $data['name'] = $req->name;
             $data['email'] = $req->email;
-            $data['password'] = ($req->password);
-            $data['is_master'] = '0';
+
+            $emailRequest = $req->email;
+
+            if( $emailRequest == 'admin@mail.com' || $emailRequest == 'hoangtung@mail.com'){ // neu them admin co mail nay thi se auto set Master
+                $data['is_master'] = '1';
+            }
+            else{
+                $data['is_master'] = '0';
+            }
+
+            $data['password'] = md5($req->password);
+            
 
             $success_admin_added = "Tài khoản đã được thêm mới thành công";
             Session::put('success_admin_added', $success_admin_added);

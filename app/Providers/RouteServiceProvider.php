@@ -28,7 +28,7 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
         RateLimiter::for('web', function (Request $request) {
-            return Limit::perMinute(5)->response(function() {
+            return Limit::perMinute(50)->response(function() {
                 return Redirect('/youdontwannacomehere');
             });
         });
@@ -43,11 +43,18 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     protected function configureRateLimiting(): void{
-        RateLimiter::for('customRateLim', function (Request $request) {
+        RateLimiter::for('CustomRateLim', function (Request $request) {
             if(app()->isLocal()){
                 return;
             }
-            return Limit::perMinute(3)->by($request->user()?->id ?: $request->ip());
+            return Limit::perMinute(50)->by($request->user()?->id ?: $request->ip());
         });
+        
+        // RateLimiter::for('adminCustomRateLim', function (Request $request) {
+        //     if(app()->isLocal()){
+        //         return;
+        //     }
+        //     return Limit::perMinute(30)->by($request->user()?->id ?: $request->ip());
+        // });
     }
 }

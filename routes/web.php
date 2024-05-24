@@ -32,11 +32,11 @@ Route::post('/khoiphucPost', [HomeController::class, 'KhoiPhucTK']);
 
 // Dang ky tai khoan
 Route::get('/dangky', [AuthenticateController::class, 'ViewDangKy']);
-Route::post('/dangkyPost', [AuthenticateController::class, 'DangKy'])->middleware('throttle:customRateLim');
+Route::post('/dangkyPost', [AuthenticateController::class, 'DangKy'])->middleware('throttle:CustomRateLim');
 
 // Dang nhap tai khoan
 Route::get('/dangnhap', [AuthenticateController::class, 'ViewDangNhap']);
-Route::post('/dangnhapPost', [AuthenticateController::class, 'DangNhap'])->middleware('throttle:5,1');
+Route::post('/dangnhapPost', [AuthenticateController::class, 'DangNhap']);
 
 // custom error (429 limit)
 Route::get('/youdontwannacomehere', function(){
@@ -82,7 +82,7 @@ Route::get('/admin', [BaseController::class, 'main']);
 
 // Dang nhap tai khoan
 Route::get('/admin/dangnhap', [AdminAuthenticate::class, 'ViewDangNhap']);
-Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap'])->middleware('throttle:customRateLim');
+Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap'])->middleware('throttle:CustomRateLim');
 
 // dang xuat
 Route::get('/dangxuatAdmin', [AdminAuthenticate::class, 'DangXuat']);
@@ -95,7 +95,7 @@ Route::get('/admin/quanlychuyen', [DashboardController::class, 'QuanLyChuyen']);
 Route::post('/admin/luuchuyen', [DashboardController::class, 'LuuChuyen']);
 // them admin
 Route::get('/admin/quanlyadmin', [AdminAuthenticate::class, 'ViewThemAdmin']);
-Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin'])->middleware('throttle:customRateLim');
+Route::post('/admin/themadmin', [AdminAuthenticate::class, 'ThemAdmin'])->middleware('throttle:CustomRateLim');
 Route::post('/admin/disableadminaccount', [AdminAuthenticate::class, 'DisableAdminAccount']); //disable admin account
 Route::post('/admin/reactivateadminaccount', [AdminAuthenticate::class, 'ReActivateAdminAccount']); //reactivate admin account
 // quan ly User
