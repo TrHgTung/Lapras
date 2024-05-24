@@ -14,6 +14,7 @@ use PHPMailer\PHPMailer\Exception;
 class HomeController extends Controller
 {
     public function index(){
+        Session::forget('email_validation');
         // Feedback::all();
         $getFeedback = DB::table('feedback')->limit(10)->get(); // chỉ lấy 10 item
         return view('TrangChu')->with('getFeedback', $getFeedback);

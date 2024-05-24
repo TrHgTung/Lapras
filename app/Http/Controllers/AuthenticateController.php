@@ -6,29 +6,56 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
+// use App\Http\Requests\EmailCheckRequest;
 
 class AuthenticateController extends Controller
 {
     // dang ky
     public function ViewDangKy(){
+        
         return view('DangKy');
     }
 
     public function DangKy(Request $req){
-        $data = array();
+        //Session::forget('email_validation');
+        $emailInput = $req->email;
+        $getAllUserEmail = User::pluck('email');
 
-        $data['is_active'] = $req->is_active;
-        $data['name'] = $req->name;
-        $data['email'] = $req->email;
-        $data['password'] = md5($req->password);
+        $emailExists = $getAllUserEmail->contains($emailInput); // kiem tra email input da ton tai hay chua
 
-        $user = DB::table('users')->insertGetId($data);
 
-        return Redirect::to('/dangnhap');
+        if(!$emailExists){ // neu email chua ton tai -> OK
+            // validation
+            $this->validate($req, [
+                'name' => 'required|max:30|min:2',
+                'email' => 'required|max:50|min:5',
+                'password' => 'required|max:50|min:6',
+            ]);
+
+            $data = array();
+
+            $data['is_active'] = $req->is_active;
+            $data['name'] = $req->name;
+            $data['email'] = $req->email;
+            $data['password'] = md5($req->password);
+
+            $user = DB::table('users')->insertGetId($data);
+
+            return Redirect::to('/dangnhap');
+        }
+        else{
+            $validationMsg = "Email đã tồn tại";
+            Session::put('email_validation', $validationMsg);
+
+            return Redirect::to('/dangky');
+        }
+
     }
 
     // dang nhap 
     public function ViewDangNhap(){
+        Session::forget('email_validation');
         return view('DangNhap');
     }
 

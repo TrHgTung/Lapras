@@ -23,30 +23,39 @@
     <form class="form-signin" method="post" action="{{URL::to('/dangkyPost')}}">
       {{ csrf_field() }}
       <div class="text-center mb-4">
+        <p class="text-danger"><?php echo Session::get('email_validation'); ?></p>
+      </div>
+
+      @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+          <p class="text-danger alert">{{$error}}</p>
+        @endforeach
+    @endif
+      <div class="text-center mb-4">
         <img class="mb-4" src="{{asset('images/logo_original.jpg')}}" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Đăng ký</h1>
         <p>Vui lòng đăng ký để trải nghiệm các dịch vụ!</p>
       </div>
   <input type="hidden" name="is_active" value="1">
       <div class="form-label-group">
-        <input type="text" id="inputName" class="form-control" placeholder="Nguyễn Văn A" name="name" required autofocus>
+        <input type="text" id="inputName" class="form-control" placeholder="Nguyễn Văn A" name="name"  autofocus>
         <label for="inputName">Họ và tên</label>
       </div>
 
       <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="nguyenvana@example.com" name="email" required>
+        <input type="email" id="inputEmail" class="form-control" placeholder="nguyenvana@example.com" name="email" >
         <label for="inputEmail">Email</label>
       </div>
 
       <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="***********" name="password" required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="***********" name="password" >
         <label for="inputPassword">Mật khẩu</label>
       </div>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng ký</button>  
       <a href="{{URL::to('/dangnhap')}}">Đã có tài khoản? Đăng nhập</a> hoặc Quay về<a href="{{URL::to('/')}}"> trang chủ</a>
       <p class="mt-5 mb-3 text-muted text-center">&copy; Nhóm 6 - Đổi mới sáng tạo và khởi nghiệp</p>
-    
+      
 
     </form>
 
