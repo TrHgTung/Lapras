@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TuyenXe;
@@ -192,10 +193,54 @@ class DashboardController extends Controller
 
         $GiaVe_IntConvert = array_map('intval', $getGiaVe2); // convert String sang Int
 
+        $revenueData  = DoanhThu::where('monthUpdt', $getMonth)->where('yearUpdt', $getYear)->select('giave', 'dayUpdt')->get();
+
+        // Mảng để lưu tổng doanh thu của mỗi ngày
+        $dailyRevenue = [];
+
+        // Tính tổng doanh thu của từng ngày
+        foreach ($revenueData as $entry) {
+            $day = $entry['dayUpdt'];
+            $revenue = $entry['giave'];
+            
+            // Kiểm tra nếu ngày đó chưa tồn tại trong mảng thì khởi tạo
+            if (!isset($dailyRevenue[$day])) {
+                $dailyRevenue[$day] = 0;
+            }
+            
+            // Cộng doanh thu vào ngày tương ứng
+            $dailyRevenue[$day] += $revenue;
+        }
+
+        $dataBieuDo = array();
+
+        // Lấy kết quả
+        foreach ($dailyRevenue as $day => $totalRevenue) {
+            echo "Ngày $day: $totalRevenue<br>";
+            
+            $dataBieuDo = [
+                'labels' => $day,
+                'datasets' => [
+                    [
+                        'label' => 'Tổng Doanh thu (VND)',
+                        'backgroundColor' => 'rgba(255,99,132,0.2)',
+                        'borderColor' => 'rgba(255,99,132,1)',
+                        'borderWidth' => 1,
+                        'data' => $totalRevenue,
+                    ]
+                ],
+               
+            ];
+        }
+        
+        $convertToCollection = collect($dailyRevenue);
+        // Tách keys và values
+        $getActualDay = $convertToCollection->keys()->toArray();
+        $getActualGiaVe = $convertToCollection->values()->toArray();
         // DỮ LIỆU ĐỂ RENDER BIỂU ĐỒ
         $dataBieuDo = [
             //  'labels' => ['17', '18', '19', '20', '21', '22', '23 (Hôm nay)'],
-            'labels' => $getDay,
+            'labels' => $getActualDay,
             'datasets' => [
                 [
                     'label' => 'Tổng Doanh thu (VND)',
@@ -203,13 +248,14 @@ class DashboardController extends Controller
                     'borderColor' => 'rgba(255,99,132,1)',
                     'borderWidth' => 1,
                     // 'data' => [65000, 59000, 80000, 81000, 56000, 55700, 40000],
-                    'data' => $GiaVe_IntConvert,
+                    'data' => $getActualGiaVe,
                 ]
             ],
            
         ];
 
-        return view('Admin.Components.Dashboard', compact('dataBieuDo', 'getMonth', 'getYear'));
+        // return dd($getActualDay);
+        return view('Admin.Components.Dashboard', compact('getActualDay','getActualGiaVe', 'dataBieuDo', 'getMonth', 'getYear'));
     }
 
     // Xuat tat ca Doanh thu ra Excel

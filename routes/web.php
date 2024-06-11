@@ -82,7 +82,8 @@ Route::get('/admin', [BaseController::class, 'main']);
 
 // Dang nhap tai khoan
 Route::get('/admin/dangnhap', [AdminAuthenticate::class, 'ViewDangNhap']);
-Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap'])->middleware('throttle:CustomRateLim');
+// Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap'])->middleware('throttle:CustomRateLim');
+Route::post('/admin/dangnhapPost', [AdminAuthenticate::class, 'DangNhap']);
 
 // dang xuat
 Route::get('/dangxuatAdmin', [AdminAuthenticate::class, 'DangXuat']);

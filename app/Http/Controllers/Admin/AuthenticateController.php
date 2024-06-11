@@ -48,7 +48,7 @@ class AuthenticateController extends Controller
             return Redirect::to('/admin/dangnhap');
         }
         else{
-            // Session::put('msg', 'Sai thông tin đăng nhập!');
+            Session::put('admin_incorrect_auth_msg', 'Sai thông tin đăng nhập!');
             return Redirect::to('/admin/dangnhap');
         }
 

@@ -28,7 +28,8 @@
         <p>Phân quyền quản trị</p>
       </div>
       <div class="text-center mb-3 mt-2 text-danger">
-        <?php echo Session::get('message_ban_notify'); ?>      
+        <?php echo Session::get('message_ban_notify');
+              echo Session::get('admin_incorrect_auth_msg'); ?>
       </div>
 
       <div class="form-label-group">
