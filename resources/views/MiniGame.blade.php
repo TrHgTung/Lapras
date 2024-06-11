@@ -150,6 +150,14 @@ const spinButton = document.querySelector('.spin-button');
 
 let spinning = false;
 
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.onkeydown = function(e) {
+  if (e.keyCode == 123) {
+    alert('Phím F12 không được phép thực thi!');
+    e.preventDefault();
+  }
+};
+
 function spinWheel() {
   if (spinning) return;
   spinning = true;
