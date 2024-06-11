@@ -8,10 +8,10 @@
     <link rel="icon" href="{{asset('images/logo_original.jpg')}}">
 
 <!-- Bootstrap core CSS -->
-<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{asset('bootstrap4/bootstrap.min.css')}}" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="https://getbootstrap.com/docs/4.0/examples/product/product.css" rel="stylesheet">
+<link href="{{asset('bootstrap4/product.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('alertify/css/alertify.css')}}">
     <link rel="stylesheet" href="{{asset('alertify/css/alertify.min.css')}}">
     <link rel="stylesheet" href="{{asset('alertify/css/alertify.rtl.css')}}">

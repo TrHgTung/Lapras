@@ -215,24 +215,34 @@ class DashboardController extends Controller
         $dataBieuDo = array();
 
         // Lấy kết quả
-        foreach ($dailyRevenue as $day => $totalRevenue) {
-            echo "Ngày $day: $totalRevenue<br>";
+        // foreach ($dailyRevenue as $day => $totalRevenue) {
+        //     //echo "Ngày $day: $totalRevenue<br>";
             
-            $dataBieuDo = [
-                'labels' => $day,
-                'datasets' => [
-                    [
-                        'label' => 'Tổng Doanh thu (VND)',
-                        'backgroundColor' => 'rgba(255,99,132,0.2)',
-                        'borderColor' => 'rgba(255,99,132,1)',
-                        'borderWidth' => 1,
-                        'data' => $totalRevenue,
-                    ]
-                ],
+        //     $dataBieuDo = [
+        //         'labels' => $day,
+        //         'datasets' => [
+        //             [
+        //                 'label' => 'Tổng Doanh thu (VND)',
+        //                 'backgroundColor' => 'rgba(255,99,132,0.2)',
+        //                 'borderColor' => 'rgba(255,99,132,1)',
+        //                 'borderWidth' => 1,
+        //                 'data' => $totalRevenue,
+        //             ]
+        //         ],
                
-            ];
-        }
+        //     ];
+        // }
+
+
         
+        // Dữ liệu xử lí ra được:
+        // json [
+        //     "18" => "190000",
+        //     "19" => "885000"
+        // ]
+        // Solution: Chuyển thành collection --> tách key (g.trị bên trái) và value (g.trị bên phải)
+        // vào 2 biến riêng biệt
+        // Dùng 2 biến này để xử lí biểu đồ
         $convertToCollection = collect($dailyRevenue);
         // Tách keys và values
         $getActualDay = $convertToCollection->keys()->toArray();

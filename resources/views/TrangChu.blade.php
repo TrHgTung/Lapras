@@ -13,10 +13,10 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('bootstrap4/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/4.0/examples/product/product.css" rel="stylesheet">
+    <link href="{{asset('bootstrap4/product.css')}}" rel="stylesheet">
   </head>
 
   <body>

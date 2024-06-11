@@ -10,13 +10,11 @@
 
     <title>Đăng ký tài khoản</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/floating-labels/">
-
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('bootstrap4/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/4.0/examples/floating-labels/floating-labels.css" rel="stylesheet">
+    <link href="{{asset('bootstrap4/floating-labels.css')}}" rel="stylesheet">
   </head>
 
   <body>
