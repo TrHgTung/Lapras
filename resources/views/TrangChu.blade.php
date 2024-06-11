@@ -27,6 +27,7 @@
           <img src="{{asset('images/logo.jpg')}}" alt="" srcset="" width="50px" height="50px">
         </a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/lichdatxe')}}">Xem lịch đặt</a>
+        <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/minigame')}}">Xả Stress</a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/khoiphuctk')}}" target="_blank">Khôi phục t.khoản</a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/phanhoi')}}">Liên hệ và phản hồi</a>
         <a class="py-2 d-none d-md-inline-block" href="{{URL::to('/giohang')}}">Xem tuyến đã đặt</a>

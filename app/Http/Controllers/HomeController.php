@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -67,5 +68,12 @@ class HomeController extends Controller
 
     public function Test123(){
         return view('errors.easteregg');
+    }
+
+    public function MiniGame(){
+        $initPromoCode = "PROMO".str_replace("-", "", (string)rand(11111,9999).(string)Carbon::now()->toDateString());
+        
+        //return dd($initPromoCode);
+        return view('MiniGame', compact('initPromoCode'));
     }
 }
