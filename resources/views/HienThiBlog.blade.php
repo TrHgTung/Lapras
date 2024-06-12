@@ -10,9 +10,14 @@
     <meta name="generator" content="Hugo 0.122.0">
     <title>Giới thiệu các dịch vụ</title>
     <link rel="icon" href="{{asset('images/logo_original.jpg')}}">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+    <link rel="canonical" href="http://127.0.0.1:4401">
 
     <!-- Day la trang de SEO -->
+    <meta name="description" content="Website Đặt xe uy tín.">
+    <meta name="keywords" content="thương mại điện tử, đặt xe, dịch vụ thương mại">
+    <meta name="robots" content="index, follow">
+    <img src="{{asset('images/logo_original.jpg')}}" alt="web đặt xe thương mại">
+
 
     <link rel="stylesheet" href="{{asset('@docsearch/css@3')}}">
 
