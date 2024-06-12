@@ -29,7 +29,9 @@ use App\Http\Controllers\Admin\UserManagementController as UMController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/khoiphuctk', [HomeController::class, 'KhoiPhucMail']);
 Route::get('/minigame', [HomeController::class, 'MiniGame']);
+Route::get('/blogs', [HomeController::class, 'HienThiBlog']);
 Route::post('/khoiphucPost', [HomeController::class, 'KhoiPhucTK']);
+Route::post('/verify_giftPost', [HomeController::class, 'XacMinhNhanThuong']);
 
 // Dang ky tai khoan
 Route::get('/dangky', [AuthenticateController::class, 'ViewDangKy']);
