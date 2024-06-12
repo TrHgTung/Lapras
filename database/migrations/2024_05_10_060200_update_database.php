@@ -103,6 +103,12 @@ return new class extends Migration
             $table->string('monthUpdt');      
             $table->string('yearUpdt');     
         });
+        Schema::create('Blog', function(Blueprint $table){
+            $table->id();
+            $table->string('TieuDe');
+            $table->string('NoiDung');
+            $table->string('LinkThumbnail');
+        });
     }
 
     /**
