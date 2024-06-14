@@ -13,6 +13,7 @@ class Blog extends Model
         'TieuDe',
         'NoiDung',
         'LinkThumbnail',
+        'status',
     ];
     protected $table = 'Blog';
     public $timestamps = false;

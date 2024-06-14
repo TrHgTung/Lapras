@@ -285,6 +285,12 @@
                 Quản lý khách hàng
               </a>
             </li>         
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="{{URL::to('/admin/quanlyblog')}}">
+                <!-- <svg class="bi"><use xlink:href="#graph-up"/></svg> -->
+                Quản lý Blogs
+              </a>
+            </li>         
          </ul>      
           <hr class="my-3">
           <ul class="nav flex-column mb-auto">

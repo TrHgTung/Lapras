@@ -44,7 +44,7 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
       <a href="{{URL::to('/dangky')}}">Chưa có tài khoản? Đăng ký</a> hoặc Quay về<a href="{{URL::to('/')}}"> trang chủ</a>
 
-      <p class="mt-5 mb-3 text-muted text-center">&copy; Nhóm 6 - Đổi mới sáng tạo và khởi nghiệp</p>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; Hoàng Tùng</p>
     </form>
   </body>
 </html>

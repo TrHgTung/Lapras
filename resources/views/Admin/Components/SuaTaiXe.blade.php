@@ -27,7 +27,7 @@
         <div class="text-center">
             <p>Hoặc bạn có thể nhập hàng loạt với tính năng nhập file Excel (đang phát triển)</p>
         </div>
-            <p class="mt-5 mb-3 text-muted text-center">&copy; Nhóm 6 - Đổi mới sáng tạo và khởi nghiệp</p>
+            <p class="mt-5 mb-3 text-muted text-center">&copy; Hoàng Tùng</p>
         </form>
        
       </div>

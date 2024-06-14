@@ -48,7 +48,7 @@
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng ký</button>  
       <a href="{{URL::to('/dangnhap')}}">Đã có tài khoản? Đăng nhập</a> hoặc Quay về<a href="{{URL::to('/')}}"> trang chủ</a>
-      <p class="mt-5 mb-3 text-muted text-center">&copy; Nhóm 6 - Đổi mới sáng tạo và khởi nghiệp</p>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; Hoàng Tùng</p>
       
       <div class="form-label-group"> 
         <strong>Thông báo hệ thống: (Validation)</strong>

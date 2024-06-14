@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\AuthenticateController as AdminAuthenticate;
 use App\Http\Controllers\Admin\BaseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserManagementController as UMController;
+use App\Http\Controllers\BlogController;
+
 
 
 /*
@@ -125,6 +127,10 @@ Route::post('/admin/xoataixe', [DashboardController::class, 'XoaTaiXe']);
 Route::post('/admin/hieuluctaixe', [DashboardController::class, 'HieuLucTaiXe']);
 Route::get('/admin/suataixe/{id}', [DashboardController::class, 'SuaTaiXe']);
 Route::post('/admin/updatetaixe', [DashboardController::class, 'UpdateTaiXe']);
+// quan ly Blog
+Route::get('/admin/quanlyblog', [BlogController::class, 'BlogView']);
+Route::post('/admin/themblog', [BlogController::class, 'ThemBlog']);
+Route::post('/admin/xoablog', [BlogController::class, 'XoaBlog']);
 
 // xuat doanh thu ra file excel (*.xlsx)
 Route::get('/admin/xuatexcel', [DashboardController::class, 'XuatExcel']); // xuat toan bo

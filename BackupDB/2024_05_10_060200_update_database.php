@@ -108,6 +108,7 @@ return new class extends Migration
             $table->string('TieuDe');
             $table->string('NoiDung');
             $table->string('LinkThumbnail');
+            $table->string('status');
         });
     }
 

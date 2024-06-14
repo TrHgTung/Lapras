@@ -11,6 +11,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use Carbon\Carbon;
+use App\Models\Blog;
+use Illuminate\Support\Collection;
 
 class HomeController extends Controller
 {
@@ -70,8 +72,13 @@ class HomeController extends Controller
         return view('errors.easteregg');
     }
 
+    // public function HienThiBlog(){
+    //     return view('HienThiBlog');
+    // }
     public function HienThiBlog(){
-        return view('HienThiBlog');
+        $getAllBlogs = Blog::all();
+
+        return view('HienThiBlog', compact('getAllBlogs'));
     }
 
     public function MiniGame(){
