@@ -110,6 +110,13 @@ return new class extends Migration
             $table->string('LinkThumbnail');
             $table->string('status');
         });
+        Schema::create('Restoration', function(Blueprint $table){
+            $table->id();
+            $table->string('Email');
+            $table->string('Code');
+            $table->string('InitTimePoint');
+            $table->string('status');
+        });
     }
 
     /**

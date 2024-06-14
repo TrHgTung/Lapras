@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{asset('images/logo_original.jpg')}}">
 
-    <title>Khôi phục Tài khoản</title>
+    <title>Khôi phục mật khẩu</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/floating-labels/">
 
@@ -20,11 +20,11 @@
   </head>
 
   <body>
-    <form class="form-signin" method="post" action="{{URL::to('/khoiphucPost')}}">
+    <form class="form-signin" method="post" action="{{URL::to('/khoiphucMKPost')}}">
       {{ csrf_field() }}
       <div class="text-center mb-4">
         <img class="mb-4" src="{{asset('images/logo_original.jpg')}}" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Phản hồi Khôi phục Tài khoản</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Phản hồi Khôi phục Password</h1>
         <p>Hãy nhập địa chỉ e-mail mà bạn đang dùng để đăng nhập*</p>
         <small>Chúng tôi chỉ giải quyết khi địa chỉ E-mail bạn cung cấp phải thật sự là thuộc về bạn</small>
       </div>

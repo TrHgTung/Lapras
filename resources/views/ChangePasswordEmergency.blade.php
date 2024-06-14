@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{asset('images/logo_original.jpg')}}">
 
-    <title>Khôi phục Tài khoản</title>
+    <title>Nhập mã Khôi phục MK</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/floating-labels/">
 
@@ -20,23 +20,28 @@
   </head>
 
   <body>
-    <form class="form-signin" method="post" action="{{URL::to('/khoiphucPost')}}">
+    <form class="form-signin" method="post" action="{{URL::to('/doiMatKhau')}}">
       {{ csrf_field() }}
       <div class="text-center mb-4">
+        <input type="hidden" name="email" value="<?php echo Session::get('receive_mail'); ?>">
         <img class="mb-4" src="{{asset('images/logo_original.jpg')}}" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Phản hồi Khôi phục Tài khoản</h1>
-        <p>Hãy nhập địa chỉ e-mail mà bạn đang dùng để đăng nhập*</p>
+        <h1 class="h3 mb-3 font-weight-normal">Phản hồi Khôi phục Password</h1>
+        <p>Hãy nhập mã khôi phục mà bạn nhận được trong hộp thư E-mail (<?php echo Session::get('receive_mail'); ?>)*</p>
         <small>Chúng tôi chỉ giải quyết khi địa chỉ E-mail bạn cung cấp phải thật sự là thuộc về bạn</small>
       </div>
 
       <div class="form-label-group">
-        <input type="email" id="Mail" class="form-control" placeholder="" name="receive" required>
-        <label for="Mail">Địa chỉ e-mail khôi phục</label>
+        <input type="text" id="Mail" class="form-control" value="<?php echo Session::get('receive_mail'); ?>" name=""  disabled="disabled" >
+        <label for="Mail">E-mail của bạn</label>  
+      </div>
+
+      <div class="form-label-group">
+        <input type="password" id="password" class="form-control" value="" name="password" required >
+        <label for="password">Thiết lập mật khẩu mới</label>  
       </div>
       
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Gửi yêu cầu khôi phục</button>
-     <div class="mt-3 text-center"><a href="{{URL::to('/')}}" ><< Quay lại Trang chủ << </a></div> 
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Xác thực thay đổi mật khẩu</button>
       <p class="mt-5 mb-3 text-muted text-center">&copy; Hoàng Tùng</p>
     </form>
     

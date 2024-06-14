@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{asset('images/logo_original.jpg')}}">
 
-    <title>Trang chủ - Dự án Nhóm 6</title>
+    <title>Trang chủ - Bộ dự án TMĐT dành cho SV CNTT</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
 

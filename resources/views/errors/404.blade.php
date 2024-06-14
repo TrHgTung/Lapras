@@ -25,7 +25,7 @@
   <div class="mt-3 ms-3">
     <a href="{{URL::to('/')}}" class="link-no-under"> < Quay lại</a>
   </div>
-  <div class="px-3 text-light text-center">
+  <div class="px-3 text-dark text-center">
       <h1>Uh Oh! (404).</h1>
       <p class="lead">Không tìm thấy trang mà bạn yêu cầu. Vui lòng quay lại</p>
       <p class="lead">

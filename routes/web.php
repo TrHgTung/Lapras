@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\UserRestorationController;
 // ADMIN
 use App\Http\Controllers\Admin\AuthenticateController as AdminAuthenticate;
 use App\Http\Controllers\Admin\BaseController;
@@ -32,8 +33,14 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/khoiphuctk', [HomeController::class, 'KhoiPhucMail']);
 Route::get('/minigame', [HomeController::class, 'MiniGame']);
 Route::get('/blogs', [HomeController::class, 'HienThiBlog']);
+Route::get('/khoiphucmatkhau', [UserRestorationController::class, 'KhoiPhucMK']);
+Route::post('/khoiphucMKPost', [UserRestorationController::class, 'KhoiPhucMKPost']);
+Route::get('/khoiphucMK/NhapCodeKP', [UserRestorationController::class, 'NhapCodeGet']);
+Route::post('/khoiphucMK/NhapCodeKPPost', [UserRestorationController::class, 'NhapCodePost']);
 Route::post('/khoiphucPost', [HomeController::class, 'KhoiPhucTK']);
 Route::post('/verify_giftPost', [HomeController::class, 'XacMinhNhanThuong']);
+Route::get('/changePasswordEmergency/{sys_rand}', [UserRestorationController::class, 'ChangePasswordEmergency']);
+Route::post('/doiMatKhau', [UserRestorationController::class, 'DoiMatKhau']);
 
 // Dang ky tai khoan
 Route::get('/dangky', [AuthenticateController::class, 'ViewDangKy']);

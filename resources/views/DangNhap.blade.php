@@ -41,6 +41,9 @@
         <label for="inputPassword">Mật khẩu</label>
       </div>
 
+      <div class="form-label-group">
+        <small>Bạn không nhớ mật khẩu của mình ư? <a href="{{URL::to('/khoiphucmatkhau')}}">Khôi phục mật khẩu</a></small>
+      </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
       <a href="{{URL::to('/dangky')}}">Chưa có tài khoản? Đăng ký</a> hoặc Quay về<a href="{{URL::to('/')}}"> trang chủ</a>
 
