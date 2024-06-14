@@ -24,8 +24,9 @@
       {{ csrf_field() }}
       <div class="text-center mb-4">
         <img class="mb-4" src="{{asset('images/logo_original.jpg')}}" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Phản hồi ý kiến</h1>
-        <p>Chúng tôi luôn lắng nghe ý kiến của bạn</p>
+        <h1 class="h3 mb-3 font-weight-normal">Phản hồi Khôi phục Tài khoản</h1>
+        <p>Hãy nhập địa chỉ e-mail mà bạn đang dùng để đăng nhập*</p>
+        <small>Chúng tôi chỉ giải quyết khi địa chỉ E-mail bạn cung cấp phải thật sự là thuộc về bạn</small>
       </div>
 
       <div class="form-label-group">
