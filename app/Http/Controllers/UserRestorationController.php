@@ -32,8 +32,8 @@ class UserRestorationController extends Controller
             // dieu kien đúng: neu ton tai Email > khoi phuc Dang nhap
             // thiet lap SMTP
 
-            $host_mail = 'tungng14@gmail.com'; // sevr mail cua ban
-            $app_password = 'jozaruuexqgldcwq'; // mat khau email (SMTP)
+            $host_mail = '*********@gmail.com'; // sevr mail cua ban
+            $app_password = '*********'; // mat khau email (SMTP)
 
             $data = array();
 
