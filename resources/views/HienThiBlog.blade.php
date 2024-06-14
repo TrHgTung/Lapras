@@ -218,13 +218,14 @@
       @if($getb->status == '1')
         <div class="col">
           <div class="card shadow-sm">
-            <img src="{{asset('/storage/'.$getb->LinkThumbnail )}}" class="bd-placeholder-img card-img-top" width="100%" height="225" aria-label="{{$getb->TieuDe}}" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{$getb->TieuDe}}</text></img>
+            <img src="{{asset('/storage/'.$getb->LinkThumbnail )}}" class="bd-placeholder-img card-img-top" width="100%" height="225" aria-label="{{$getb->TieuDe}}" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><strong>{{$getb->TieuDe}}</strong></text></img>
             <div class="card-body">
-              <p class="card-text">{{$getb->NoiDung}}.</p>
+              <p class="card-text"><i>{{$getb->NoiDung}}</i>.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Chi tiết</button>
+                  <a href="{{URL::to('/lichdatxe')}}" class="btn btn-sm btn-outline-secondary">Trải nghiệm ngay!</a>
                 </div>
+                <small><i>Yêu cầu đăng nhập!</i></small>
               </div>
             </div>
           </div>

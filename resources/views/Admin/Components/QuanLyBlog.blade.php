@@ -25,7 +25,7 @@
                 <td>{{ $getb->TieuDe }}</td>
                 <td>{{ $getb->NoiDung }}</td>
                 <!-- <td>{{ $getb->LinkThumbnail }}</td> -->
-                <td><img src="{{asset('/storage/'.$getb->LinkThumbnail )}}" alt="{{$getb->TieuDe}}"></td>
+                <td><img src="{{asset('/storage/'.$getb->LinkThumbnail )}}" alt="{{$getb->TieuDe}}" width="60" height="40"></td>
                 <td>
                 
                 <form action="{{URL::to('/admin/xoablog/')}}" method="post">
@@ -45,7 +45,7 @@
       
        <!-- Form them -->
        <div class="mt-5 mb-5">
-        <form class="form-signin" method="post" action="{{URL::to('/admin/themblog')}}">
+        <form class="form-signin" method="post" action="{{URL::to('/admin/themblog')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="text-center mb-4">
                 <img class="mb-4" src="{{asset('images/logo_original.jpg')}}" alt="" width="72" height="72">
@@ -67,7 +67,7 @@
             </div>
             <div class="form-label-group mt-3">
                 <label for="b3">Chọn ảnh</label>
-                <input type="file" class="form-control" id="b3" name="LinkThumbnail" accept=​"image/png, image/jpeg"  />
+                <input type="file" name="LinkThumbnail" class="form-control" id="b3" required>
             </div>
             
             <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Thêm bài</button>

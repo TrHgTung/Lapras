@@ -37,14 +37,14 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
       <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Nhóm 6</h1>
-        <p class="lead font-weight-normal">Đổi mới sáng tạo và khởi nghiệp</p>
-        <a class="btn btn-outline-secondary" href="#" onclick="sayHello()"><?php
+        <h1 class="display-4 font-weight-normal"><strong>WEBDATXE</strong></h1>
+        <p class="lead font-weight-normal">Bộ dự án <i>Thương mại điện tử</i> dành cho sinh viên chuyên ngành Công nghệ phần mềm</p>
+        <a class="btn btn-outline-secondary" href="{{URL::to('/blogs')}}" onclick="sayHello()"><?php
         $ktraNgDung = Session::get('id');
         if($ktraNgDung){
-            echo 'Xin chào '.Session::get('name');
+            echo 'Xin chào '.Session::get('name'). ', nhấn để xem Blog';
         } else{
-            echo 'Xin chào bạn';
+            echo 'Xin chào bạn. Nhấn để xem Blog';
         }
     
     ?></a>
@@ -58,6 +58,7 @@
         <div class="my-3 py-3">
           <h2 class="display-5" style="color:black">Xem lịch các tuyến</h2>
           <p class="lead" style="color:black">Và chọn cho mình ngày phù hợp nhất.</p>
+          <small class="text-dark"><i>Yêu cầu đăng nhập</i></small>
           <a href="{{URL::to('/lichdatxe')}}">
             <button class="btn btn-primary" style="background-color: green;">Xem ngay</button>
           </a>
@@ -68,6 +69,7 @@
         <div class="my-3 p-3">
           <h2 class="display-5">Liên hệ với nhà xe</h2>
           <p class="lead">Giải đáp những thắc mắc của bạn.</p>
+          <small><i>Yêu cầu đăng nhập</i></small>
           <a href="{{URL::to('/phanhoi')}}">
           <button class="btn btn-secondary">Phản hồi</button>
           </a>
@@ -138,7 +140,7 @@
         text: 'Thumbnail'
       });
       function sayHello(){
-        window.alert("Xin chào bạn. Dịch vụ của chúng tôi hi vọng sẽ làm hài lòng bạn")
+        window.alert("Xin chào bạn. Hi vọng chúng tôi sẽ làm hài lòng bạn, nhấn OK để tiếp tục đến Blogs")
       }
     </script>
   </body>

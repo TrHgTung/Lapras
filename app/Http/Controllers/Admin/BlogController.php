@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use Illuminate\Support\Collection;
@@ -32,31 +33,56 @@ class BlogController extends Controller
 
         return view('Admin.Components.QuanLyBlog', compact('getAllBlogs'));
     }
+
     public function ThemBlog(Request $req){
         $this->KiemTraXacThucAdmin();
         $data = array();
 
         $data['TieuDe'] = $req->TieuDe;
         $data['NoiDung'] = $req->NoiDung;
-        $data['LinkThumbnail'] = '/system/test';
         $data['status'] = '1';
+        
+        if ($req->hasFile('LinkThumbnail')) {
+            $getImage = $req->file('LinkThumbnail');
+            $XuLyImgName = $getImage->getClientOriginalName();
+            $XuLyImgExtension = $getImage->getClientOriginalExtension();
 
-        $msg = "Đã thêm thành công";
-        Session::put('success_blog_added', $msg);
-        $user = DB::table('blog')->insertGetId($data);
+            // Lấy phần tên của tệp ảnh (không bao gồm phần mở rộng)
+            $ImgName_NameText = pathinfo($XuLyImgName, PATHINFO_FILENAME);
 
-        return Redirect::to('/admin/quanlyblog');
+            // Tạo tên mới cho tệp ảnh
+            $FinalImgName = 'IMG'.rand(1111,9999).'_'.$ImgName_NameText.'.'.$XuLyImgExtension; // ví dụ: IMG4632_abcxyz.jpg
+
+            // Di chuyển tệp ảnh đến thư mục lưu trữ
+            $getImage->move(public_path('storage'), $FinalImgName);
+
+            // Lưu thông tin vào CSDL
+            $data['LinkThumbnail'] = $FinalImgName;
+            DB::table('blog')->insertGetId($data);
+
+            // thông báo
+            Session::put('success_blog_added', 'Đã thêm thành công');
+
+            // Chuyển hướng
+            return Redirect::to('admin/quanlyblog');
+        } else {
+            // Nếu không có tệp ảnh nào được tải lên, trả về thông báo lỗi
+            // Session::put('err_blog_added', 'Lỗi!');
+            return Redirect::back();
+        }
+
+        // $msg = "Đã thêm thành công";
+        // Session::put('success_blog_added', $msg);
+        // $user = DB::table('blog')->insertGetId($data);
+
+        // return Redirect::to('/admin/quanlyblog');
     }
 
     public function XoaBlog(Request $req){
         $getBlogId = $req->blogId;
-        // $inactive_vehicle_day = ((int)Carbon::now()->day) - 1;
-        // $inactive_vehicle_month = Carbon::now()->month;
-        // $inactive_vehicle_year = Carbon::now()->year;
-        // $inactive_vehicle_time_updt = $inactive_vehicle_day.'/'.$inactive_vehicle_month.'/'.$inactive_vehicle_year;
         $delBlog = Blog::where('id', $getBlogId)->update(array('status' => '0'));
 
-        //$getTuyenXe->delete(); // không nên dùng phương thức delete, vì sẽ không khôi phục được du lieu
+        // không nên dùng phương thức delete, vì sẽ không khôi phục được du lieu
         return Redirect::to('/admin/quanlyblog');
     }
 }
