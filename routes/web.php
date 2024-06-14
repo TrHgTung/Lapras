@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\AuthenticateController as AdminAuthenticate;
 use App\Http\Controllers\Admin\BaseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserManagementController as UMController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Admin\BlogController;
 
 
 
