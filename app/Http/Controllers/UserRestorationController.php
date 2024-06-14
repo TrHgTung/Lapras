@@ -141,7 +141,7 @@ class UserRestorationController extends Controller
         // thiet lap de update du lieu
         $data = array();
         //$data['email'] = $req->email;
-        $data['password'] = $req->password;
+        $data['password'] = md5($req->password);
         $data['is_active'] = '1';
        
         $updtUser = User::where('email', $email)->update($data);
