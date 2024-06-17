@@ -1,8 +1,10 @@
 <h1>LAPRAS - Một hệ thống vận hành nhà xe cơ bản</h1>
 <h2>GIỚI THIỆU</h2>
-<p>Một hệ thống vận hành theo nghiệp vụ 'Xe khách dịch vụ' </p><br>
-    > Role: Khách hàng & Nhà xe <br>
-    > Server-Side Rendering với Laravel<br>
+<p>Một hệ thống vận hành theo nghiệp vụ <i>Xe khách dịch vụ</i> </p>
+
+    Các chủ thể: Khách hàng & Nhà xe
+    Kiến trúc phần mềm: Layered Architecture - Server-Side Rendering - Laravel (MVC)
+
 <h2>CÔNG NGHỆ NỔI BẬT</h2>
 1. <b> Laravel </b>: <br>
 - Tài liệu: https://laravel.com/ <br>
@@ -17,7 +19,9 @@
 <h2>YÊU CẦU PHẦN MỀM</h2>
 1. Đã cài đặt XAMPP (có sẵn MySQL, PHP, Apache, ....) <br>
 2. Kiểm tra PHP đã cài đặt chưa. Mở Command line: chạy lệnh `php --version` , yêu cầu phiên bản PHP phải lớn hơn 8.1 <br>
-    > Nếu chạy lệnh `php --version` trả về lỗi, hãy tự tìm cách để thiết lập biến môi trường Windows cho PHP (Gợi ý từ khóa: set environment variable for windows - https://sebhastian.com/php-not-recognized-command-windows/) <br>
+
+        Nếu chạy lệnh php --version trả về lỗi, hãy tự tìm cách để thiết lập biến môi trường Windows cho PHP (Gợi ý từ khóa: set environment variable for windows)
+
 3. Đã cài đặt Composer (https://getcomposer.org/download/). Composer khi cài đặt phải nhận phiên bản PHP đang có trên máy <br>
 
 <h2>CÁCH SETUP SOURCE</h2>
@@ -27,8 +31,8 @@
 2. Mở command line: cd <tên thư mục chứa source>, chạy lệnh `composer update` (nếu ko được thì `composer install`) <br>
 3. Copy file .env.example thành 1 file mới, và đổi tên file mới này thành .env <br>
 4. Mở file .env mới tạo, tìm tới dòng DB_DATABASE=project và thay thế 'project' thành tên cơ sở dữ liệu được tạo trong MySQL (webdatxe)<br>
-5. chạy lệnh `php artisan key:generate` để tạo khóa truy cập cho localhost (Laravel) <br>
-6. chạy lệnh `php artisan migrate` để ánh xạ từ model lên cơ sở dữ liệu MySQL. Nếu lỗi xảy ra, hãy import file source_laravel.sql trong thư mục BackupDB vào MySQL. <br>
+5. Chạy lệnh `php artisan key:generate` để tạo khóa truy cập cho localhost (Laravel) <br>
+6. Chạy lệnh `php artisan migrate` để ánh xạ từ model lên cơ sở dữ liệu MySQL. Nếu lỗi xảy ra, hãy migrate file `2024_05_10_060200_update_database.php` trong thư mục BackupDB vào MySQL. <br>
     > (Kiểm tra dữ liệu trong CSDL) - Nếu sử dụng cách thức migrate vào CSDL, hãy vào MySQL để thêm một vài dữ liệu test. - Còn nếu import file backup thì không cần <br>
 7. Chạy lệnh `php artisan serve --port 4401`. Lúc này ứng dụng sẽ chạy trên 127.0.0.1:4401, mở trình duyệt và truy cập bằng địa chỉ này <br>
 
@@ -37,4 +41,6 @@
 2. Chạy lệnh `php artisan serve --port 4401`. Lúc này ứng dụng sẽ chạy trên 127.0.0.1:4401, mở trình duyệt và truy cập bằng địa chỉ này <br>
 
 <p>127.0.0.1 chính là địa chỉ localhost</p>
-> <i>Tại sao dự án có tên là Lapras?</i> - Đây là tên của một loài P*kém*n có các đặc tính cũng như chiêu thức thích hợp với việc vận chuyển (Lapras Express)
+
+> <i>Tại sao dự án có tên là Lapras</i>? <br>
+> Đây là tên của một loài Pokémon có các đặc tính cũng như chiêu thức thích hợp với việc vận chuyển (Lapras Express)
