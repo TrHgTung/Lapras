@@ -410,7 +410,7 @@ select {
 								<div class="chatbox-message-profile">
 									<img src="{{asset('images/logo_original.jpg')}}" alt="" class="chatbox-message-image">
 									<div>
-										<h4 class="chatbox-message-name">WEBDATXE</h4>
+										<h4 class="chatbox-message-name">LAPRAS</h4>
 										<p class="chatbox-message-status">Sẽ trả lời bạn sau ít phút (Tính năng chưa hoàn thiện)</p>
 									</div>
 								</div>
@@ -668,7 +668,7 @@ function autoReply() {
 	let message = `
 		<div class="chatbox-message-item received">
 			<span class="chatbox-message-item-text">
-				Cảm ơn bạn đã chat với chúng tôi! WebDatXe sẽ giải đáp thắc mắc của bạn sớm nhất có thể nha!  Hoặc comment liên hệ <a href="https://www.youtube.com/@TungSupport" target="_blank">địa chỉ này</a> để được giải đáp trong vòng thời gian ngắn hơn
+				Cảm ơn bạn đã chat với chúng tôi! Lapras sẽ giải đáp thắc mắc của bạn sớm nhất có thể nha!  Hoặc comment liên hệ <a href="https://www.youtube.com/@TungSupport" target="_blank">địa chỉ này</a> để được giải đáp trong vòng thời gian ngắn hơn
 			</span>
 			<span class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
 		</div>

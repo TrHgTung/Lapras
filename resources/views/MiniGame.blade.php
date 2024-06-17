@@ -105,10 +105,10 @@
             </p>
         </div>
         <div>
-            <p class="text"><small>Nếu may mắn trúng thưởng. Hãy sử dụng mã này bằng cách nhấn nút <i>Xác thực</i> phía dưới, cũng đừng quên chụp màn hình lại và chia sẻ công khai trên <i>Facebook</i> với hashtag <a href="#"><i>#WebDatXe</i></a> nhé!</small></p>
+            <p class="text"><small>Nếu may mắn trúng thưởng. Hãy sử dụng mã này bằng cách nhấn nút <i>Xác thực</i> phía dưới, cũng đừng quên chụp màn hình lại và chia sẻ công khai trên <i>Facebook</i> với hashtag <a href="#"><i>#Lapras</i></a> nhé!</small></p>
             <p class="text">Mã nhận thưởng cá nhân: <strong>{{$initPromoCode}}</strong></p>
-            <small class="text"><i>Bản quyền thuộc về Hoàng Tùng - Đây là một tính năng của WebDatXe</i></small>
-            <p class="text"><a href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/TrHgTung/WebDatXe&hashtag=%23WebDatXe" class="btn btn-sm btn-primary">Chia sẻ lên Facebook</a></p>
+            <small class="text"><i>Bản quyền thuộc về Hoàng Tùng - Đây là một tính năng của Lapras</i></small>
+            <p class="text"><a href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/TrHgTung/Lapras&hashtag=%23Lapras" class="btn btn-sm btn-primary">Chia sẻ lên Facebook</a></p>
         </div>
     </div>
 

@@ -117,7 +117,7 @@ class HomeController extends Controller
         
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'Cảm ơn bạn đã tham gia trò chơi - WebDatXe';
+            $mail->Subject = 'Cảm ơn bạn đã tham gia trò chơi - Từ LaprasSystem';
             $mail->Body    = 'Chúng tôi đã ghi nhận mã phần thưởng ('.$maPhanThuong.') này, với nội dung giải thưởng là <b>'. $contentPhanThuong .'</b><br> Một lần nữa, xin cảm ơn bạn đã tham gia chương trình. <br> <i>Đã gửi tới: '.$receive_mail.'</i>';
             // $mail->AltBody = ;
         

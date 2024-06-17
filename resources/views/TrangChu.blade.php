@@ -37,7 +37,7 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
       <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal"><strong>WEBDATXE</strong></h1>
+        <h1 class="display-4 font-weight-normal"><strong>LAPRAS</strong></h1>
         <p class="lead font-weight-normal">Bộ dự án <i>Thương mại điện tử</i> dành cho sinh viên chuyên ngành Công nghệ phần mềm</p>
         <a class="btn btn-outline-secondary" href="{{URL::to('/blogs')}}" onclick="sayHello()"><?php
         $ktraNgDung = Session::get('id');
