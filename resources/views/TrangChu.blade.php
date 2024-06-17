@@ -37,7 +37,7 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
       <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal"><strong>LAPRAS</strong></h1>
+        <h1 class="display-4 font-weight-normal"><strong>Lapras</strong></h1>
         <p class="lead font-weight-normal">Bộ dự án <i>Thương mại điện tử</i> dành cho sinh viên chuyên ngành Công nghệ phần mềm</p>
         <a class="btn btn-outline-secondary" href="{{URL::to('/blogs')}}" onclick="sayHello()"><?php
         $ktraNgDung = Session::get('id');
@@ -116,11 +116,16 @@
         <div class="col-6 col-md">
           <h5>Giới thiệu</h5>
           <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Web Đặt xe (Hoàng Tùng)</a></li>
+            <li><b>Dự án: </b>Lapras</li>
+            <li><b>Tác giả: </b>github/TrHgTung (Hoàng Tùng)</li>
             
-            <li><a class="text-muted" href="#">Gọi trực tuyến để hỗ trợ d.vụ (<strong>0909 123 456</strong>)</a></li>
+            <li><b>Lưu ý: </b> Các dữ liệu của dự án đều chưa được xác thực, và chỉ phục vụ một mục đích học tập!</li>
           </ul>
         </div>
+      </div>
+      <div>
+        <p><strong>Điều hướng:</strong></p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1959.8209764651622!2d106.68083428383721!3d10.762053257904633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b8a072901%3A0x2fb4502ebd044212!2sHo%20Chi%20Minh%20City%20University%20of%20Education!5e0!3m2!1sen!2s!4v1718623867443!5m2!1sen!2s" width="900" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </footer>
 
