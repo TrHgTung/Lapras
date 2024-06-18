@@ -57,7 +57,6 @@ class HomeController extends Controller
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Cảm ơn bạn đã phản hồi';
             $mail->Body    = 'Chúng tôi sẽ khôi phục lại tài khoản này: '.$receive_mail.'<br> Xin cảm ơn!';
-            // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         
             $mail->send();
             // echo 'Success';
@@ -72,9 +71,6 @@ class HomeController extends Controller
         return view('errors.easteregg');
     }
 
-    // public function HienThiBlog(){
-    //     return view('HienThiBlog');
-    // }
     public function HienThiBlog(){
         $getAllBlogs = Blog::all();
 

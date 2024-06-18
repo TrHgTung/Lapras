@@ -79,7 +79,6 @@ class UserRestorationController extends Controller
                 // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             
                 $mail->send();
-                // echo 'Success';
             } catch (Exception $e) {
                 echo "Message could not be sent.";
             }
@@ -88,12 +87,8 @@ class UserRestorationController extends Controller
             return Redirect::to('/dangky');
         }
 
-        
-
         // return Redirect::to('/khoiphucMK/NhapCodeKP')->with('init_restoreCode',$init_restoreCode)->with('receive_mail', $receive_mail);
         return Redirect::to('/khoiphucMK/NhapCodeKP');
-
-        // return dd($record_TimePoint);
     }
 
     public function NhapCodeGet(){
@@ -114,7 +109,6 @@ class UserRestorationController extends Controller
 
             $url = url('/changePasswordEmergency', ['code' => $sys_rand]);
 
-            // return Redirect::to('/changePasswordEmergency?='. $sys_rand);
             return Redirect::to($url);
             //return dd($url);
         }

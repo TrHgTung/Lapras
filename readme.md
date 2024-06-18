@@ -1,6 +1,9 @@
-<h1>LAPRAS - Một hệ thống vận hành nhà xe cơ bản</h1>
+<h1>Lapras - Một hệ thống vận hành nhà xe cơ bản</h1>
 <h2>GIỚI THIỆU</h2>
+
+<h6>Phiên bản: 1.0</h6>
 <p>Một hệ thống vận hành theo nghiệp vụ <i>Xe khách dịch vụ</i> </p>
+<img src="GioiThieu.jpg">
 
     - Các chủ thể: Khách hàng & Nhà xe
     - Kiến trúc phần mềm: Layered Architecture - Server-Side Rendering - Laravel (MVC)
@@ -36,17 +39,21 @@ Ngoài ra còn có hiển thị thông tin các tuyến xe, tìm kiếm tuyến 
 4. Xem dữ liệu doanh thu (sử dụng ChartJS) và xuất dữ liệu doanh thu (sử dụng PhpSpreadsheet)<br>
 
 <h2>YÊU CẦU TRƯỚC KHI CÀI ĐẶT SOURCE</h2>
+
 1. Trên máy tính (Test/Dev/Server) đã cài đặt XAMPP (có sẵn MySQL, PHP, Apache, ....) <br>
+
 2. Kiểm tra PHP đã cài đặt chưa. Mở Command line: chạy lệnh `php --version` , yêu cầu phiên bản PHP phải lớn hơn 8.2 <br>
 
-        Nếu chạy lệnh php --version trả về lỗi, hãy tự tìm cách để thiết lập biến môi trường Windows cho PHP (Gợi ý từ khóa: set environment variable for windows)
+    > Nếu chạy lệnh `php --version` trả về lỗi, hãy tự tìm cách để thiết lập biến môi trường Windows cho PHP (Gợi ý từ khóa: set environment variable for windows)<br>
 
 3. Đã cài đặt Composer (https://getcomposer.org/download/). Composer khi cài đặt phải nhận phiên bản PHP đang có trên máy <br>
+4. Các bạn hãy tự thiết lập lại các cấu hình để sử dụng SMTP với Google App Password (trong các Controllers: `FeedbackController`, `HomeController` và `UserRestorationController`).
+    > Thiết lập App Password để gửi e-mail với <a href="https://myaccount.google.com/apppasswords">tài khoản Google của bạn</a><br>
 
 <h2>CÁCH CÀI ĐẶT SOURCE</h2>
 
 0. Chạy XAMPP với quyền admin, khởi động 2 dịch vụ: Apache và MySQL <br>
-1. git clone source về, trong hệ quản trị CSDL MySQL (PHPMyAdmin : truy cập bằng trình duyệt với địa chỉ: 127.0.0.1:80/phpmyadmin) -> tạo 1 CSDL mới, đặt tên gì cũng được (VD: webdatxe)<br>
+1. Thực hiện `git clone` source về, trong hệ quản trị CSDL MySQL (PHPMyAdmin : truy cập bằng trình duyệt với địa chỉ: 127.0.0.1:80/phpmyadmin) -> tạo 1 CSDL mới, đặt tên gì cũng được (VD: webdatxe)<br>
 2. Mở command line: cd <tên thư mục chứa source>, chạy lệnh `composer update` (nếu ko được thì `composer install`) <br>
 3. Copy file .env.example thành 1 file mới, và đổi tên file mới này thành .env <br>
 4. Mở file .env mới tạo, tìm tới dòng DB_DATABASE=project và thay thế 'project' thành tên cơ sở dữ liệu được tạo trong MySQL (webdatxe)<br>
