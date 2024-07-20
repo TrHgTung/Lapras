@@ -20,6 +20,7 @@ class DoanhThu extends Model
         'diemdau',
         'diemden',
         'paymentMethod',
+        'timeUpdt',
         'dayUpdt',
         'monthUpdt',
         'yearUpdt',

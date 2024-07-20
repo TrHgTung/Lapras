@@ -148,10 +148,10 @@ class PurchaseController extends Controller
             $UpdtDoanhThu['diemdau'] = $UpdtData->diemdau;
             $UpdtDoanhThu['diemden'] = $UpdtData->diemden;
             $UpdtDoanhThu['paymentMethod'] = $UpdtData->paymentMethod;
-            // $UpdtDoanhThu['timeUpdt'] = Carbon::now();
-            $UpdtDoanhThu['dayUpdt'] = Carbon::now()->day;
-            $UpdtDoanhThu['monthUpdt'] = Carbon::now()->month;
-            $UpdtDoanhThu['yearUpdt'] = Carbon::now()->year;
+            $UpdtDoanhThu['timeUpdt'] = Carbon::now();
+            // $UpdtDoanhThu['dayUpdt'] = Carbon::now()->day;
+            // $UpdtDoanhThu['monthUpdt'] = Carbon::now()->month;
+            // $UpdtDoanhThu['yearUpdt'] = Carbon::now()->year;
 
             $randNumber = rand(0,9999);
             $xuLyEmail = str_replace(['@', '.'], '', $req->email);
@@ -189,10 +189,10 @@ class PurchaseController extends Controller
             $UpdtDoanhThu['diemdau'] = $UpdtData->diemdau;
             $UpdtDoanhThu['diemden'] = $UpdtData->diemden;
             $UpdtDoanhThu['paymentMethod'] = $UpdtData->paymentMethod;
-            // $UpdtDoanhThu['timeUpdt'] = Carbon::now();
-            $UpdtDoanhThu['dayUpdt'] = Carbon::now()->day;
-            $UpdtDoanhThu['monthUpdt'] = Carbon::now()->month;
-            $UpdtDoanhThu['yearUpdt'] = Carbon::now()->year;
+            $UpdtDoanhThu['timeUpdt'] = Carbon::now();
+            // $UpdtDoanhThu['dayUpdt'] = Carbon::now()->day;
+            // $UpdtDoanhThu['monthUpdt'] = Carbon::now()->month;
+            // $UpdtDoanhThu['yearUpdt'] = Carbon::now()->year;
 
             $randNumber = rand(0,9999);
             $xuLyEmail = str_replace(['@', '.'], '', $req->email);
