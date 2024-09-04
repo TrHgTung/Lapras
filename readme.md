@@ -1,6 +1,8 @@
 <h1>Lapras - Một hệ thống vận hành nhà xe cơ bản</h1>
 <h2>GIỚI THIỆU</h2>
 
+Video: https://youtu.be/0WWv82OsUTw
+
 <h6>Phiên bản: 1.0</h6>
 <p>Một hệ thống vận hành theo nghiệp vụ <i>Xe khách dịch vụ</i> </p>
 <img src="GioiThieu.jpg">
