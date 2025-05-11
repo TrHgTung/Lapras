@@ -2,8 +2,12 @@
 <h2>GIỚI THIỆU</h2>
 
 Video: https://youtu.be/0WWv82OsUTw
+<br>
 
-<h6>Phiên bản: 1.0</h6>
+<a href="https://hackmd.io/@trhgtung/HJlM3qxCelg">Xem thêm chi tiết</a>
+<br>
+
+<h6>Phiên bản: 2.0</h6>
 <p>Một hệ thống vận hành theo nghiệp vụ <i>Xe khách dịch vụ</i> </p>
 <img src="GioiThieu.jpg">
 
@@ -70,8 +74,43 @@ Ngoài ra còn có hiển thị thông tin các tuyến xe, tìm kiếm tuyến 
 
 > 127.0.0.1 chính là địa chỉ localhost<br>
 
+<h3>Mới hơn - Chạy với Docker</h3>
+
+1. Build và khởi động các container `docker-compose up -d --build`
+
+2. Cài đặt các thư viện PHP nếu chưa có
+   `docker-compose exec app composer install`
+
+3. Tạo key ứng dụng Laravel
+   `docker-compose exec app php artisan key:generate`
+
+4. Thực hiện migrate cơ sở dữ liệu
+   `docker-compose exec app php artisan migrate`
+
+5. Truy cập ứng dụng tại: http://localhost:8000
+
+<h3>Tóm tắt Luồng dữ liệu</h3>
+
+-   Sau khi khởi động thành công ứng dụng: yêu cầu setup (đây thực chất là bước đăng ký tài khoản master-admin)
+
+-   Tài khoản đăng ký admin sẽ yêu cầu nhập mật khẩu SMTP (<a href="https://wpseo.vn/huong-dan-lay-mat-khau-gmail-smtp/">Cách lấy SMTP Password với dịch vụ Google</a>). Sau khi có được mật khẩu SMTP của tài khoản Google, sẽ dùng để cấu hình gửi e-mail (cho các tính năng phản hồi, khôi phục mật khẩu khách hàng)
+
+    Bạn đừng lo về độ bảo mật cho tài khoản Google của bạn khi mật khẩu SMTP được sử dụng, vì nó sẽ được lưu vào cơ sở dữ liệu cục bộ và không công khai. Trừ khi bạn tiết lộ nó do các lí do vô tình như copy paste không có chủ ý hay commit lên các Git services,..
+
+-   Tại trang chủ (route GET `/` ): Xem các tuyến khả dụng, tuyến của khách hàng đã đặt, xem tài khoản và các tính năng nhỏ khác
+
+-   Tại trang admin (route GET `/admin`): Xem các tính năng được đặc quyền cho người quản lý (yêu cầu đăng nhập admin)
+
+-   Đặt chuyến xe và thanh toán giả lập (chưa tích hợp API thanh toán của bên thứ ba - đang phát triển)
+
+<h4>Phiên bản: 2.0 - có gì mới?</h4>
+
+-   Cấu hình file Docker cho việc triển khai
+-   Sửa lại các lỗi khi lưu dữ liệu thanh toán, chuyến đã đặt bởi khách hàng
+-   Cập nhật cấu trúc cơ sở dữ liệu
+
 <h3>LIÊN HỆ VÀ DONATE</h3>
-<p>Các bạn nếu thích dự án này, mong muốn có thêm tính năng mới (mở rộng dự án) hoặc chỉ đơn giản là muốn donate cho tôi ☕☕☕; hãy liên hệ với tôi qua Telegram: <i>@trhgtung</i> hoặc comment tại video bất kỳ với nội dung bạn mong muốn trên kênh Youtube: <a href="https://www.youtube.com/@TungSupport">@TungSupport</a></p>
+<p>Các bạn nếu thích dự án này, mong muốn có thêm tính năng mới (mở rộng dự án) hoặc chỉ đơn giản là muốn donate cho tôi ☕☕☕; hãy liên hệ với tôi qua Telegram: <i>@trhgtung</i> hoặc comment tại video bất kỳ với nội dung bạn mong muốn trên kênh Youtube: <a href="https://www.youtube.com/@TungSupport">@TungSupport</a> - Blog của tôi: <a href="https://hoang-tung-site.vercel.app/">Hoàng Tùng Blog Site</a></p>
 <p>Xin cảm ơn! 😍😍😍</p>
 
 <h3>NẾU CÓ LỖI XẢY RA / MUỐN ĐÓNG GÓP</h3>
