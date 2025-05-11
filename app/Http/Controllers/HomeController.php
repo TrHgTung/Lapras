@@ -37,8 +37,12 @@ class HomeController extends Controller
         //$this->KiemTraXacThuc();
 
         $receive_mail = $req->receive;
-        $host_mail = '*****@gmail.com'; // sevr mail cua ban
-        $app_password = '********'; // mat khau email (SMTP)
+        $master_admin = DB::table('admin')
+                            ->where('is_master', 1)
+                            ->first();
+                                   
+        $host_mail = $master_admin->email; // mail cua ban
+        $app_password = $master_admin->smtp_password; // google app passwords
 
         $data = array();
         $data['addressFrom'] =  $receive_mail;

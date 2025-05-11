@@ -26,11 +26,14 @@ class FeedbackController extends Controller
 
     public function PhanHoi(Request $req){
         $this->KiemTraXacThuc();
+        $master_admin = DB::table('admin')
+                            ->where('is_master', 1)
+                            ->first();
 
         $umail = Session::get('email');
         $content = $req->content;
-        $host_mail = '********@gmail.com'; // mail cua ban
-        $host_password = '********'; // google app passwords
+        $host_mail = $master_admin->email; // mail cua ban
+        $host_password = $master_admin->smtp_password; // google app passwords
 
         $data = array();
         $data['addressFrom'] =  $umail;
