@@ -19,6 +19,35 @@ class AuthenticateController extends Controller
             return Redirect::to('/')->send();
         }
     }
+
+    public function KhoiTaoAdminDauTien(){
+        $checkAdminExistOrNot = DB::table('admin')->first();
+        if($checkAdminExistOrNot == null || !$checkAdminExistOrNot){
+            return view('SetUp');
+        }
+        else {
+            return Redirect::to('/admin/dangnhap');
+        }
+    }
+
+    public function KhoiTaoAdminDauTienPost(Request $req){
+        $checkAdminExistOrNot = DB::table('admin')->first();
+        if($checkAdminExistOrNot == null || !$checkAdminExistOrNot){
+            $data = array();
+            $data['name'] = $req->name;
+            $data['email'] = $req->email;
+            $data['is_master'] = '1';
+            $data['is_active'] = '1';
+            $data['password'] = md5($req->password);
+            $data['smtp_password'] = ($req->smtp_password);
+
+            DB::table('admin')->insertGetId($data);
+            return Redirect::to('/admin/dangnhap');
+        }
+        else {
+            return Redirect::to('/admin/dangnhap');
+        }
+    }
     // dang nhap 
     public function ViewDangNhap(){
         $this->KiemTraXacThucNguoiDung();

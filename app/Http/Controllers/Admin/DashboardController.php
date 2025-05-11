@@ -480,6 +480,7 @@ class DashboardController extends Controller
         $data['HangXe'] = $req->HangXe;
         $data['SoGhe'] = ($req->SoGhe);
         $data['HanDangKiem'] = ($req->HanDangKiem);
+        $data['status'] = '1';
        
         $msg = "Đã thêm thành công";
         Session::put('success_vehicle_added', $msg);
@@ -547,6 +548,7 @@ class DashboardController extends Controller
 
         $data['MaTaiXe'] = $req->MaTaiXe;
         $data['HoTenTaiXe'] = $req->HoTenTaiXe;
+        $data['status'] = 1;
 
         $msg = "Đã thêm thành công";
         Session::put('success_driver_added', $msg);

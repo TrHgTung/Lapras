@@ -157,9 +157,28 @@
         </div><!-- /.row -->
 
         <div class="calendar mt-4 mb-4">
-          <div class="month"><h4>Lịch Tìm kiếm</h4></div>
+          <div class="month"><h4>Tìm kiếm chuyến xe cho bạn</h4></div>
           <form action="{{URL::to('/chonthang')}}" method="post">
             {{ csrf_field() }}
+              
+              <label for="month" style="font-weight:700">Chọn tháng: </label>
+            <select name="month" id="month">
+              <option value="">?</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select> / 2025 >>>
+            
+              <br><br>
               <div class="mb-2">
                 <strong>Chọn ngày: </strong>
               </div>
@@ -196,22 +215,7 @@
                 <p class="day">30<input class="form-check-input" type="radio" name="ngay" id="ngay" value="30"></p>
                 <p class="day">31<input class="form-check-input" type="radio" name="ngay" id="ngay" value="31"></p>
             </div>
-            <label for="month">Chọn tháng: </label>
-            <select name="month" id="month">
-              <option value="">?</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select> / 2024 >>>
+            
             <input type="submit" value="Tìm kiếm" class="btn btn-sm btn-outline-secondary">
           </form>
         </div>
@@ -233,7 +237,7 @@
         <div class="row">
           <div class="col-12 col-md">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-            <small class="d-block mb-3 text-muted">&copy; 2024 - Trường Đại học Sư Phạm TP.HCM</small>
+            <small class="d-block mb-3 text-muted">&copy; 2025 - Trường Đại học Sư Phạm TP.HCM</small>
           </div>
           <div class="col-6 col-md">
             <h5>Các tính năng</h5>

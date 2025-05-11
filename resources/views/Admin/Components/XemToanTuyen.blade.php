@@ -26,7 +26,7 @@
               <td class="fw-bold">{{ $gettx->MaTuyenXe }}</td>
               <td>{{ $gettx->DiemDau }}</td>
               <td>{{ $gettx->DiemDen }}</td>
-              <td>{{ $gettx->NgayKhoiHanh }}-{{ $gettx->ThangKhoiHanh }}-2024</td>
+              <td>{{ $gettx->NgayKhoiHanh }}-{{ $gettx->ThangKhoiHanh }}-2025</td>
               <td>{{ $gettx->GioKhoiHanh }}</td>
               <td>{{ $gettx->GioToiNoi }}</td>
               <td>{{ $gettx->GiaVe }}</td>

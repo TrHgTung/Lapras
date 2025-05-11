@@ -105,8 +105,12 @@
 
             <div class="form-label-group mt-3">
                 <label for="inputPassword">Mật khẩu</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="" name="password" required>
-                
+                <input type="password" id="inputPassword" class="form-control" placeholder="" name="password" required>    
+            </div>
+
+            <div class="form-label-group mt-3">
+                <label for="smtp_password">Mật khẩu SMTP <i><a href="{{URL::to('/huongdan-smtp')}}" target="_blank">Tìm hiểu thêm</a></i></label>
+                <input type="password" id="smtp_password" class="form-control" placeholder="" name="smtp_password" required>
             </div>
 
             <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Thêm tài khoản</button>

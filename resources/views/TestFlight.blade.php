@@ -103,7 +103,7 @@ header nav:hover > a:not(:hover) {
 <body>
 
     <header>
-        <h1 style="margin-top:10px">Nhóm 6</h1>
+        <h1 style="margin-top:10px">Lapras</h1>
         <nav>
             <a href="{{URL::to('/lichdatxe')}}" class="active">Quay lại</a>
             <a href="{{URL::to('/')}}">Tr.Chủ</a>
@@ -117,7 +117,7 @@ header nav:hover > a:not(:hover) {
         <img src="{{asset('images/assets/mount1.png')}}" class="mount1">
         <img src="{{asset('images/assets/bush2.png')}}" class="bush2">
 
-        <h1 class="title">Đổi mới sáng tạo & khởi nghiệp</h1>
+        <h1 class="title">Lapras Express</h1>
 
         <img src="{{asset('images/assets/bush1.png')}}" class="bush1">
         <img src="{{asset('images/assets/leaf2.png')}}" class="leaf2">
@@ -127,7 +127,7 @@ header nav:hover > a:not(:hover) {
     <section class="about">
         <h1>Thông tin về tuyến sắp chạy</h1><br>
         @foreach($mangDuLieu as $mdl)
-        <h3>Ngày {{ $mdl['NgayKhoiHanh'] }} tháng {{ $mdl['ThangKhoiHanh'] }} năm 2024</h3>
+        <h3>Ngày {{ $mdl['NgayKhoiHanh'] }} tháng {{ $mdl['ThangKhoiHanh'] }} năm 2025</h3>
         @endforeach
         <br>
         @foreach($mangDuLieu as $mdl)
@@ -136,7 +136,7 @@ header nav:hover > a:not(:hover) {
         <strong>Điểm đến: </strong><p>{{ $mdl['DiemDen'] }}</p>
         <br>
         <strong>Giá vé: </strong><p>{{ $mdl['GiaVe'] }}</p><br>
-        <strong>Ngày khởi hành: </strong><p>{{ $mdl['NgayKhoiHanh'] }}/{{ $mdl['ThangKhoiHanh'] }}/2024</p><br>
+        <strong>Ngày khởi hành: </strong><p>{{ $mdl['NgayKhoiHanh'] }}/{{ $mdl['ThangKhoiHanh'] }}/2025</p><br>
         @endforeach
         <p><strong>Liên hệ đặt vé: </strong> 0909 123 456</p>
         <form action="{{URL::to('/addgiohang')}}" method="post">
@@ -151,7 +151,7 @@ header nav:hover > a:not(:hover) {
       <div class="row">
         <div class="col-12 col-md">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-          <small class="d-block mb-3 text-muted">&copy; 2024 - Trường Đại học Sư Phạm TP.HCM</small>
+          <small class="d-block mb-3 text-muted">&copy; 2025 - Trường Đại học Sư Phạm TP.HCM</small>
         </div>
         <div class="col-6 col-md">
           <h5>Các tính năng</h5>

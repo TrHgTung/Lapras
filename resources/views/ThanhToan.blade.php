@@ -277,7 +277,7 @@
   </main>
 
   <footer class="my-5 pt-5 text-body-secondary text-center text-small">
-    <p class="mb-1">&copy; 2024 Hoàng Tùng</p>
+    <p class="mb-1">&copy; 2025 - DHSP</p>
     
   </footer>
 </div>

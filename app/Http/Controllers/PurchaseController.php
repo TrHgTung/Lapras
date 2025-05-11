@@ -148,7 +148,7 @@ class PurchaseController extends Controller
             $UpdtDoanhThu['diemdau'] = $UpdtData->diemdau;
             $UpdtDoanhThu['diemden'] = $UpdtData->diemden;
             $UpdtDoanhThu['paymentMethod'] = $UpdtData->paymentMethod;
-            $UpdtDoanhThu['timeUpdt'] = Carbon::now();
+            // $UpdtDoanhThu['timeUpdt'] = Carbon::now();
             // $UpdtDoanhThu['dayUpdt'] = Carbon::now()->day;
             // $UpdtDoanhThu['monthUpdt'] = Carbon::now()->month;
             // $UpdtDoanhThu['yearUpdt'] = Carbon::now()->year;
@@ -159,6 +159,10 @@ class PurchaseController extends Controller
             $ngayThangNamDaXuLy = str_replace(['-', ':'], '', $xuLyNgayThangNam);
             $xuLyMaDoanhThu = $randNumber.$ngayThangNamDaXuLy.$xuLyEmail;
             $UpdtDoanhThu['MaDoanhThu'] = $xuLyMaDoanhThu;
+
+            $UpdtDoanhThu['dayUpdt'] = $ngayThangNamDaXuLy;
+            $UpdtDoanhThu['monthUpdt'] = Carbon::now()->month;
+            $UpdtDoanhThu['yearUpdt'] = Carbon::now()->year;
 
             DB::table('doanhthu')->insertGetId($UpdtDoanhThu);
 
@@ -249,7 +253,8 @@ class PurchaseController extends Controller
         // update paymentMethod
         $getpaymentMethod = $req->paymentMethod;
         // ... dựa trên email va MaTuyenXe để update paymentMethod..
-        $findDataUpdatePM = DoanhThu::where('timeUpdt', $getTimeUpdt)->update(array('paymentMethod' => $getpaymentMethod));
+        $findDataUpdatePM = DoanhThu::where('dayUpdt', $getTimeUpdt)
+                                    ->update(array('paymentMethod' => $getpaymentMethod));
         return Redirect::to('/thanks');
 
     }

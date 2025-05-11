@@ -29,8 +29,10 @@
       </div>
 
       <div class="form-label-group">
-        <input type="text" id="inputMailContent" class="form-control" placeholder="***********" name="content" required>
-        <label for="inputMailContent">Nội dung phản hồi</label>
+        
+        <label for="inputMailContent">Cho chúng tôi biết bạn đang cần gì..</label>
+        <!-- <input type="text" id="inputMailContent" class="form-control" placeholder="***********" name="content" required> -->
+        <textarea class="form-control" id="inputMailContent" rows="8" name="content" required></textarea>
       </div>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">Gửi đến E-mail Admin</button>

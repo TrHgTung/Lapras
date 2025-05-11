@@ -29,7 +29,7 @@
                   <td class="fw-bold">{{ $gettx->MaTuyenXe }}</td>
                   <input type="hidden" name="MaTuyenXe" value="{{ $gettx->MaTuyenXe }}">
                   
-                  <td>{{ $gettx->NgayKhoiHanh }}-{{ $gettx->ThangKhoiHanh }}-2024</td>
+                  <td>{{ $gettx->NgayKhoiHanh }}-{{ $gettx->ThangKhoiHanh }}-2025</td>
                   <input type="hidden" name="NgayKhoiHanh" value="{{ $gettx->NgayKhoiHanh }}">
                   <input type="hidden" name="ThangKhoiHanh" value="{{ $gettx->ThangKhoiHanh }}">
                   <td><input type="text" name="GioKhoiHanh" id="" value="{{ $gettx->GioKhoiHanh }}" require></td>
@@ -94,7 +94,7 @@
           @foreach($lichSuChuyenXe as $lscx)
             <tr>
               <td>{{ $lscx->MaTuyenXe }}</td>
-              <td>{{ $lscx->NgayKhoiHanh }}-{{ $lscx->ThangKhoiHanh }}-2024</td>
+              <td>{{ $lscx->NgayKhoiHanh }}-{{ $lscx->ThangKhoiHanh }}-2025</td>
               <td>{{ $lscx->GioKhoiHanh }}</td>
               <td>{{ $lscx->GioToiNoi }}</td>
               <td>{{ $lscx->MaSoXe }}</td>

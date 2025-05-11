@@ -17,10 +17,16 @@ use Illuminate\Support\Collection;
 class HomeController extends Controller
 {
     public function index(){
-        Session::forget('email_validation');
-        // Feedback::all();
-        $getFeedback = DB::table('feedback')->limit(10)->get(); // chỉ lấy 10 item
-        return view('TrangChu')->with('getFeedback', $getFeedback);
+        $checkAdminExistOrNot = DB::table('admin')->first();
+        if($checkAdminExistOrNot == null || !$checkAdminExistOrNot){
+            return Redirect::to('/setup');
+        }
+        else {
+            Session::forget('email_validation');
+            $getFeedback = DB::table('feedback')->limit(10)->get(); // chỉ lấy 10 item
+            return view('TrangChu')->with('getFeedback', $getFeedback);
+        }
+        
     }
 
     public function KhoiPhucMail(){

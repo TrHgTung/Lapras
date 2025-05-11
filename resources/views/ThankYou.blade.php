@@ -130,7 +130,7 @@
       </symbol>
     </svg>
 
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
               type="button"
@@ -163,31 +163,32 @@
           </button>
         </li>
       </ul>
-    </div>
+    </div> -->
 
     
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="mb-auto">
-    <div>
+    <h2 style="color:green;">Thanh toán trực tuyến thành công</h2>
+    <!-- <div>
       <h3 class="float-md-start mb-0">Cover</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
         <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
         <a class="nav-link fw-bold py-1 px-0" href="#">Features</a>
         <a class="nav-link fw-bold py-1 px-0" href="#">Contact</a>
       </nav>
-    </div>
+    </div> -->
   </header>
 
   <main class="px-3">
     <h2>Xin cảm ơn bạn, <?php echo Session::get('name'); ?></h2>
     <p class="lead">Cảm ơn bạn đã tin tưởng và ủng hộ dịch vụ của chúng tôi.</p>
     <p class="lead">
-      <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
+      <a href="{{URL::to('/')}}" class="btn btn-lg btn-light fw-bold border-white bg-white">Quay về đặt thêm chuyến</a>
     </p>
   </main>
 
   <footer class="mt-auto text-white-50">
-    <p>Tác giả: Hoàng Tùng (github/TrHgTung).</p>
+    <p>2025 - Đại học Sư Phạm TP.HCM.</p>
   </footer>
 </div>
 <script src="{{asset('bootstrap5/bootstrap.bundle.min.js')}}"></script>

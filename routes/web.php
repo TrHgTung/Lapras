@@ -27,7 +27,10 @@ use App\Http\Controllers\Admin\BlogController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// Others
+Route::get('/huongdan-smtp', function () {
+    return view('HuongDanSMTP');
+});
 // Trang chu
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/khoiphuctk', [HomeController::class, 'KhoiPhucMail']);
@@ -90,6 +93,8 @@ Route::get('/thanks', [PurchaseController::class, 'SayThanks']);
 
 
 // ADMIN
+Route::get('/setup', [AdminAuthenticate::class, 'KhoiTaoAdminDauTien']);
+Route::post('/setup_application', [AdminAuthenticate::class, 'KhoiTaoAdminDauTienPost'])->middleware('throttle:CustomRateLim');
 Route::get('/admin', [BaseController::class, 'main']);
 
 // Dang nhap tai khoan

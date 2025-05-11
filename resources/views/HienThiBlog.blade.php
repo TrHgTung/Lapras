@@ -570,7 +570,7 @@ select {
     <p class="float-end mb-1">
       <a href="#">Cuộn lên đầu trang</a>
     </p>
-    <p class="mb-1">GitHub/TrHgTung (Hoàng Tùng) © 2024</p>
+    <p class="mb-1">GitHub/TrHgTung (Hoàng Tùng) © 2025</p>
     <p class="mb-0">Cần được hỗ trợ? Hãy đi đến <a href="{{URL::to('/phanhoi')}}">trang phản hồi!</a> </p>
   </div>
 </footer>

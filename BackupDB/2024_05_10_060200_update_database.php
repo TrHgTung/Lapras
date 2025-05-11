@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->string('smtp_password');
             $table->string('is_active');
-            $table->string('is_master');  
+            $table->string('is_master');           
         });
         Schema::create('TuyenXe', function(Blueprint $table){
             $table->id();
@@ -85,8 +86,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('diemdau');
             $table->string('diemden');
-            $table->string('paymentMethod');
-            $table->string('timeUpdt');     
+            $table->string('paymentMethod');  
+            $table->string('timeUpdt');      
         });
         Schema::create('DoanhThu', function(Blueprint $table){
             $table->id();
@@ -101,7 +102,7 @@ return new class extends Migration
             $table->string('paymentMethod');      
             $table->string('dayUpdt');      
             $table->string('monthUpdt');      
-            $table->string('yearUpdt');      
+            $table->string('yearUpdt');     
         });
         Schema::create('Blog', function(Blueprint $table){
             $table->id();

@@ -81,7 +81,7 @@
 <body>
     <div class="container mt-4">
         <div class="atm-card mt-3" id="atm-card">
-            <div class="bank-name" id="bank-name">Ngân hàng</div>
+            <div class="bank-name" id="bank-name">--</div>
             <div class="card-number" id="card-number">1234 5678 9012 3456</div>
             <div class="card-holder" id="card-holder"> {{ $data['name'] }}</div>
             <div class="cvv-label" id="cvv-label">Hạn SD thẻ</div><div class="expiry-date" id="expiry-date">mm/yy</div>

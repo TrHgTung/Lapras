@@ -173,13 +173,13 @@
               <option value="10">10</option>
               <option value="11">11</option>
               <option value="12">12</option>
-            </select> / 2024 >>>
+            </select> / 2025 >>>
             <input type="submit" value="Xem" class="btn btn-sm btn-outline-secondary">
           </form>
         </div>
 
         <div class="" class="mt-4 mb-4">
-        <h6 class="border-bottom pb-2 mb-0">Kết quả tìm kiếm cho tháng {{ $month }}/2024</h6>
+        <h6 class="border-bottom pb-2 mb-0">Kết quả tìm kiếm cho tháng {{ $month }}/2025</h6>
 @if(!$duLieuNgayKH->isEmpty())
             @foreach($duLieuNgayKH as $dta)
             <form action="{{URL::to('/lichdatxePost')}}" method="post">
@@ -189,7 +189,7 @@
                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                     <div class="d-flex justify-content-between">
                     <strong class="text-gray-dark">Điểm đón: {{$dta->DiemDau}}</strong>
-                    <a>Thời gian: {{$dta->NgayKhoiHanh}}/{{$month}}/2024 ({{$dta->GioKhoiHanh}} - {{$dta->GioToiNoi}})</a>
+                    <a>Thời gian: {{$dta->NgayKhoiHanh}}/{{$month}}/2025 ({{$dta->GioKhoiHanh}} - {{$dta->GioToiNoi}})</a>
                     </div>
                     <span class="d-block">Điểm đến: {{$dta->DiemDen}}</span>
                 </div>
@@ -210,7 +210,7 @@
                 <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
                     <div class="d-flex justify-content-between">
                     <strong class="text-gray-dark">Điểm đón: {{$all->DiemDau}}</strong>
-                    <a>Thời gian: {{$all->NgayKhoiHanh}}/{{$month}}/2024 ({{$all->GioKhoiHanh}} - {{$all->GioToiNoi}})</a>
+                    <a>Thời gian: {{$all->NgayKhoiHanh}}/{{$month}}/2025 ({{$all->GioKhoiHanh}} - {{$all->GioToiNoi}})</a>
                     </div>
                     <span class="d-block">Điểm đến: {{$all->DiemDen}}</span>
                 </div>
@@ -244,7 +244,7 @@
         <div class="row">
           <div class="col-12 col-md">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
-            <small class="d-block mb-3 text-muted">&copy; 2024 - Trường Đại học Sư Phạm TP.HCM</small>
+            <small class="d-block mb-3 text-muted">&copy; 2025 - Trường Đại học Sư Phạm TP.HCM</small>
           </div>
           <div class="col-6 col-md">
             <h5>Các tính năng</h5>
